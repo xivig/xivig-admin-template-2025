@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>window.XIVIG_ROOT = "../../";</script>
+    <script>window.XIVIG_ROOT = "../../";</script>
+    <meta charset="UTF-8">
+    <title>Login | Xivig Elite</title>
+    
+    <!-- Site favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon-16x16.png" />
+    
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    
+    <!-- Theme Detection & Critical Style Initialization -->
+    <script>
+        (function() {
+            const savedTheme = localStorage.getItem('xivig-global-theme') || 'auto';
+            let resolvedTheme = savedTheme;
+            if (savedTheme === 'auto') {
+                resolvedTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            document.documentElement.setAttribute('data-bs-theme', resolvedTheme);
+            const bgColor = resolvedTheme === 'dark' ? '#0b0f12' : '#f8fafc';
+            document.write(`<style>body{background-color: ${bgColor} !important; visibility: hidden;} body.is-loaded, body.preloader-active{visibility: visible;}</style>`);
+        })();
+    </script>
+    
+    <!-- Critical Preloader Style -->
+    <style>
+        .preloader {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            background: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.6s ease, visibility 0.6s;
+        }
+        .preloader--hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        body:not(.is-loaded) {
+            overflow: hidden;
+        }
+        .preloader { visibility: visible !important; }
+    </style>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.classList.add('preloader-active');
+        });
+    </script>
+    
+    <!-- Vendor Styles (Essential Only) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!-- Global jQuery Exposure (Critical for Plugins) -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script>
+        window.jQuery = window.$ = jQuery;
+    </script>
+  <script type="module" crossorigin src="../../assets/mobile-controller.js"></script>
+  <script type="module" crossorigin src="../../assets/rolldown-runtime.js"></script>
+  <script type="module" crossorigin src="../../assets/vendor-jquery.js"></script>
+  <script type="module" crossorigin src="../../assets/vendor-core.js"></script>
+  <script type="module" crossorigin src="../../assets/auth.js"></script>
+  <link rel="stylesheet" crossorigin href="../../assets/vendor-core.css">
+  <link rel="stylesheet" crossorigin href="../../assets/auth.css">
+</head>
+
+<body class="auth-page">
+
+    <!-- PRELOADER -->
+    <div class="preloader">
+        <div class="preloader__box text-center">
+            <div class="preloader__logo mb-3">
+                <img src="../../assets/xivig-logo.png" alt="Logo" width="120" />
+            </div>
+            <div class="preloader__progress">
+                <div class="preloader__bar" id="bar1"></div>
+            </div>
+            <div class="preloader__percent" id="percent1">0%</div>
+            <div class="preloader__text">Initializing Elite Dashboard</div>
+        </div>
+    </div>
+    <div class="mobile-menu-overlay"></div>
+    <div class="auth-card animate__animated animate__zoomIn">
+        
+        <div class="text-center">
+            <h2 class="auth-card__title">Elite Login</h2>
+            <p class="auth-card__subtitle">Sign in to access your architect dashboard.</p>
+        </div>
+        
+        <div class="social-auth">
+            <a href="#" class="social-btn" aria-label="Sign in with GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+            <a href="#" class="social-btn text-danger" aria-label="Sign in with Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+            <a href="#" class="social-btn text-primary" aria-label="Sign in with LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+        </div>
+        
+        <div class="auth-divider">
+            <span>OR CONTINUE WITH EMAIL</span>
+        </div>
+        
+        <form action="index.html">
+            <div class="mb-4">
+                <div class="input-group auth-input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+                    <input type="email" class="form-control" placeholder="architect@xivig.com" aria-label="Email address" required>
+                </div>
+            </div>
+        
+            <div class="mb-3">
+                <div class="input-group auth-input-group">
+                    <span class="input-group-text"><i class="bi bi-shield-lock" aria-hidden="true"></i></span>
+                    <input type="password" class="form-control" placeholder="••••••••" aria-label="Password" required>
+                </div>
+            </div>
+        
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                    <label class="form-check-label small text-muted" for="rememberMe">Remember me</label>
+                </div>
+                <a href="forgot-password.html" class="auth-link small">Forgot Password?</a>
+            </div>
+        
+            <button type="submit" class="btn btn-primary rounded-pill w-100 py-3 rounded-3 fw-bold shadow-sm mb-4">
+                Enter Dashboard
+            </button>
+        
+            <p class="text-center small text-muted mb-0">
+                New to Xivig? <a href="register.html" class="auth-link">Create an Account</a>
+            </p>
+        </form>
+        
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+/* Glass Sidebar */
+.glass-box {
+    background: var(--glass);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius:var(--elite-radius-xl);
+    padding: 2rem;
+}

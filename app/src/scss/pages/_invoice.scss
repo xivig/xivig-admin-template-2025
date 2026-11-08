@@ -1,0 +1,49 @@
+/* Xivig Elite Invoice CSS */
+.extra-small {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.tracking-tight {
+    letter-spacing: -0.02em;
+}
+
+.invoice {
+    border: 1px solid rgba(0, 0, 0, 0.05) !important;
+}
+
+.invoice__total {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #6f42c1 100%);
+    box-shadow: 0 10px 20px rgba(var(--bs-primary-rgb), 0.2) !important;
+}
+
+/* Elite Hover State for Buttons */
+.btn-outline-light:hover {
+    background-color: #f8f9fa !important;
+    border-color: var(--bs-primary) !important;
+    color: var(--bs-primary) !important;
+}
+
+.table-borderless tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.table-borderless tbody tr:hover {
+    background-color: rgba(var(--bs-primary-rgb), 0.02);
+}
+
+/* Print Optimization */
+@media print {
+    .invoice__footer {
+        display: none;
+    }
+
+    .invoice {
+        box-shadow: none !important;
+        border: none !important;
+    }
+}

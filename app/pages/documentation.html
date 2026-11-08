@@ -1,0 +1,456 @@
+{{#> admin-layout title="Documentation" }}
+
+<div class="row g-4">
+    <!-- Left Sidebar Navigation -->
+    <div class="col-xl-3 col-lg-4">
+        <div class="sticky-top" style="top: 100px; z-index: 10;">
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+                <div class="card-header bg-primary text-white py-3 border-0">
+                    <h6 class="fw-bold mb-0"><i class="bi bi-list-nested me-2"></i> System Manual</h6>
+                </div>
+                <div class="card-body p-2" id="doc-nav">
+                    <nav class="nav flex-column gap-1 doc-sidebar-nav">
+                        <a href="#introduction" class="nav-link rounded-3 active">
+                            <i class="bi bi-info-circle me-2"></i> Introduction
+                        </a>
+                        <a href="#tech-stack" class="nav-link rounded-3">
+                            <i class="bi bi-stack me-2"></i> Tech Stack
+                        </a>
+                        <a href="#getting-started" class="nav-link rounded-3">
+                            <i class="bi bi-rocket-takeoff me-2"></i> Getting Started
+                        </a>
+                        <a href="#folder-structure" class="nav-link rounded-3">
+                            <i class="bi bi-folder2-open me-2"></i> Folder Structure
+                        </a>
+                        <a href="#theme-logic" class="nav-link rounded-3">
+                            <i class="bi bi-palette me-2"></i> Theme & Colors
+                        </a>
+                        <a href="#component-usage" class="nav-link rounded-3">
+                            <i class="bi bi-box-seam me-2"></i> Component Usage
+                        </a>
+                        <a href="#deployment" class="nav-link rounded-3">
+                            <i class="bi bi-cloud-arrow-up me-2"></i> Deployment
+                        </a>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="col-xl-9 col-lg-8">
+        <!-- Hero Section -->
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="p-5 bg-primary text-white position-relative">
+                <div class="position-relative" style="z-index: 2;">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <span class="badge bg-white text-primary px-3 py-1 rounded-pill fw-bold small shadow-sm">ELITE v1.0</span>
+                    </div>
+                    <h1 class="display-4 fw-800 mb-3 text-white">Developer Documentation</h1>
+                    <p class="fs-5 mb-0 opacity-90 text-white" style="max-width: 650px; line-height: 1.6;">A comprehensive guide to the
+                        Xivig architecture, build systems, and UI component ecosystem.</p>
+                </div>
+                <!-- Watermark Icon: Repositioned and stylized -->
+                <div class="position-absolute bottom-0 end-0 mb-n5 me-n5 text-white d-none d-lg-block" style="opacity: 0.08; pointer-events: none; z-index: 1;">
+                    <i class="bi bi-journal-code" style="font-size: 18rem;"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 1. Introduction -->
+        <section id="introduction" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-primary-light text-primary rounded-3 p-2 shadow-sm">
+                    <i class="bi bi-info-circle fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">1. Introduction</h3>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h5 class="fw-bold mb-3">The Xivig Philosophy</h5>
+                <p class="text-secondary lh-lg">
+                    Xivig is engineered for developers who demand <strong>clean code, modularity, and high
+                        performance</strong>. Unlike traditional admin templates that ship with bloated jQuery plugins
+                    and messy HTML, Xivig uses a modern <strong>Hybrid Workflow</strong> (Vite + Gulp) and
+                    <strong>Vanilla JS</strong> logic to ensure your application remains fast even as it scales to
+                    hundreds of pages.
+                </p>
+                <div class="row g-4 mt-2">
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="bi bi-check2-circle text-success fs-5"></i>
+                            <h6 class="fw-bold mb-0">Modular UI</h6>
+                        </div>
+                        <p class="small text-muted mb-0">Handlebars-based components ensure you write code once and deploy it everywhere.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="bi bi-check2-circle text-success fs-5"></i>
+                            <h6 class="fw-bold mb-0">Performance First</h6>
+                        </div>
+                        <p class="small text-muted mb-0">Assets are optimized, images are compressed, and JS is bundled into tiny chunks.</p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <i class="bi bi-check2-circle text-success fs-5"></i>
+                            <h6 class="fw-bold mb-0">Theme Aware</h6>
+                        </div>
+                        <p class="small text-muted mb-0">Native Dark Mode support built into the CSS variable-driven design tokens.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Tech Stack -->
+        <section id="tech-stack" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-success-light text-success rounded-3 p-2 shadow-sm">
+                    <i class="bi bi-stack fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">2. Tech Stack</h3>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 p-0 overflow-hidden">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="bg-light-subtle">
+                            <tr>
+                                <th class="px-4 py-3 border-0">Technology</th>
+                                <th class="py-3 border-0">Role</th>
+                                <th class="py-3 border-0">Benefit</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="px-4 border-0">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <i class="bi bi-bootstrap-fill text-purple fs-4"></i>
+                                        <span class="fw-bold">Bootstrap 5.3</span>
+                                    </div>
+                                </td>
+                                <td class="border-0">Core UI Framework</td>
+                                <td class="small text-muted border-0">Responsive grid and robust component base.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 border-top border-light">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <i class="bi bi-lightning-fill text-warning fs-4"></i>
+                                        <span class="fw-bold">Vite 5.x</span>
+                                    </div>
+                                </td>
+                                <td class="border-top border-light">Development Server</td>
+                                <td class="small text-muted border-top border-light">Instant HMR and modern JS bundling.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 border-top border-light">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <img src="../src/images/gulp.png" height="20" alt="Gulp">
+                                        <span class="fw-bold">Gulp 5.x</span>
+                                    </div>
+                                </td>
+                                <td class="border-top border-light">Production Pipelines</td>
+                                <td class="small text-muted border-top border-light">Advanced image optimization and vendor exports.</td>
+                            </tr>
+                            <tr>
+                                <td class="px-4 border-top border-light">
+                                    <div class="d-flex align-items-center gap-3">
+                                        <i class="bi bi-code-square text-danger fs-4"></i>
+                                        <span class="fw-bold">Handlebars</span>
+                                    </div>
+                                </td>
+                                <td class="border-top border-light">Templating Engine</td>
+                                <td class="small text-muted border-top border-light">Partial-based layouts for modularity.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Getting Started -->
+        <section id="getting-started" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-warning-light text-warning rounded-3 p-2">
+                    <i class="bi bi-rocket-takeoff fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">3. Getting Started</h3>
+            </div>
+
+            <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+                <h6 class="fw-bold mb-3 text-uppercase small text-muted">Available CLI Commands</h6>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="bg-dark text-light p-4 rounded-4 h-100">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge bg-primary px-2">DEV</span>
+                                <code class="text-white">npm run dev</code>
+                            </div>
+                            <p class="extra-small text-muted mb-0">Starts the Vite dev server at
+                                <code>localhost:3000</code>. Features Hot Module Replacement (HMR) for both SCSS and
+                                HTML partials.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="bg-dark text-light p-4 rounded-4 h-100">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge bg-success px-2">BUILD</span>
+                                <code class="text-white">npm run build</code>
+                            </div>
+                            <p class="extra-small text-muted mb-0">Triggers the Gulp production pipeline. Optimizes
+                                images, compiles minified assets, and generates the final <code>dist/</code> folder.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="alert alert-warning border-0 rounded-4 p-4 bg-warning-light d-flex gap-3">
+                <i class="bi bi-exclamation-triangle-fill fs-3 text-warning"></i>
+                <div>
+                    <h6 class="fw-bold">Configuration Note</h6>
+                    <p class="small mb-0 opacity-75">Always ensure you are using <strong>Node v18+</strong>. If
+                        dependencies fail to install, try deleting <code>package-lock.json</code> and running
+                        <code>npm install</code> again.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Folder Structure -->
+        <section id="folder-structure" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-info-light text-info rounded-3 p-2 shadow-sm">
+                    <i class="bi bi-folder2-open fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">4. Folder Structure</h3>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+                <div class="row g-4">
+                    <div class="col-lg-6">
+                        <div class="file-tree p-3 bg-light rounded-3 border">
+                            <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>app/</div>
+                            <div class="file-tree-item ms-3 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>pages/ <span class="text-muted opacity-50 small">// HTML Source</span></div>
+                            <div class="file-tree-item ms-3 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>src/</div>
+                            <div class="file-tree-item ms-5 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>partials/ <span class="text-muted opacity-50 small">// HBS Components</span></div>
+                            <div class="file-tree-item ms-5 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>scss/ <span class="text-muted opacity-50 small">// System Styles</span></div>
+                            <div class="file-tree-item ms-5 ps-3 border-start"><i class="bi bi-folder-fill text-warning me-2"></i>scripts/ <span class="text-muted opacity-50 small">// Module Logic</span></div>
+                            <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>tasks/ <span class="text-muted opacity-50 small">// Gulp Pipelines</span></div>
+                            <div class="file-tree-item"><i class="bi bi-folder-fill text-warning me-2"></i>public/ <span class="text-muted opacity-50 small">// Static Vendors</span></div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h6 class="fw-bold mb-3">Key Definitions:</h6>
+                        <ul class="small text-muted lh-lg">
+                            <li><strong>src/partials:</strong> Essential blocks like header, sidebar, and layout templates.</li>
+                            <li><strong>src/scss:</strong> Uses Dart Sass module system. Variables and tokens are central.</li>
+                            <li><strong>public/:</strong> Files here are copied directly to <code>dist/</code> without processing.</li>
+                            <li><strong>tasks/:</strong> Contains individual Gulp task logic for exports and optimization.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Theme & Colors -->
+        <section id="theme-logic" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-danger-light text-danger rounded-3 p-2">
+                    <i class="bi bi-palette fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">5. Theme & Colors</h3>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+                <p class="text-secondary">Xivig uses <strong>Design Tokens</strong> (CSS Variables) to manage themes.
+                    Dark mode is triggered by the <code>data-bs-theme="dark"</code> attribute on the
+                    <code>&lt;html&gt;</code> tag.
+                </p>
+
+                <h6 class="fw-bold mt-4 mb-3">Modifying Brand Colors:</h6>
+                <p class="small text-muted">To change the primary identity, update the tokens in
+                    <code>src/scss/_tokens.scss</code>:
+                </p>
+                <div
+                    class="bg-dark text-light p-4 rounded-4 font-monospace extra-small border-start border-primary border-4 mb-4">
+                    <span class="text-muted">// Light Token</span><br>
+                    --elite-primary: #6366f1;<br>
+                    --bg-body: #f8fafc;<br><br>
+                    <span class="text-muted">// Dark Token Override</span><br>
+                    [data-bs-theme="dark"] {<br>
+                    &nbsp;&nbsp;--bg-body: #0b0f12;<br>
+                    &nbsp;&nbsp;--card-bg: #15191c;<br>
+                    }
+                </div>
+
+                <div class="alert alert-info border-0 rounded-4 p-4 bg-info-light mb-0">
+                    <h6 class="fw-bold text-info"><i class="bi bi-info-circle-fill me-2"></i> JS Initialization</h6>
+                    <p class="small mb-0 opacity-75">Theme persistence is handled via <code>localStorage</code> in
+                        <code>src/scripts/settings.js</code>, ensuring the user's preference is remembered across
+                        sessions.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Component Usage -->
+        <section id="component-usage" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-primary-light text-primary rounded-3 p-2">
+                    <i class="bi bi-box-seam fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">6. Component Usage</h3>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+                <h6 class="fw-bold mb-3">Adding a Notification Badge</h6>
+                <p class="small text-muted">Xivig features a modular notification badge system. Use the Handlebars
+                    partial to insert it anywhere:</p>
+                <div class="bg-dark text-light p-3 rounded-4 font-monospace extra-small mb-4">
+                    \{{~> notification-badge id="my-badge" count="5" color="danger" class="ms-2" ~}}
+                </div>
+
+                <h6 class="fw-bold mb-3">Dynamic Management (JS):</h6>
+                <div class="bg-dark text-light p-3 rounded-4 font-monospace extra-small">
+                    import { NotificationBadge } from './scripts/notification-badge.js';<br><br>
+                    <span class="text-muted">// Initialize</span><br>
+                    const myBadge = new NotificationBadge('my-badge');<br>
+                    myBadge.setCount(10); <span class="text-muted">// Updates UI instantly</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Deployment -->
+        <section id="deployment" class="mb-5 py-3">
+            <div class="d-flex align-items-center gap-3 mb-4">
+                <div class="icon-shape bg-dark text-white rounded-3 p-2">
+                    <i class="bi bi-cloud-arrow-up fs-4"></i>
+                </div>
+                <h3 class="fw-800 mb-0">7. Deployment</h3>
+            </div>
+            <div class="card border-0 shadow-sm rounded-4 p-4">
+                <h5 class="fw-bold mb-3">Production Ready</h5>
+                <p class="text-secondary">When you are ready to deploy, run <code>npm run build</code>. This generates a
+                    clean <code>dist/</code> folder containing:</p>
+                <ul class="small text-muted lh-lg mb-4">
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Minified Assets:</strong> All CSS and JS
+                        files are bundled and uglified.</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Image Optimization:</strong> All PNG/JPG
+                        assets are compressed via Gulp.</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Clean Paths:</strong> Vite ensures all
+                        asset links are relative and ready for any host (GitHub Pages, Netlify, Vercel).</li>
+                </ul>
+                <div class="p-4 bg-body-tertiary rounded-4 text-center">
+                    <p class="fw-bold mb-1">Hosting on GitHub Pages?</p>
+                    <p class="small text-muted mb-0">Ensure the <code>.nojekyll</code> file (included in
+                        <code>public/</code>) is present in your root directory to prevent build errors.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer Accent -->
+        <div class="text-center py-5">
+            <p class="text-muted small">&copy; 2026 Xivig Ecosystem. Architected for Excellence.</p>
+        </div>
+    </div>
+</div>
+
+<style>
+    .doc-sidebar-nav .nav-link {
+        padding: 0.8rem 1.2rem;
+        color: var(--text-muted);
+        font-weight: 500;
+        transition: all 0.2s ease;
+        border-left: 3px solid transparent;
+        display: flex;
+        align-items: center;
+    }
+
+    .doc-sidebar-nav .nav-link:hover {
+        background: rgba(var(--bs-primary-rgb), 0.05);
+        color: var(--elite-primary);
+        padding-left: 1.5rem;
+    }
+
+    .doc-sidebar-nav .nav-link.active {
+        background: rgba(var(--bs-primary-rgb), 0.1);
+        color: var(--elite-primary);
+        font-weight: 700;
+        border-left-color: var(--elite-primary);
+    }
+
+    .file-tree-item {
+        padding: 6px 0;
+        border-bottom: 1px solid var(--card-border);
+    }
+
+    .file-tree-item:last-child {
+        border-bottom: 0;
+    }
+
+    .extra-small {
+        font-size: 0.75rem;
+    }
+
+    .z-index-1 {
+        z-index: 1;
+    }
+
+    code {
+        font-size: 0.85em;
+        padding: 2px 5px;
+        background: rgba(var(--bs-primary-rgb), 0.1);
+        color: var(--elite-primary);
+        border-radius: 4px;
+    }
+
+    section {
+        scroll-margin-top: 100px;
+    }
+
+    .step-number {
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.9rem;
+    }
+
+    /* Dark Mode Overrides for Documentation Specific Elements */
+    [data-bs-theme="dark"] .bg-body-tertiary {
+        background-color: rgba(255, 255, 255, 0.03) !important;
+    }
+
+    [data-bs-theme="dark"] .alert-info.bg-info-light {
+        background-color: rgba(14, 165, 233, 0.15) !important;
+        color: #7dd3fc !important;
+    }
+
+    [data-bs-theme="dark"] .alert-warning.bg-warning-light {
+        background-color: rgba(245, 158, 11, 0.15) !important;
+        color: #fcd34d !important;
+    }
+
+    [data-bs-theme="dark"] .text-secondary {
+        color: var(--text-muted) !important;
+    }
+</style>
+
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                const id = entry.target.getAttribute('id');
+                const navLink = document.querySelector(`.doc-sidebar-nav a[href="#${id}"]`);
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.doc-sidebar-nav a').forEach(a => a.classList.remove('active'));
+                    if (navLink) navLink.classList.add('active');
+                }
+            });
+        }, { threshold: 0.3, rootMargin: "-20% 0px -60% 0px" });
+
+        document.querySelectorAll('section[id]').forEach((section) => {
+            observer.observe(section);
+        });
+    });
+</script>
+
+{{/admin-layout}}

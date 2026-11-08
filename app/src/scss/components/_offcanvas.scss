@@ -1,0 +1,126 @@
+/* --- Offcanvas Architecture --- */
+
+.offcanvas-demo-wrapper {
+    max-width: 800px;
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    padding: 30px;
+    border-radius:32px;
+    box-shadow: var(--card-shadow);
+    text-align: center;
+    margin: 0 auto;
+
+    @media (min-width: 768px) {
+        padding: 50px;
+    }
+
+    .btn-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 15px;
+        margin-top: 30px;
+    }
+}
+
+/* PREMIUM OFFCANVAS STYLING */
+.offcanvas {
+    border: 0 !important;
+    background: var(--card-bg);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1) !important;
+    z-index: 10000 !important; /* Extremely high to beat sidebar and headers */
+}
+
+.offcanvas-start {
+    border-radius:0 var(--elite-radius-xl) var(--elite-radius-xl) 0;
+}
+
+.offcanvas-end {
+    border-radius:var(--elite-radius-xl) 0 0 var(--elite-radius-xl);
+}
+
+.offcanvas-top {
+    border-radius:0 0 var(--elite-radius-xl) var(--elite-radius-xl);
+}
+
+.offcanvas-bottom {
+    border-radius:var(--elite-radius-xl) var(--elite-radius-xl) 0 0;
+}
+
+/* Header Styling - Scoped to avoid breaking custom headers like settings-panel */
+.offcanvas:not(.settings-panel) {
+    .offcanvas-header {
+        padding: 25px 30px;
+        background: var(--elite-gradient);
+        color: white;
+        position: relative;
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+
+        .offcanvas-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 0;
+            padding-right: 40px;
+            color: white;
+        }
+    }
+
+    .offcanvas-body {
+        padding: 30px;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: var(--text-muted);
+    }
+}
+
+/* Dark Variant */
+.offcanvas-dark {
+    background: var(--glass-dark) !important;
+    backdrop-filter: blur(15px);
+    color: white !important;
+
+    .offcanvas-header {
+        background: rgba(255, 255, 255, 0.05) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .offcanvas-body {
+        color: rgba(255, 255, 255, 0.8) !important;
+    }
+}
+
+/* Custom Close Button for Elite Offcanvases */
+.btn-close-elite {
+    position: absolute !important;
+    top: 50% !important;
+    right: 15px !important; // Slightly tighter to the edge
+    transform: translateY(-50%) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: white !important;
+    width: 32px; // More standard size
+    height: 32px;
+    border-radius:var(--elite-radius-xs); // Matching "Elite Soft" radius
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    z-index: 10002 !important;
+
+    i {
+        font-size: 0.9rem; // Crisp icon
+        line-height: 1;
+        display: block !important;
+        pointer-events: none;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.3) !important;
+        transform: translateY(-50%) scale(1.1) !important;
+    }
+}

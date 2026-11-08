@@ -1,0 +1,26 @@
+@use "../base/mixins" as *;
+
+.card-box {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius:1.25rem;
+    border: 1px solid var(--card-border);
+    color: var(--text-main);
+    @include elite-shadow(0.02);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+        @include elite-shadow(0.05);
+    }
+}
+
+[data-bs-theme="dark"] .card-box {
+    background: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+}
+
+.glass-card {
+    @include glass-effect(15px, 0.7);
+    border-radius:1.5rem;
+}

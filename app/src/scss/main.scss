@@ -1,0 +1,29 @@
+/* ==========================================================================
+   XIVIG ELITE ARCHITECTURE - MAIN ENTRY POINT
+   ========================================================================== */
+
+// [1] ABSTRACTS & TOOLS
+// Core tokens, variables, and mixins that drive the design system.
+@use "base/tokens";
+@use "base/variables" as vars;
+@use "base/mixins" as *;
+
+// [2] VENDOR INTEGRATIONS
+// Core vendor SCSS (for customization)
+@use "../../../node_modules/bootstrap/scss/bootstrap";
+
+// Plugin specific configuration
+$swal2-confirm-button-background-color: #6366f1;
+$swal2-cancel-button-background-color: #94a3b8;
+$swal2-border-radius: 16px;
+$swal2-font-family: 'Inter', sans-serif;
+@use "../../../node_modules/sweetalert2/src/sweetalert2.scss";
+@use "../../../node_modules/plyr/src/sass/plyr.scss";
+
+// [3] THE ARCHITECTURE LAYERS (Indexed Folders)
+@use "base";       // CSS Reset, Typography, Tokens
+@use "layout";     // Shell, Sidebar, Header, Footer
+@use "components"; // UI Elements & Modular Blocks
+@use "pages";      // View-specific styles (Landing, Auth, App views)
+@use "utilities";  // Theme fixes and Custom overrides
+@use "vendors";    // Syntax highlighting and Icon overrides

@@ -1,0 +1,107 @@
+/* Error 400 Specific Styling */
+.error-page-400 {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .error-card {
+        max-width: 500px;
+        width: 100%;
+        padding: 3rem;
+        background: #fff;
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        text-align: center;
+    }
+
+    .error-code {
+        font-size: 6rem;
+        font-weight: 900;
+        color: #181f48;
+        margin-bottom: 1rem;
+        background: none;
+        -webkit-text-fill-color: initial;
+    }
+}
+
+/* Error 403 Specific Styling */
+.error-page-403 {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .error-card {
+        max-width: 550px;
+        width: 100%;
+        padding: 4rem 2rem;
+        background: #fff;
+        border-radius: 2rem;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+        text-align: center;
+    }
+
+    .lock-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+    }
+
+    h1 {
+        font-size: 5rem;
+        font-weight: 900;
+        color: #181f48;
+    }
+}
+
+/* Error 500 Specific Styling */
+.error-page-500 {
+    background-color: #f8fafc;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .error-card {
+        max-width: 600px;
+        width: 100%;
+        padding: 4rem;
+        background: #fff;
+        border-radius: 2.5rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    .error-code {
+        font-size: 7rem;
+        font-weight: 950;
+        color: #dc3545;
+        margin-bottom: 1rem;
+        background: none;
+        -webkit-text-fill-color: initial;
+    }
+}
+
+/* Dark Mode Overrides for Legacy Error Pages */
+[data-bs-theme="dark"] {
+    .error-page-400, .error-page-403, .error-page-500 {
+        background-color: #0f172a;
+
+        .error-card {
+            background-color: #1e293b;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .error-code, h1, .error-title {
+            color: #f8fafc;
+        }
+
+        .error-message, p {
+            color: #94a3b8;
+        }
+    }
+}
+

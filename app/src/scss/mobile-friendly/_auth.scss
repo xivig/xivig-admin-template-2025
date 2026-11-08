@@ -1,0 +1,48 @@
+@use "shared" as *;
+
+/* ==========================================================================
+   ELITE MOBILE OVERRIDES - AUTH LAYOUT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .auth-wrapper {
+        padding: 20px;
+        min-height: auto;
+        display: block;
+    }
+
+    .auth-card {
+        @include card-elite-mobile;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 40px;
+
+        &__side-image {
+            display: none; // Hide large decorative images on mobile
+        }
+
+        &__form-content {
+            padding: 30px 20px !important;
+        }
+    }
+
+    .auth-logo {
+        margin-bottom: 30px;
+        justify-content: center;
+    }
+
+    // Stacked social buttons
+    .social-auth {
+        flex-direction: column;
+        gap: 10px;
+        
+        .btn {
+            width: 100%;
+        }
+    }
+
+    // Auth Illustration logic
+    .auth-illustration {
+        display: none;
+    }
+}

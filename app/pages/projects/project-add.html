@@ -1,0 +1,90 @@
+{{#> admin-layout title="Add Project" parentTitle="Projects" }}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="card-header bg-white py-4 px-5 border-0">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h4 class="fw-black text-dark mb-1">Create New Project</h4>
+                        <p class="text-muted small mb-0">Fill in the details to start a new project initiative</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
+                        <i class="bi bi-arrow-left me-2"></i> Back
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body p-5 pt-0">
+                <form id="addProjectForm">
+                    <div class="row g-4">
+                        <!-- Project Basic Info -->
+                        <div class="col-12">
+                            <label class="apple-label">Project Title</label>
+                            <input type="text" class="form-control modern-input" placeholder="e.g. Website Redesign 2026" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Client Name</label>
+                            <input type="text" class="form-control modern-input" placeholder="e.g. XIVIG Corp">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Project Category</label>
+                            <select class="form-select modern-input">
+                                <option selected>Select Category</option>
+                                <option>Web Development</option>
+                                <option>Mobile App</option>
+                                <option>UI/UX Design</option>
+                                <option>Marketing</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Estimated Budget ($)</label>
+                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
+                                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-currency-dollar"></i></span>
+                                <input type="number" class="form-control border-0 shadow-none py-2" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Deadline</label>
+                            <input type="date" class="form-control modern-input">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="apple-label">Project Description</label>
+                            <textarea class="form-control modern-input" rows="5" placeholder="Outline the project scope and objectives..."></textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="apple-label">Initial Status</label>
+                            <div class="d-flex gap-4 pt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusPlanning" checked>
+                                    <label class="form-check-label small" for="statusPlanning">Planning</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusInProgress">
+                                    <label class="form-check-label small" for="statusInProgress">In Progress</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="projectStatus" id="statusOnHold">
+                                    <label class="form-check-label small" for="statusOnHold">On Hold</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 border-top pt-4 mt-5 text-end">
+                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary">Create Project</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

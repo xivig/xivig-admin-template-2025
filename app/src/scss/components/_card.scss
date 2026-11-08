@@ -1,0 +1,183 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* --- Elite Card Component Ecosystem --- */
+
+/* 1. Xivig Standard (Glassmorphism) */
+.xivig-card {
+    background: var(--card-bg);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--card-border);
+    border-radius:var(--elite-radius-xl);
+    transition: var(--transition-elite);
+    box-shadow: var(--card-shadow);
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+
+    &:hover {
+        transform: translateY(-10px) scale(1.01);
+        box-shadow: var(--card-shadow-hover);
+        border-color: var(--xivig-primary-glow);
+    }
+}
+
+/* 2. Elite Offset Card */
+.elite-card {
+    border: none;
+    background: transparent;
+    transition: var(--transition-elite);
+    height: 100%;
+
+    &__img-box {
+        position: relative;
+        border-radius:var(--elite-radius-xl);
+        overflow: hidden;
+        z-index: 1;
+        
+        img {
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+    }
+
+    &__content {
+        margin: -60px 20px 0 20px;
+        background: var(--card-bg);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--card-border);
+        border-radius:var(--elite-radius-lg);
+        padding: 25px;
+        position: relative;
+        z-index: 2;
+        box-shadow: var(--card-shadow);
+        transition: var(--transition-elite);
+        color: var(--text-main);
+    }
+
+    &:hover {
+        .elite-card__content {
+            margin-top: -70px;
+            box-shadow: var(--card-shadow-hover);
+            border-color: var(--xivig-primary-glow);
+        }
+        .elite-card__img-box img {
+            transform: scale(1.1);
+        }
+    }
+}
+
+/* 3. Minimal Refined */
+.card-minimal {
+    border: 1px solid var(--card-border);
+    background: var(--card-bg);
+    border-radius:var(--elite-radius-lg);
+    padding: 2rem;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    color: var(--text-main);
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(circle at top right, var(--xivig-primary-glow), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    &:hover {
+        border-color: var(--xivig-primary-glow);
+        box-shadow: var(--card-shadow-hover);
+        &::before { opacity: 1; }
+    }
+}
+
+/* 4. Editorial Style */
+.card-editorial {
+    border: none;
+    transition: all 0.4s ease;
+    border-radius:var(--elite-radius-lg);
+    background: var(--card-bg);
+    overflow: hidden;
+    height: 100%;
+    color: var(--text-main);
+
+    &__img-container {
+        overflow: hidden;
+        position: relative;
+        img {
+            transition: transform 0.6s ease;
+            height: 220px;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+    &:hover &__img-container img {
+        transform: scale(1.1);
+    }
+}
+
+/* --- Shared Inner Elements --- */
+.card-header {
+    background: var(--bg-subtle);
+    border-bottom: 1px solid var(--card-border);
+    color: var(--text-main);
+    padding: 1.25rem 1.5rem;
+    transition: var(--transition-elite);
+
+    [data-bs-theme="dark"] & {
+        background: rgba(255, 255, 255, 0.02);
+    }
+
+    h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6, .card-title {
+        color: inherit;
+        margin-bottom: 0;
+        font-weight: 700;
+        
+        &.text-primary {
+            color: var(--elite-primary) !important;
+        }
+    }
+}
+
+.category-pill {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--elite-soft);
+    color: var(--elite-primary);
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius:var(--elite-radius-pill);
+    margin-bottom: 1rem;
+}
+
+/* Legacy Compat & Utilities */
+.card {
+    border: none;
+    border-radius:var(--elite-radius-xl);
+    box-shadow: var(--card-shadow);
+    background: var(--card-bg);
+}
+
+.card-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius:var(--elite-radius-xl);
+    transition: var(--transition-elite);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover) !important;
+    }
+}

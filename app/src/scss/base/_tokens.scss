@@ -1,0 +1,124 @@
+/* --- 1. Global Design Tokens --- */
+:root {
+    color-scheme: light dark;
+    /* Colors - Brand & Primary */
+    --elite-primary: #6366f1;
+    --elite-primary-rgb: 99, 102, 241;
+    --elite-primary-dark: #4f46e5;
+    --elite-secondary: #94a3b8;
+    --elite-secondary-rgb: 148, 163, 184;
+    --elite-purple: #a855f7;
+    --elite-purple-rgb: 168, 85, 247;
+    
+    /* Semantic Colors */
+    --elite-success: #10b981;
+    --elite-success-rgb: 16, 185, 129;
+    --elite-danger: #ef4444;
+    --elite-danger-rgb: 239, 68, 68;
+    --elite-warning: #f59e0b;
+    --elite-warning-rgb: 245, 158, 11;
+    --elite-info: #0ea5e9;
+    --elite-info-rgb: 14, 165, 233;
+    --elite-dark: #1e293b;
+    --elite-dark-rgb: 30, 41, 59;
+
+    /* Dashboard & Chart Specific Colors */
+    --elite-chart-blue: #265ed7;
+    --elite-chart-red: #f56767;
+    --elite-slate: #455a64;
+
+    /* Brand specific tokens */
+    --xivig-primary: var(--elite-primary);
+    --xivig-primary-glow: rgba(99, 102, 241, 0.15);
+    --xivig-dark: #0f172a;
+    --xivig-secondary: #64748b;
+
+    /* Theme Tokens - Default (Light) */
+    --bg-body: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --white: #ffffff;
+    --white-rgb: 255, 255, 255;
+    --black: #000000;
+    --black-rgb: 0, 0, 0;
+    
+    --card-bg: rgba(var(--white-rgb), 0.9);
+    --card-bg-rgb: 255, 255, 255;
+    --card-border: rgba(0, 0, 0, 0.05);
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --sidebar-bg: #142127;
+    --sidebar-text: rgba(255, 255, 255, 0.6);
+    --sidebar-active: #ffffff;
+
+    /* Layout & Surface */
+    --bg-subtle: #f8fafc;
+    
+    /* Border Radii */
+    --elite-radius-xl: 24px;
+    --elite-radius-lg: 20px;
+    --elite-radius-md: 16px;
+    --elite-radius-sm: 12px;
+    --elite-radius-xs: 8px;
+    --elite-radius-pill: 100px;
+    --elite-radius: var(--elite-radius-xl); /* Default */
+
+    /* Glassmorphism & Soft Colors */
+    --elite-soft: rgba(var(--elite-primary-rgb), 0.05);
+    --elite-primary-soft: rgba(var(--elite-primary-rgb), 0.1);
+    --elite-success-soft: rgba(var(--elite-success-rgb), 0.1);
+    --elite-danger-soft: rgba(var(--elite-danger-rgb), 0.1);
+    --elite-warning-soft: rgba(var(--elite-warning-rgb), 0.1);
+    --elite-info-soft: rgba(var(--elite-info-rgb), 0.1);
+
+    /* Animations & Shadows */
+    --transition-elite: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    --card-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --card-shadow-hover: 0 25px 50px rgba(var(--elite-primary-rgb), 0.12);
+    
+    /* Gradients */
+    --primary-gradient: linear-gradient(135deg, var(--elite-primary) 0%, #1d4ed8 100%);
+    --elite-gradient: var(--primary-gradient);
+    --glass-dark: rgba(15, 23, 42, 0.85);
+
+    /* Xivig Specific UI Tokens */
+    --xivig-card-bg: var(--white);
+    --xivig-border-color: rgba(0, 0, 0, 0.05);
+    --xivig-input-bg: #f8f9fa;
+    --xivig-qty-bg: #f1f3f5;
+    --xivig-qty-btn: var(--white);
+}
+
+/* --- Dark Theme Tokens --- */
+[data-bs-theme="dark"] {
+    --bg-body: #0b0f12;
+    --text-main: #e2e8f0;
+    --text-muted: #94a3b8;
+    --card-bg: #15191c;
+    --card-bg-rgb: 21, 25, 28;
+    --card-border: rgba(255, 255, 255, 0.08);
+    --header-bg: rgba(21, 25, 28, 0.9);
+    
+    --sidebar-bg: #090e11;
+    --sidebar-text: rgba(255, 255, 255, 0.5);
+    --sidebar-active: var(--elite-primary);
+
+    /* Layout & Surface */
+    --bg-subtle: #111518;
+    --bs-heading-color: #f8fafc;
+    --elite-primary-soft: rgba(var(--elite-primary-rgb), 0.15);
+    --elite-success-soft: rgba(var(--elite-success-rgb), 0.15);
+    --elite-danger-soft: rgba(var(--elite-danger-rgb), 0.15);
+    --elite-warning-soft: rgba(var(--elite-warning-rgb), 0.15);
+    --elite-info-soft: rgba(var(--elite-info-rgb), 0.15);
+
+    /* Shadows in dark mode */
+    --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    --xivig-primary-glow: rgba(var(--elite-primary-rgb), 0.25);
+
+    /* Xivig Specific Dark UI Tokens */
+    --xivig-card-bg: rgba(255, 255, 255, 0.03);
+    --xivig-border-color: rgba(255, 255, 255, 0.1);
+    --xivig-input-bg: rgba(255, 255, 255, 0.05);
+    --xivig-qty-bg: rgba(255, 255, 255, 0.08);
+    --xivig-qty-btn: rgba(255, 255, 255, 0.1);
+}

@@ -1,0 +1,68 @@
+<!--right sidebar-->
+<div class="settings-panel offcanvas offcanvas-end shadow" tabindex="-1" id="rightSidebar"
+    aria-labelledby="settingsPanelLabel" role="dialog" aria-modal="true">
+    <div class="settings-panel__header offcanvas-header">
+        <div class="settings-panel__title-wrapper">
+            <h5 class="settings-panel__title" id="settingsPanelLabel">Interface Architect</h5>
+            <span class="settings-panel__subtitle">CONFIGURE YOUR WORKSPACE</span>
+        </div>
+        <button type="button" class="settings-panel__close border-0 bg-transparent" data-bs-dismiss="offcanvas" aria-label="Close settings panel">
+            <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="settings-panel__body offcanvas-body custom-scroll">
+        <div class="settings-panel__section">
+            <h6 class="settings-panel__section-title" id="theme-label">Global Theme</h6>
+            <div class="settings-panel__group btn-group w-100" role="radiogroup" aria-labelledby="theme-label">
+                <input type="radio" class="btn-check" name="header-bg" id="header-white">
+                <label class="settings-panel__btn settings-panel__btn--outline btn btn-elite"
+                    for="header-white">Light</label>
+
+                <input type="radio" class="btn-check" name="header-bg" id="header-dark">
+                <label class="settings-panel__btn settings-panel__btn--outline btn btn-elite"
+                    for="header-dark">Dark</label>
+
+                <input type="radio" class="btn-check" name="header-bg" id="header-auto" checked>
+                <label class="settings-panel__btn settings-panel__btn--outline btn btn-elite"
+                    for="header-auto">Auto</label>
+            </div>
+        </div>
+
+        <div class="settings-panel__section">
+            <h6 class="settings-panel__section-title" id="sidebar-style-label">Sidebar Style</h6>
+            <div class="settings-panel__group btn-group w-100" role="radiogroup" aria-labelledby="sidebar-style-label">
+                <input type="radio" class="btn-check" name="sidebar-bg" id="sidebar-light">
+                <label class="settings-panel__btn settings-panel__btn--outline  btn btn-elite"
+                    for="sidebar-light">Light</label>
+
+                <input type="radio" class="btn-check" name="sidebar-bg" id="sidebar-dark" checked>
+                <label class="settings-panel__btn settings-panel__btn--outline  btn btn-elite"
+                    for="sidebar-dark">Dark</label>
+            </div>
+        </div>
+
+        <div class="settings-panel__section">
+            <h6 class="settings-panel__section-title" id="menu-icon-label">Menu Dropdown Icon</h6>
+            <div class="settings-panel__icon-grid" role="radiogroup" aria-labelledby="menu-icon-label">
+                <input class="btn-check" type="radio" name="menu-icon" id="menu-icon-1" checked>
+                <label class="settings-panel__icon-label btn btn-elite" for="menu-icon-1" aria-label="Chevron Down Icon"><i
+                        class="bi bi-chevron-down" aria-hidden="true"></i></label>
+
+                <input class="btn-check" type="radio" name="menu-icon" id="menu-icon-2">
+                <label class="settings-panel__icon-label  btn btn-elite" for="menu-icon-2" aria-label="Plus Icon"><i
+                        class="bi bi-plus-lg" aria-hidden="true"></i></label>
+
+                <input class="btn-check" type="radio" name="menu-icon" id="menu-icon-3">
+                <label class="settings-panel__icon-label  btn btn-elite" for="menu-icon-3" aria-label="Double Right Icon"><i
+                        class="bi bi-chevron-double-right" aria-hidden="true"></i></label>
+            </div>
+        </div>
+
+        <div class="settings-panel__footer">
+            <button class="settings-panel__reset-btn btn btn-elite" id="reset-settings" aria-label="Restore settings to defaults">
+                <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i> Restore Defaults
+            </button>
+        </div>
+    </div>
+</div>

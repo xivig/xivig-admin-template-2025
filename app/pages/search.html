@@ -1,0 +1,44 @@
+{{#> admin-layout title="Dashboard" }}
+
+<div class="container px-0">
+                        <div class="row justify-content-center">
+                            <div class="col-12 col-lg-8">
+                                <div class="text-center mb-5">
+                                    <h2 class="fw-800 text-dark mb-1">Global Search</h2>
+                                    <p class="text-muted">Find messages, contacts, or documentation across Xivig</p>
+                                </div>
+
+                                <div class="card border-0 shadow-lg rounded-4 overflow-hidden mb-4">
+                                    <div class="input-group input-group-lg">
+                                        <span class="input-group-text bg-white border-0 ps-4">
+                                            <i class="bi bi-search text-primary fs-4"></i>
+                                        </span>
+
+                                        <input type="search" id="liveSearch" class="form-control border-0 py-4 ps-2"
+                                            placeholder="Type to search..." autocomplete="off"
+                                            aria-label="Search content" aria-controls="searchResults">
+
+                                        <div class="input-group-text bg-white border-0 pe-4">
+                                            <div id="searchLoader"
+                                                class="spinner-border spinner-border-sm text-primary d-none"
+                                                role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div id="searchResults"
+                                    class="list-group list-group-flush shadow-sm rounded-4 overflow-hidden"
+                                    aria-live="polite">
+                                    <div class="list-group-item border-0 py-5 text-center text-muted bg-white">
+                                        <i class="bi bi-cursor fs-1 opacity-25 d-block mb-3"></i>
+                                        Start typing to see results...
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    
+
+{{/admin-layout}}

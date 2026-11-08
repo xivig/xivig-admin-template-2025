@@ -1,0 +1,21 @@
+@use "../base/mixins" as *;
+
+.section-title-modern {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 2rem;
+    color: var(--text-main);
+
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 40px;
+        height: 4px;
+        background: var(--bs-primary);
+        border-radius:10px;
+    }
+}

@@ -1,0 +1,172 @@
+ /* --- Elite Modal Component Ecosystem --- */
+
+ /* Card Styling */
+ .elite-card {
+     border-radius:var(--elite-radius);
+     transition: var(--transition-elite);
+     background: var(--card-bg);
+     border: 1px solid var(--card-border);
+     overflow: hidden;
+
+     &:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--card-shadow-hover) !important;
+        border-color: var(--xivig-primary-glow);
+     }
+ }
+
+ /* Modal Launcher Styling */
+ .btn-elite-preview {
+     position: relative;
+     border: none;
+     line-height: 0;
+     overflow: hidden;
+
+     .overlay-text {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         z-index: 2;
+         color: white;
+         font-weight: 700;
+         text-transform: uppercase;
+         letter-spacing: 1px;
+         opacity: 0;
+         transition: var(--transition-elite);
+     }
+
+     &::after {
+         content: '';
+         position: absolute;
+         inset: 0;
+         background: rgba(99, 102, 241, 0.8);
+         opacity: 0;
+         transition: var(--transition-elite);
+     }
+
+     &:hover {
+         &::after, .overlay-text {
+             opacity: 1;
+         }
+         img {
+             transform: scale(1.1);
+         }
+     }
+
+     img {
+         transition: var(--transition-elite);
+     }
+ }
+
+ /* Modal Aesthetics */
+ .modal-content {
+     border-radius:28px;
+     background: var(--card-bg);
+     border: 1px solid var(--card-border);
+     box-shadow: var(--card-shadow);
+     color: var(--text-main);
+ }
+
+ .modal-header {
+     border-bottom: 1px solid var(--card-border);
+     padding: 2rem 2rem 1rem;
+ }
+
+ .modal-footer {
+     border-top: 1px solid var(--card-border);
+     padding: 1rem 2rem 2rem;
+ }
+
+ .btn-primary-elite, .btn-primary-xivig {
+     background: var(--xivig-primary);
+     color: white;
+     border-radius:14px;
+     padding: 12px 28px;
+     font-weight: 600;
+     border: none;
+     transition: var(--transition-elite);
+
+     &:hover {
+         background: var(--primary-hover);
+         transform: translateY(-2px);
+         box-shadow: 0 10px 15px -3px rgba(99, 102, 241, 0.3);
+     }
+ }
+
+ .btn-light-soft {
+     background: var(--bg-subtle);
+     color: var(--text-muted);
+     border-radius:var(--elite-radius-sm);
+     border: none;
+     transition: var(--transition-elite);
+
+     &:hover {
+         background: var(--card-border);
+         color: var(--text-main);
+     }
+ }
+
+ /* Success Icon Animation */
+ .success-circle, .icon-box-circle {
+     width: 80px;
+     height: 80px;
+     background: var(--elite-success);
+     border-radius:50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 0 auto 20px;
+     animation: scaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+     color: white;
+ }
+
+ @keyframes scaleIn {
+     0% { transform: scale(0); }
+     100% { transform: scale(1); }
+ }
+
+ .ls-1 {
+     letter-spacing: 1px;
+ }
+
+ /* Image Placeholder Styling */
+ .placeholder-visual {
+     height: 160px;
+     width: 100%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     background: var(--bg-subtle);
+     border-radius:var(--elite-radius-md);
+     margin-top: 15px;
+     position: relative;
+     overflow: hidden;
+     transition: var(--transition-elite);
+
+     i {
+         font-size: 3rem;
+         color: var(--text-muted);
+         opacity: 0.3;
+         z-index: 2;
+     }
+ }
+
+ .elite-card:hover .placeholder-visual {
+     background: var(--elite-primary-soft);
+     i {
+         color: var(--elite-primary);
+         opacity: 1;
+     }
+ }
+
+ .icon-circle {
+     width: 90px;
+     height: 90px;
+     border-radius:50%;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     margin: 0 auto 20px;
+     font-size: 2.5rem;
+ }

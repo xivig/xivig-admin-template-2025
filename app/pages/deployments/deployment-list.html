@@ -1,0 +1,176 @@
+{{#> admin-layout title="Deployment List" parentTitle="Deployments" }}
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Success Rate</p>
+                    <h3 class="fw-black mb-0">98.5%</h3>
+                    <span class="text-success extra-small fw-bold">+0.2% from last month</span>
+                </div>
+                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
+                    <i class="bi bi-check-circle fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Avg. Build Time</p>
+                    <h3 class="fw-black mb-0">2m 45s</h3>
+                    <span class="text-primary extra-small fw-bold">Optimized via Vite</span>
+                </div>
+                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3">
+                    <i class="bi bi-stopwatch fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Clusters</p>
+                    <h3 class="fw-black mb-0">4</h3>
+                    <span class="text-info extra-small fw-bold">All Healthy</span>
+                </div>
+                <div class="icon-shape bg-info-light text-info rounded-3 p-3">
+                    <i class="bi bi-server fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Users</p>
+                    <h3 class="fw-black mb-0">400</h3>
+                    <span class="text-danger extra-small fw-bold">All users</span>
+                </div>
+                <div class="icon-shape bg-danger-light text-danger-light text-danger rounded-3 p-3">
+                    <i class="bi bi-person-badge fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 mt-4 has-table">
+    <div class="card-header bg-white py-4 border-0">
+        <div class="row align-items-center g-3">
+            <div class="col-md-4">
+                <h5 class="fw-black text-dark mb-0">Recent Deployments</h5>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <div class="d-flex gap-2 justify-content-md-end">
+                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0"
+                        style="max-width: 300px;">
+                        <span class="input-group-text bg-transparent border-0"><i
+                                class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent shadow-none small"
+                            placeholder="Search deployments...">
+                    </div>
+                    <button class="btn btn-primary btn-sm rounded-3 px-4 fw-bold"
+                        onclick="location.href='deployment-add.html'">
+                        <i class="bi bi-rocket-takeoff me-2"></i> Trigger Deploy
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive pb-5">
+        <table class="table table-hover align-middle mb-0" id="deploymentsTable">
+            <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
+                <tr>
+                    <th class="ps-4">Deployment ID</th>
+                    <th>Project</th>
+                    <th>Environment</th>
+                    <th>Version</th>
+                    <th>Status</th>
+                    <th>Duration</th>
+                    <th>Executed By</th>
+                    <th class="text-end pe-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ps-4 small fw-bold text-primary">#DEP-9921</td>
+                    <td>
+                        <h6 class="mb-0 fw-bold small">Elite Dashboard UI</h6>
+                    </td>
+                    <td><span
+                            class="badge bg-white text-dark border shadow-sm px-3 py-1 rounded-pill extra-small fw-medium">Production</span>
+                    </td>
+                    <td><code class="extra-small">v2.4.0-stable</code></td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small"><i
+                                class="bi bi-check-circle me-1"></i> Success</span></td>
+                    <td><span class="small text-muted">2m 12s</span></td>
+                    <td><span class="small">Sarah Connor</span></td>
+                    <td class="text-end pe-4">
+                        <a href="deployment-details.html"
+                            class="btn btn-light btn-sm rounded-circle border shadow-sm"><i class="bi bi-eye"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ps-4 small fw-bold text-primary">#DEP-9920</td>
+                    <td>
+                        <h6 class="mb-0 fw-bold small">Mobile App Redesign</h6>
+                    </td>
+                    <td><span
+                            class="badge bg-white text-dark border shadow-sm px-3 py-1 rounded-pill extra-small fw-medium">Staging</span>
+                    </td>
+                    <td><code class="extra-small">v1.1.2-rc1</code></td>
+                    <td><span class="badge bg-info-subtle text-info px-3 py-2 rounded-pill small"><i
+                                class="bi bi-arrow-repeat me-1 spin"></i> In Progress</span></td>
+                    <td><span class="small text-muted">Running...</span></td>
+                    <td><span class="small">John Wick</span></td>
+                    <td class="text-end pe-4">
+                        <a href="deployment-details.html"
+                            class="btn btn-light btn-sm rounded-circle border shadow-sm"><i class="bi bi-eye"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ps-4 small fw-bold text-primary">#DEP-9919</td>
+                    <td>
+                        <h6 class="mb-0 fw-bold small">Marketing Landing Page</h6>
+                    </td>
+                    <td><span
+                            class="badge bg-white text-dark border shadow-sm px-3 py-1 rounded-pill extra-small fw-medium">Production</span>
+                    </td>
+                    <td><code class="extra-small">v3.0.1</code></td>
+                    <td><span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill small"><i
+                                class="bi bi-exclamation-triangle me-1"></i> Failed</span></td>
+                    <td><span class="small text-muted">45s</span></td>
+                    <td><span class="small">System Bot</span></td>
+                    <td class="text-end pe-4">
+                        <a href="deployment-details.html"
+                            class="btn btn-light btn-sm rounded-circle border shadow-sm"><i class="bi bi-eye"></i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<style>
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    .spin {
+        animation: spin 2s linear infinite;
+        display: inline-block;
+    }
+</style>
+
+{{/admin-layout}}

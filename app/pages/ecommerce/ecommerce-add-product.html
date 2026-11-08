@@ -1,0 +1,99 @@
+{{#> admin-layout title="Add Product" parentTitle="Ecommerce" }}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="card-header bg-white py-4 px-5 border-0">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h4 class="fw-black text-dark mb-1">Create New Product</h4>
+                        <p class="text-muted small mb-0">Fill in the details to publish a new asset to your store</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
+                        <i class="bi bi-arrow-left me-2"></i> Back
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body p-5 pt-0">
+                <form id="addProductForm">
+                    <div class="row g-4">
+                        <!-- Product Basic Info -->
+                        <div class="col-12">
+                            <label class="apple-label">Product Title</label>
+                            <input type="text" class="form-control modern-input" placeholder="e.g. Air Jordan Limited Edition" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Category</label>
+                            <select class="form-select modern-input">
+                                <option selected>Select Category</option>
+                                <option>Footwear</option>
+                                <option>Apparel</option>
+                                <option>Electronics</option>
+                                <option>Architecture</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Base Price ($)</label>
+                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
+                                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-currency-dollar"></i></span>
+                                <input type="number" class="form-control border-0 shadow-none py-2" placeholder="0.00">
+                            </div>
+                        </div>
+
+                        <!-- Media Upload -->
+                        <div class="col-12">
+                            <label class="apple-label">Product Media</label>
+                            <div class="p-5 border-2 border-dashed rounded-4 bg-light text-center border-primary border-opacity-10 mb-2">
+                                <div class="icon-shape bg-white shadow-sm rounded-circle p-3 mx-auto mb-3" style="width: 60px; height: 60px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-cloud-arrow-up text-primary fs-3"></i>
+                                </div>
+                                <h6 class="fw-bold">Drag and drop your product images</h6>
+                                <p class="text-muted small">Max file size: 5MB • Formats: JPG, PNG, WEBP</p>
+                                <button type="button" class="btn btn-white btn-sm rounded-pill px-4 border shadow-sm mt-2">Browse Files</button>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="apple-label">Description</label>
+                            <textarea class="form-control modern-input" rows="5" placeholder="Detailed product specifications..."></textarea>
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="apple-label">SKU Code</label>
+                            <input type="text" class="form-control modern-input" placeholder="e.g. AJ-102">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="apple-label">Stock Quantity</label>
+                            <input type="number" class="form-control modern-input" placeholder="0">
+                        </div>
+
+                        <div class="col-md-4">
+                            <label class="apple-label">Status</label>
+                            <div class="d-flex gap-3 pt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status" id="active" checked>
+                                    <label class="form-check-label small" for="active">Active</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="status" id="draft">
+                                    <label class="form-check-label small" for="draft">Draft</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 border-top pt-4 mt-5 text-end">
+                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2">Cancel</button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary">Publish Product</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

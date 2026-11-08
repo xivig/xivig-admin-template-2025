@@ -1,0 +1,39 @@
+@use "variables" as *;
+@use "reset" as *;
+
+/* 3. GLOBAL TYPOGRAPHY */
+body {
+    font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    color: var(--text-main);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-main);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Typography & Colors */
+.text-gradient {
+    background: var(--elite-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+.text-main {
+    color: var(--text-main) !important;
+}

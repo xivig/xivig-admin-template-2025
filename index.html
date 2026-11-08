@@ -1,53 +1,204 @@
-{{#> admin-layout title="Dashboard" }}
+{{#> admin-layout title="Architect Dashboard" subtitle="System metrics and performance monitoring" }}
 
 <div class="main__grid">
-                <div class="stat-card">
-                    <div class="stat-card__body">
-                        <div class="stat-card__info">
-                            <h3 class="stat-card__value">75</h3>
-                            <div class="stat-card__label">Appointment</div>
-                        </div>
-                        <div class="stat-card__icon stat-card__icon--info">
-                            <i class="bi bi-calendar-event"></i>
-                        </div>
-                    </div>
-                </div>
+    <div class="stat-card">
+        <div class="stat-card__body">
+            <div class="stat-card__info">
+                <h3 class="stat-card__value">75</h3>
+                <div class="stat-card__label">Deployment</div>
+            </div>
+            <div class="stat-card__icon stat-card__icon--info">
+                <i class="bi bi-code-square" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
 
-                <div class="stat-card">
-                    <div class="stat-card__body">
-                        <div class="stat-card__info">
-                            <h3 class="stat-card__value">124,551</h3>
-                            <div class="stat-card__label">Total Patient</div>
-                        </div>
-                        <div class="stat-card__icon stat-card__icon--danger">
-                            <i class="bi bi-heart-fill"></i>
-                        </div>
-                    </div>
-                </div>
+    <div class="stat-card">
+        <div class="stat-card__body">
+            <div class="stat-card__info">
+                <h3 class="stat-card__value">124,551</h3>
+                <div class="stat-card__label">Total User</div>
+            </div>
+            <div class="stat-card__icon stat-card__icon--danger">
+                <i class="bi bi-people" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
 
-                <div class="stat-card">
-                    <div class="stat-card__body">
-                        <div class="stat-card__info">
-                            <h3 class="stat-card__value">400+</h3>
-                            <div class="stat-card__label">Total Doctor</div>
-                        </div>
-                        <div class="stat-card__icon stat-card__icon--primary">
-                            <i class="bi bi-stethoscope"></i>
-                        </div>
-                    </div>
-                </div>
+    <div class="stat-card">
+        <div class="stat-card__body">
+            <div class="stat-card__info">
+                <h3 class="stat-card__value">400+</h3>
+                <div class="stat-card__label">Total Project</div>
+            </div>
+            <div class="stat-card__icon stat-card__icon--primary">
+                <i class="bi bi-clipboard-check" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
 
-                <div class="stat-card">
-                    <div class="stat-card__body">
-                        <div class="stat-card__info">
-                            <h3 class="stat-card__value">$50,000</h3>
-                            <div class="stat-card__label">Earning</div>
-                        </div>
-                        <div class="stat-card__icon stat-card__icon--success">
-                            <i class="bi bi-cash-stack"></i>
+    <div class="stat-card">
+        <div class="stat-card__body">
+            <div class="stat-card__info">
+                <h3 class="stat-card__value">$50,000</h3>
+                <div class="stat-card__label">Revenue / Usage</div>
+            </div>
+            <div class="stat-card__icon stat-card__icon--success">
+                <i class="bi bi-coin" aria-hidden="true"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 pb-3 mt-1">
+    <!-- Hospital Activities -->
+    <div class="col-lg-8">
+        <div class="card-box h-100 p-4 shadow-sm border-0">
+            <div class="d-flex flex-wrap justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold">System Activity Overview</h5>
+                <div class="d-flex align-items-center">
+                    <select class="form-select form-select-sm shadow-none" style="width: 120px;" aria-label="Filter activity by time period">
+                        <option value="">Last Week</option>
+                        <option value="">Last Month</option>
+                    </select>
+                </div>
+            </div>
+            <div id="activities-chart" style="min-height: 330px;" role="img" aria-label="Bar chart showing system activity overview over time"></div>
+        </div>
+    </div>
+
+    <!-- Deployment & Active Sessions Cards -->
+    <div class="col-lg-4 d-flex flex-column gap-4">
+        <!-- Deployment Card -->
+        <div class="metric-box metric-box--dark">
+            <div class="metric-box__header">
+                <div class="metric-box__icon">
+                    <i class="bi bi-code-square text-danger" aria-hidden="true"></i>
+                </div>
+                <div class="metric-box__trend">
+                    <div class="metric-box__trend-value"><i class="bi bi-arrow-up-short" aria-hidden="true"></i> 2.69%</div>
+                    <small class="metric-box__trend-label">Since last month</small>
+                </div>
+            </div>
+            <div class="metric-box__body">
+                <div class="metric-box__info">
+                    <div class="metric-box__label">Deployment</div>
+                    <div class="metric-box__value">1,865</div>
+                </div>
+                <div id="deployment-chart" class="metric-box__chart" role="img" aria-label="Mini chart showing deployment trend"></div>
+            </div>
+        </div>
+
+        <!-- Active Sessions Card -->
+        <div class="metric-box metric-box--secondary">
+            <div class="metric-box__header">
+                <div class="metric-box__icon">
+                    <i class="bi bi-cloud-check" aria-hidden="true"></i>
+                </div>
+                <div class="metric-box__trend">
+                    <div class="metric-box__trend-value"><i class="bi bi-arrow-down-short" aria-hidden="true"></i> 3.69%</div>
+                    <small class="metric-box__trend-label">Since last month</small>
+                </div>
+            </div>
+            <div class="metric-box__body">
+                <div class="metric-box__info">
+                    <div class="metric-box__label">Active Sessions</div>
+                    <div class="metric-box__value">250</div>
+                </div>
+                <div id="surgery-chart" class="metric-box__chart" role="img" aria-label="Mini chart showing active sessions trend"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4 pb-4">
+    <!-- Top Faculty -->
+    <div class="col-lg-4">
+        <div class="card-box h-100 p-4 shadow-sm border-0">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold">Top Contributors</h5>
+                <div class="dropdown">
+                    <a class="text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="Contributors actions menu">
+                        <i class="bi bi-three-dots-vertical fs-5" aria-hidden="true"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end shadow border-0" role="menu">
+                        <li><a class="dropdown-item text-primary" href="#" role="menuitem">View All</a></li>
+                        <li><a class="dropdown-item text-warning" href="#" role="menuitem">Edit</a></li>
+                        <li><a class="dropdown-item text-danger" href="#" role="menuitem">Delete</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="user-list">
+                <div class="user-list__item">
+                    <div class="user-list__profile">
+                        <img src="app/src/images/photo1.jpg" class="user-list__avatar" alt="Alex Carter">
+                        <div class="user-list__info">
+                            <div class="user-list__rating" aria-label="Rating 4.9 out of 5 stars">4.9 ★</div>
+                            <div class="user-list__name">Alex Carter</div>
+                            <div class="user-list__role">Full Stack Dev</div>
                         </div>
                     </div>
+                    <button class="btn btn-sm btn-outline-primary px-3" aria-label="Schedule meeting with Alex Carter">Schedule</button>
                 </div>
+                <div class="user-list__item">
+                    <div class="user-list__profile">
+                        <img src="app/src/images/photo2.jpg" class="user-list__avatar" alt="Rahul Sen">
+                        <div class="user-list__info">
+                            <div class="user-list__rating" aria-label="Rating 4.8 out of 5 stars">4.8 ★</div>
+                            <div class="user-list__name">Rahul Sen</div>
+                            <div class="user-list__role">Backend Architect</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-primary px-3" aria-label="Schedule meeting with Rahul Sen">Schedule</button>
+                </div>
+                <div class="user-list__item">
+                    <div class="user-list__profile">
+                        <img src="app/src/images/photo3.jpg" class="user-list__avatar" alt="Nina Roy">
+                        <div class="user-list__info">
+                            <div class="user-list__rating" aria-label="Rating 4.7 out of 5 stars">4.7 ★</div>
+                            <div class="user-list__name">Nina Roy</div>
+                            <div class="user-list__role">UI Engineer</div>
+                        </div>
+                    </div>
+                    <button class="btn btn-sm btn-outline-primary px-3" aria-label="Schedule meeting with Nina Roy">Schedule</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- System Health Report -->
+    <div class="col-lg-4">
+        <div class="card-box h-100 p-4 shadow-sm border-0">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="mb-0 fw-bold">System Health</h5>
+                <div class="dropdown">
+                    <a class="text-secondary" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" aria-label="System health actions menu">
+                        <i class="bi bi-three-dots-vertical fs-5" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="chart-container">
+                <div id="health-chart" style="min-height: 350px;" class=" m-0 p-0" role="img" aria-label="Radial chart showing system health percentage"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Unlock Xivig Pro -->
+    <div class="col-lg-4">
+        <div class="card-box h-100 p-4 shadow-sm border-0 d-flex flex-column align-items-center text-center">
+            <div class="mb-4">
+                <img src="app/src/images/xivig-logo.png" style="width: 96px;" alt="Xivig Pro Logo">
+            </div>
+            <h5 class="fw-bold mb-2">Unlock Xivig Pro</h5>
+            <p class="text-secondary small mb-4">
+                Advanced analytics, AI tools, and enterprise controls.
+            </p>
+            <div>
+                <button class="btn btn-sm btn-primary p-2 px-4">Upgrade Now</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 {{/admin-layout}}

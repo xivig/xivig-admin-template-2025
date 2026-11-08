@@ -1,0 +1,62 @@
+@use "../base/mixins" as *;
+
+/* XIVIG ELITE CART */
+.cart-item {
+    transition: all 0.3s ease;
+    border-radius:1.25rem;
+    border-bottom: 1px solid var(--xivig-border-color);
+
+    &:hover {
+        background: rgba(var(--bs-primary-rgb), 0.05);
+    }
+
+    .badge {
+        letter-spacing: 0.5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.02);
+    }
+}
+
+.quantity-picker {
+    background: var(--xivig-qty-bg);
+    border-radius:100px;
+    padding: 3px;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--xivig-border-color);
+
+    .btn-qty {
+        width: 30px;
+        height: 30px;
+        border-radius:50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--xivig-qty-btn);
+        color: var(--bs-primary) !important;
+        border: none;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 900;
+
+        &:hover {
+            background: var(--bs-primary);
+            color: var(--white) !important;
+            transform: scale(1.1);
+        }
+
+        i {
+            font-size: 0.8rem;
+            -webkit-text-stroke: 0.5px;
+        }
+    }
+
+    .qty-input {
+        width: 35px;
+        border: none;
+        background: transparent;
+        text-align: center;
+        font-weight: 800;
+        font-size: 0.9rem;
+        color: var(--bs-heading-color);
+    }
+}

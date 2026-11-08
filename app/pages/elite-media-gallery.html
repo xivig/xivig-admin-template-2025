@@ -1,0 +1,92 @@
+{{#> admin-layout title="Elite Media Gallery" }}
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-between align-items-center">
+        <div>
+            <h5 class="fw-bold mb-0">Elite Media Gallery</h5>
+            <small class="text-muted">A gallery of elite media</small>
+        </div>
+        <div>
+            <form action="#" method="POST" enctype="multipart/form-data" class="d-inline-flex align-items-center">
+                {{ csrfToken }}
+                <input type="file" name="file" class="form-control form-control-sm me-2" required accept="image/*">
+                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                    <i class="bi bi-upload me-2"></i>Upload
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="card-body p-4">
+        <div class="row g-4" id="gallery-grid">
+            {{#each pictures}}
+            <div class="col-xl-3 col-lg-4 col-md-6 gallery-item" data-id="{{ picture.id }}">
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden gallery-card">
+                    <div class="gallery-img-container">
+                        <img src="{{ picture.link }}" class="img-fluid" alt="{{ picture.name }}">
+                        <div class="gallery-overlay">
+                            <div class="overlay-content text-center p-3">
+                                <div class="d-flex justify-content-center gap-2">
+                                    <button class="btn btn-light rounded-circle p-2 shadow-lg edit-btn" 
+                                            data-id="{{ picture.id }}" 
+                                            data-name="{{ picture.name }}" 
+                                            data-link="{{ picture.link }}">
+                                        <i class="bi bi-pencil fs-5 text-primary"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-footer bg-white border-0 py-2">
+                        <p class="text-truncate mb-0 small fw-medium">{{ picture.name }}</p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div class="modal fade" id="edit-image-modal" tabindex="-1" aria-labelledby="edit-image-modal-label" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-image-modal-label">Edit Image</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 mb-3 mb-md-0 text-center">
+                        <div class="bg-light rounded p-2 d-flex align-items-center justify-content-center" style="min-height: 200px;">
+                            <img src="" class="img-fluid rounded shadow-sm" id="edit-image-preview" alt="" style="max-height: 300px;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <form id="edit-image-form" enctype="multipart/form-data">
+                            {{ csrfToken }}
+                            <input type="hidden" id="edit-image-id">
+                            <div class="mb-3">
+                                <label for="edit-image-name" class="form-label">Image Name</label>
+                                <input type="text" class="form-control" id="edit-image-name" placeholder="Enter image name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-image-file" class="form-label">Replace Image (Optional)</label>
+                                <input type="file" class="form-control" id="edit-image-file" accept="image/*">
+                                <small class="text-muted">Leave empty to keep current image</small>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer border-0">
+                <button type="button" class="btn btn-soft-danger me-auto" id="delete-image-btn">
+                    <i class="bi bi-trash me-2"></i>Delete
+                </button>
+                <button type="button" class="btn btn-light" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary px-4" id="save-image-btn">
+                    <i class="bi bi-check2 me-2"></i>Update Image
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+{{/admin-layout}}

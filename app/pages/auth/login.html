@@ -1,0 +1,50 @@
+{{#> auth-layout title="Login | Xivig Elite" }}
+
+<div class="text-center">
+    <h2 class="auth-card__title">Elite Login</h2>
+    <p class="auth-card__subtitle">Sign in to access your architect dashboard.</p>
+</div>
+
+<div class="social-auth">
+    <a href="#" class="social-btn" aria-label="Sign in with GitHub"><i class="fa-brands fa-github" aria-hidden="true"></i></a>
+    <a href="#" class="social-btn text-danger" aria-label="Sign in with Google"><i class="fa-brands fa-google" aria-hidden="true"></i></a>
+    <a href="#" class="social-btn text-primary" aria-label="Sign in with LinkedIn"><i class="fa-brands fa-linkedin-in" aria-hidden="true"></i></a>
+</div>
+
+<div class="auth-divider">
+    <span>OR CONTINUE WITH EMAIL</span>
+</div>
+
+<form action="index.html">
+    <div class="mb-4">
+        <div class="input-group auth-input-group">
+            <span class="input-group-text"><i class="bi bi-envelope" aria-hidden="true"></i></span>
+            <input type="email" class="form-control" placeholder="architect@xivig.com" aria-label="Email address" required>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <div class="input-group auth-input-group">
+            <span class="input-group-text"><i class="bi bi-shield-lock" aria-hidden="true"></i></span>
+            <input type="password" class="form-control" placeholder="••••••••" aria-label="Password" required>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="rememberMe">
+            <label class="form-check-label small text-muted" for="rememberMe">Remember me</label>
+        </div>
+        <a href="forgot-password.html" class="auth-link small">Forgot Password?</a>
+    </div>
+
+    <button type="submit" class="btn btn-primary rounded-pill w-100 py-3 rounded-3 fw-bold shadow-sm mb-4">
+        Enter Dashboard
+    </button>
+
+    <p class="text-center small text-muted mb-0">
+        New to Xivig? <a href="register.html" class="auth-link">Create an Account</a>
+    </p>
+</form>
+
+{{/auth-layout}}

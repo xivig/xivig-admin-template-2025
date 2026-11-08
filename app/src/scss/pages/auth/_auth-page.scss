@@ -1,0 +1,117 @@
+/* Auth Page Background */
+.auth-page {
+    background: var(--auth-bg-start);
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    overflow: hidden;
+    transition: background 0.3s ease;
+
+    /* Decorative Background Element */
+    &::before {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        background: linear-gradient(135deg, var(--elite-primary), #6f42c1);
+        filter: blur(100px);
+        opacity: 0.1;
+        top: 10%;
+        left: 5%;
+        z-index: 0;
+    }
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 450px;
+    z-index: 1;
+    background: var(--auth-card-bg);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--auth-card-border) !important;
+    border-radius: var(--elite-radius-xl);
+    padding: 3rem 2.5rem;
+    box-shadow: var(--auth-shadow);
+    color: var(--auth-text-main);
+    transition: all 0.3s ease;
+
+    &__icon-box {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    &__title {
+        font-weight: 800;
+        letter-spacing: -0.02em;
+        color: var(--auth-text-main);
+        margin-bottom: 0.5rem;
+    }
+
+    &__subtitle {
+        color: var(--auth-text-muted);
+        margin-bottom: 2.5rem;
+    }
+
+    &__divider {
+        color: var(--auth-divider-line);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+    }
+
+    &__link {
+        color: var(--elite-primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity 0.2s;
+
+        &:hover {
+            opacity: 0.8;
+            color: var(--elite-primary);
+        }
+
+        &__header {
+            background: linear-gradient(to bottom, rgba(var(--elite-primary-rgb), 0.02), transparent);
+        }
+    }
+}
+
+.auth-form {
+    &__input:focus {
+        background: transparent;
+    }
+
+    &__submit {
+        background: var(--primary-gradient);
+        border: none;
+        color: var(--white);
+        padding: 0.85rem 1rem;
+        border-radius: var(--elite-radius-sm);
+        font-weight: 700;
+        box-shadow: 0 4px 15px var(--xivig-primary-glow);
+        transition: transform 0.2s;
+
+        &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--xivig-primary-glow);
+            color: var(--white);
+        }
+    }
+}
+
+/* Hover effects for social buttons */
+.btn-outline-light {
+    transition: all 0.2s ease;
+
+    &:hover {
+        background-color: var(--bg-subtle) !important;
+        border-color: var(--card-border) !important;
+        transform: translateY(-1px);
+    }
+}

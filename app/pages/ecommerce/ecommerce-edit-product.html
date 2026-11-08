@@ -1,0 +1,186 @@
+{{#> admin-layout title="Edit Product" parentTitle="Ecommerce" }}
+
+<div class="row justify-content-center">
+    <div class="col-xl-11">
+        
+        <!-- Elite Sticky Header -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-5 position-sticky top-0 bg-light py-3 z-3 border-bottom border-opacity-10" style="margin-top: -1.5rem;">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1 small">
+                        <li class="breadcrumb-item"><a href="ecommerce-products.html" class="text-decoration-none text-muted">Products</a></li>
+                        <li class="breadcrumb-item active fw-bold text-primary">Modify Asset</li>
+                    </ol>
+                </nav>
+                <h2 class="h3 fw-black text-dark mb-0">Edit Product: <span class="text-primary">Air Jordan Elite</span></h2>
+            </div>
+            <div class="d-flex gap-2">
+                <button class="btn btn-white btn-sm rounded-pill px-4 border shadow-sm fw-bold text-muted transition-all hover-bg-danger hover-text-white" onclick="location.href='ecommerce-products.html'">
+                    Discard
+                </button>
+                <button type="submit" form="editProductForm" class="btn btn-primary btn-sm rounded-pill px-4 fw-bold shadow-primary transition-all hover-translate-y">
+                    <i class="bi bi-check-circle me-2"></i> Save Changes
+                </button>
+            </div>
+        </div>
+
+        <form id="editProductForm">
+            <div class="row g-4">
+                <!-- Left Column: Detailed Content -->
+                <div class="col-lg-8">
+                    <!-- General Info Card -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+                        <div class="card-header bg-white py-4 px-4 border-0 border-bottom border-light">
+                            <h6 class="fw-black text-dark mb-0 text-uppercase tracking-widest small">
+                                <i class="bi bi-file-earmark-text me-2 text-primary"></i> Basic Information
+                            </h6>
+                        </div>
+                        <div class="card-body p-4 p-md-5">
+                            <div class="mb-4">
+                                <label class="apple-label">Product Name</label>
+                                <input type="text" class="form-control modern-input" value="Air Jordan Elite Limited Pro" placeholder="Enter product name" required>
+                                <div class="form-text extra-small mt-2 text-muted">A unique and descriptive title helps customers find your product faster.</div>
+                            </div>
+                            
+                            <div class="mb-0">
+                                <label class="apple-label">Full Description</label>
+                                <textarea class="form-control modern-input" rows="8" placeholder="Describe the premium features...">Experience the pinnacle of footwear engineering. The Air Jordan Elite Pro combines ultra-responsive cushioning with a breathable, high-performance upper designed for architects of the game. Limited edition colorway with premium carbon fiber inserts.</textarea>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pricing & Inventory Card -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+                        <div class="card-header bg-white py-4 px-4 border-0 border-bottom border-light">
+                            <h6 class="fw-black text-dark mb-0 text-uppercase tracking-widest small">
+                                <i class="bi bi-currency-dollar me-2 text-primary"></i> Pricing & Stock
+                            </h6>
+                        </div>
+                        <div class="card-body p-4 p-md-5">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="apple-label">Base Price</label>
+                                    <div class="input-group modern-input-group border rounded-3 overflow-hidden shadow-sm">
+                                        <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-tag-fill"></i></span>
+                                        <input type="number" class="form-control border-0 shadow-none py-2 fw-bold" value="1299.00">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="apple-label">Discount Price (Optional)</label>
+                                    <div class="input-group modern-input-group border rounded-3 overflow-hidden shadow-sm">
+                                        <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-percent"></i></span>
+                                        <input type="number" class="form-control border-0 shadow-none py-2" value="1099.00">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="apple-label">SKU Number</label>
+                                    <input type="text" class="form-control modern-input fw-mono" value="AJ-PRO-2026-X">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="apple-label">Warehouse Stock</label>
+                                    <div class="d-flex align-items-center gap-3">
+                                        <input type="number" class="form-control modern-input fw-bold" value="125" style="max-width: 100px;">
+                                        <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold">In Stock</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Sidebar Settings -->
+                <div class="col-lg-4">
+                    <!-- Media Gallery Card -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden">
+                        <div class="card-header bg-white py-4 px-4 border-0 border-bottom border-light">
+                            <h6 class="fw-black text-dark mb-0 text-uppercase tracking-widest small">
+                                <i class="bi bi-images me-2 text-primary"></i> Media Gallery
+                            </h6>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="row g-2 mb-4">
+                                <div class="col-12">
+                                    <div class="position-relative rounded-4 overflow-hidden border shadow-sm mb-2 group">
+                                        <img src="/app/src/images/product.jpg" class="img-fluid w-100" alt="Primary">
+                                        <div class="position-absolute top-0 end-0 m-3 d-flex gap-2">
+                                            <button type="button" class="btn btn-white btn-sm rounded-circle shadow-sm p-2"><i class="bi bi-pencil"></i></button>
+                                            <button type="button" class="btn btn-danger btn-sm rounded-circle shadow-sm p-2"><i class="bi bi-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded-3 border overflow-hidden shadow-sm aspect-square">
+                                        <img src="/app/src/images/product.jpg" class="w-100 h-100 object-cover" alt="Thumb">
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="rounded-3 border border-2 border-dashed d-flex align-items-center justify-content-center bg-light transition-all hover-bg-white cursor-pointer aspect-square" style="min-height: 80px;">
+                                        <i class="bi bi-plus-lg text-muted"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="button" class="btn btn-light w-100 rounded-pill border fw-bold small py-2 shadow-sm">Manage Assets</button>
+                        </div>
+                    </div>
+
+                    <!-- Status & Optimization -->
+                    <div class="card border-0 shadow-sm rounded-4 mb-4 overflow-hidden bg-primary text-white position-relative">
+                        <div class="position-absolute top-0 end-0 p-4 opacity-10">
+                            <i class="bi bi-rocket-takeoff-fill display-1"></i>
+                        </div>
+                        <div class="card-body p-4 position-relative z-1">
+                            <h6 class="fw-black text-white mb-4 text-uppercase tracking-widest small">Publication Status</h6>
+                            
+                            <div class="mb-4 bg-white bg-opacity-10 p-3 rounded-4 border border-white border-opacity-10">
+                                <div class="form-check form-switch custom-switch-light">
+                                    <input class="form-check-input" type="checkbox" id="publishedSwitch" checked>
+                                    <label class="form-check-label small fw-bold text-white" for="publishedSwitch">Public Live</label>
+                                </div>
+                                <div class="form-check form-switch custom-switch-light mt-3">
+                                    <input class="form-check-input" type="checkbox" id="featuredSwitch">
+                                    <label class="form-check-label small fw-bold text-white" for="featuredSwitch">Featured on Home</label>
+                                </div>
+                            </div>
+
+                            <div class="d-grid">
+                                <button class="btn btn-white rounded-pill fw-bold text-primary py-2 shadow-sm">View Store Page</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audit Log Info -->
+                    <div class="p-4 bg-white rounded-4 shadow-sm border border-light text-center">
+                        <div class="avatar bg-light text-primary rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center fw-bold" style="width: 48px; height: 48px;">AA</div>
+                        <p class="text-muted extra-small mb-1">LAST MODIFIED BY</p>
+                        <h6 class="fw-bold text-dark mb-2">Admin Architect</h6>
+                        <span class="text-muted extra-small"><i class="bi bi-clock me-1"></i> Oct 24, 2026 • 09:42 AM</span>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<style>
+    /* Elite Toggle Customization */
+    .custom-switch-light .form-check-input {
+        width: 3em;
+        height: 1.5em;
+        cursor: pointer;
+        background-color: rgba(255,255,255,0.2);
+        border-color: rgba(255,255,255,0.3);
+    }
+    .custom-switch-light .form-check-input:checked {
+        background-color: #fff;
+        border-color: #fff;
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'%3e%3ccircle r='3' fill='%236366f1'/%3e%3c/svg%3e");
+    }
+    .aspect-square {
+        aspect-ratio: 1 / 1;
+    }
+    .object-cover {
+        object-fit: cover;
+    }
+</style>
+
+{{/admin-layout}}

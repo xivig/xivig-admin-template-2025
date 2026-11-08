@@ -1,0 +1,172 @@
+{{#> admin-layout title="Invoice" }}
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+
+                        <div
+                            class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-center align-items-center">
+                            <div class="text-center">
+                                <h5 class="fw-bold mb-0">Invoice</h5>
+                                <small class="text-muted">Overview and management of invoice</small>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-4">
+                            <!--content goes here-->
+
+                            <div class="row g-4 justify-content-center">
+                                <div class="container py-5">
+                                    <div class="invoice card border-0 rounded-4 shadow-lg overflow-hidden">
+
+                                        <div class="invoice__header p-5 bg-white border-bottom border-light">
+                                            <div
+                                                class="d-flex flex-column flex-md-row justify-content-between align-items-start gap-4">
+                                                <div class="invoice__brand d-flex align-items-center">
+                                                    <div class="invoice__logo-wrapper bg-primary text-white rounded-3 d-flex align-items-center justify-content-center me-3"
+                                                        style="width: 50px; height: 50px;">
+                                                        <i class="bi bi-stack fs-3"></i>
+                                                    </div>
+                                                    <div>
+                                                        <h1 class="h3 mb-0 fw-bold tracking-tight">Unify Architect</h1>
+                                                        <span class="text-muted small fw-medium">Elite Enterprise
+                                                            OS</span>
+                                                    </div>
+                                                </div>
+                                                <div class="invoice__sender text-md-end">
+                                                    <h6 class="fw-bold mb-1">Venus Llc.</h6>
+                                                    <address class="text-muted small mb-0 lh-base">
+                                                        9990 St, 5000 Church Street, Suite 550<br>
+                                                        Huntsville, Alabama, 99990<br>
+                                                        <span class="text-primary">billing@venus-arch.com</span>
+                                                    </address>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="invoice__body p-5 bg-white">
+                                            <div
+                                                class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-5 pb-4 border-bottom border-light gap-3">
+                                                <div class="d-flex align-items-center gap-3">
+                                                    <div class="invoice__id">
+                                                        <span
+                                                            class="text-muted text-uppercase extra-small fw-bold d-block mb-1">Invoice
+                                                            Number</span>
+                                                        <h2 class="h5 mb-0 fw-bold">#VEN009985</h2>
+                                                    </div>
+                                                    <span
+                                                        class="badge bg-danger-subtle text-danger rounded-pill px-3 py-2 extra-small fw-800">OVERDUE</span>
+                                                </div>
+                                                <div class="text-md-end">
+                                                    <span
+                                                        class="text-muted text-uppercase extra-small fw-bold d-block mb-1">Date
+                                                        Issued</span>
+                                                    <h2 class="h6 mb-0 fw-semibold text-dark">January 20th, 2026</h2>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mb-5">
+                                                <div class="col-sm-6">
+                                                    <span
+                                                        class="text-muted text-uppercase extra-small fw-bold d-block mb-3">Bill
+                                                        To</span>
+                                                    <h6 class="fw-bold mb-1">Alice Williams</h6>
+                                                    <p class="text-muted small mb-0 lh-lg">
+                                                        7500 Oakdale Ave,<br>
+                                                        San Francisco, California (CA), 94500
+                                                    </p>
+                                                </div>
+                                            </div>
+
+                                            <div class="table-responsive mb-4">
+                                                <table class="table table-borderless align-middle">
+                                                    <thead class="border-bottom border-light">
+                                                        <tr class="extra-small text-uppercase text-muted fw-bold">
+                                                            <th scope="col" class="pb-3 ps-0">Item & Description</th>
+                                                            <th scope="col" class="text-center pb-3">Code</th>
+                                                            <th scope="col" class="text-center pb-3">Hours</th>
+                                                            <th scope="col" class="text-end pb-3 pe-0">Total</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody class="border-bottom border-light">
+                                                        <tr>
+                                                            <td class="py-4 ps-0">
+                                                                <h6 class="fw-bold text-dark mb-1">Bootstrap Admin
+                                                                    Template</h6>
+                                                                <p class="text-muted small mb-0">High-fidelity
+                                                                    prototypes and mobile-first
+                                                                    architecture.</p>
+                                                            </td>
+                                                            <td class="text-center text-muted small">#651</td>
+                                                            <td class="text-center fw-semibold">40</td>
+                                                            <td class="text-end pe-0 fw-bold text-dark">$450.00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="py-4 ps-0">
+                                                                <h6 class="fw-bold text-dark mb-1">Admin Themes</h6>
+                                                                <p class="text-muted small mb-0">Premium dashboard
+                                                                    assets and layout components.</p>
+                                                            </td>
+                                                            <td class="text-center text-muted small">#429</td>
+                                                            <td class="text-center fw-semibold">60</td>
+                                                            <td class="text-end pe-0 fw-bold text-dark">$550.00</td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+
+                                            <div class="row g-5">
+                                                <div class="col-lg-7">
+                                                    <div class="p-4 bg-light rounded-4">
+                                                        <h6 class="fw-bold text-uppercase extra-small mb-2">Architect
+                                                            Notes</h6>
+                                                        <p class="text-muted small mb-0 lh-lg">We appreciate your
+                                                            continued partnership. For any
+                                                            technical support regarding this architecture package,
+                                                            please contact our dev team via
+                                                            the Xivig support portal.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-5">
+                                                    <div class="d-grid gap-3">
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center px-2">
+                                                            <span class="text-muted small">Subtotal</span>
+                                                            <span class="fw-bold">$1000.00</span>
+                                                        </div>
+                                                        <div
+                                                            class="d-flex justify-content-between align-items-center px-2">
+                                                            <span class="text-muted small">Tax (VAT 5%)</span>
+                                                            <span class="fw-bold">$5.00</span>
+                                                        </div>
+                                                        <div
+                                                            class="invoice__total d-flex justify-content-between align-items-center p-3 bg-primary text-white rounded-3 shadow-sm">
+                                                            <span class="fw-semibold">Total Amount</span>
+                                                            <h4 class="mb-0 fw-800">$1,015.00</h4>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="invoice__footer p-5 bg-white border-top border-light">
+                                            <div
+                                                class="d-flex flex-wrap justify-content-center justify-content-md-end gap-3">
+                                                <button
+                                                    class="btn btn-outline-light border text-dark px-4 py-2 rounded-3 shadow-sm">
+                                                    <i class="bi bi-download me-2"></i> Download
+                                                </button>
+                                                <button
+                                                    class="btn btn-outline-light border text-dark px-4 py-2 rounded-3 shadow-sm">
+                                                    <i class="bi bi-printer me-2"></i> Print
+                                                </button>
+                                                <button class="btn btn-primary px-5 py-2 rounded-3 fw-bold shadow">
+                                                    <i class="bi bi-credit-card me-2"></i> Pay Now
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+{{/admin-layout}}

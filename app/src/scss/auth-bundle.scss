@@ -1,0 +1,17 @@
+/* ==========================================================================
+   XIVIG ELITE - AUTH BUNDLE
+   ========================================================================== */
+
+@use "base/tokens";
+@use "base/variables" as vars;
+@use "base/mixins" as *;
+@use "../../../node_modules/bootstrap/scss/bootstrap";
+
+@use "base";
+@use "layout/preloader";
+@use "pages/auth/auth-shared";
+@use "pages/auth/auth-page";
+@use "utilities";
+
+// MOBILE OVERRIDES
+@use "mobile-friendly/auth";

@@ -1,0 +1,106 @@
+{{#> admin-layout title="Form Wizards" parentTitle="Forms" }}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+            <div class="card-body p-4">
+
+                <div class="card border-0 shadow-sm rounded-4 overflow-hidden" id="wizard-section">
+                    <div class="card-body p-4 p-md-5">
+                        <div class="mb-4 text-center">
+                            <h4 class="fw-bold">Application Process</h4>
+                            <p class="text-muted small">Please fill in the details accurately to proceed</p>
+                        </div>
+
+                        <div class="wizard-wrapper position-relative mb-5 mt-2">
+                            <div class="progress position-absolute start-50 translate-middle-x"
+                                style="height: 2px; width: 75%; top: 25px; z-index: 0; background-color: #e9ecef;">
+                                <div class="progress-bar bg-primary" id="wizard-progress"
+                                    style="width: 0%; transition: width 0.4s ease;"></div>
+                            </div>
+
+                            <ul class="nav justify-content-between position-relative" id="wizard-nav"
+                                style="z-index: 1; max-width: 600px; margin: 0 auto;">
+                                <li class="nav-item text-center">
+                                    <a class="nav-link active wizard-circle shadow-sm fw-bold" data-step="0">1</a>
+                                    <div class="small fw-bold mt-2">Personal</div>
+                                </li>
+                                <li class="nav-item text-center">
+                                    <a class="nav-link disabled wizard-circle border bg-white fw-bold"
+                                        data-step="1">2</a>
+                                    <div class="small fw-bold mt-2 text-white">Job Status</div>
+                                </li>
+                                <li class="nav-item text-center">
+                                    <a class="nav-link disabled wizard-circle border bg-white fw-bold"
+                                        data-step="2">3</a>
+                                    <div class="small fw-bold mt-2 text-white">Interview</div>
+                                </li>
+                                <li class="nav-item text-center">
+                                    <a class="nav-link disabled wizard-circle border bg-white fw-bold"
+                                        data-step="3">4</a>
+                                    <div class="small fw-bold mt-2 text-white">Remarks</div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <form id="wizard-form" novalidate>
+                            <section class="wizard-step">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">First Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label fw-semibold">Last Name</label>
+                                        <input type="text" class="form-control" required>
+                                    </div>
+                                </div>
+                            </section>
+
+                            <section class="wizard-step d-none">
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Company Name</label>
+                                    <input type="text" class="form-control" required>
+                                </div>
+                            </section>
+
+                            <section class="wizard-step d-none">
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Interview Date</label>
+                                    <input type="date" class="form-control" required>
+                                </div>
+                            </section>
+
+                            <section class="wizard-step d-none">
+                                <div class="col-12">
+                                    <label class="form-label fw-semibold">Comments</label>
+                                    <textarea class="form-control" rows="3"></textarea>
+                                </div>
+                            </section>
+
+                            <div class="d-flex justify-content-between mt-5">
+                                <button type="button" class="btn btn-light border px-4 rounded-pill d-none"
+                                    id="prev-btn">
+                                    <i class="bi bi-arrow-left me-1"></i> Previous
+                                </button>
+                                <button type="button" class="btn btn-primary px-5 rounded-pill ms-auto" id="next-btn">
+                                    Next <i class="bi bi-arrow-right ms-1"></i>
+                                </button>
+                                <button type="submit" class="btn btn-success px-5 rounded-pill d-none ms-auto"
+                                    id="submit-btn">
+                                    Submit Application
+                                </button>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+
+    {{/admin-layout}}
+

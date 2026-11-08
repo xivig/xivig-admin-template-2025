@@ -1,0 +1,240 @@
+{{#> admin-layout title="Form Pickers" parentTitle="Forms" }}
+
+<div class="row g-4">
+    <!-- Header Section -->
+    <div class="col-12">
+        <div class="glass-card p-5 text-center shadow-sm border-0 position-relative overflow-hidden">
+            <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
+                style="background: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
+            <h2 class="display-5 fw-bold mb-2">Elite Form Pickers</h2>
+            <p class="text-muted lead mb-0">Premium precision tools for modern application interfaces.</p>
+        </div>
+    </div>
+
+    <!-- Date Selection Group -->
+    <div class="col-lg-8">
+        <div class="card-box h-100">
+            <h4 class="section-title-modern">Date & Calendar</h4>
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <div class="mb-4">
+                        <label class="apple-label">Standard Entry</label>
+                        <input id="air-datepicker" class="form-control modern-input" placeholder="Select Date"
+                            type="text" />
+                    </div>
+                    <div class="mb-4">
+                        <label class="apple-label">Precision Timestamp</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-3">
+                                <i class="bi bi-clock-history text-primary"></i>
+                            </span>
+                            <input class="form-control modern-input border-start-0 rounded-end-3" id="clock-input"
+                                placeholder="Choose Date and Time" type="text" readonly />
+                        </div>
+                    </div>
+                    <div class="mb-0">
+                        <label class="apple-label">Range Selection</label>
+                        <input type="text" id="range-picker" class="form-control modern-input"
+                            placeholder="Start Date - End Date">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div
+                        class="bg-light p-4 rounded-4 text-center border h-100 d-flex flex-column justify-content-center">
+                        <label class="apple-label mb-3">Live Interactive Calendar</label>
+                        <div id="inline-datepicker" class="apple-style-inline mx-auto mb-3"></div>
+                        <div class="p-3 bg-white rounded-3 border shadow-sm mt-auto">
+                            <span class="text-muted small d-block mb-1">Focus Date</span>
+                            <span id="output-date" class="fw-bold text-primary">Select a day</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Right Column: Secondary Date Tools -->
+    <div class="col-lg-4">
+        <div class="card-box mb-4 bg-primary text-white">
+            <h4 class="fw-bold mb-1">Monthly Analytics</h4>
+            <p class="small opacity-75 mb-4 text-white">Select period for report generation</p>
+            <div class="mb-3">
+                <input id="month-picker"
+                    class="form-control modern-input border-0 shadow-none bg-white bg-opacity-25 text-white placeholder-white"
+                    placeholder="Select Month" type="text" />
+            </div>
+            <div
+                class="mt-4 pt-4 border-top border-white border-opacity-10 d-flex justify-content-between align-items-center">
+                <span class="small fw-medium">Active Target:</span>
+                <span id="month-output" class="badge bg-white text-primary rounded-pill px-3 py-2">January 2026</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card-box glass-card border-primary border-opacity-10 p-3">
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="d-flex align-items-center">
+                    <div class="icon-shape bg-primary-light text-primary rounded-circle p-2 me-3">
+                        <i class="bi bi-clock-history fs-5"></i>
+                    </div>
+                    <div>
+                        <h6 class="fw-black mb-0">System Time</h6>
+                        <div id="live-clock1" class="extra-small text-muted opacity-75"></div>
+                    </div>
+                </div>
+                <div id="live-clock" class="h4 fw-black text-primary mb-0"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="p-4 rounded-4 border mb-4 bg-light">
+            <label class="apple-label">Advanced Pickr Studio</label>
+            <div class="d-flex flex-wrap gap-4 justify-content-center py-3">
+                <div class="text-center">
+                    <span class="small text-muted d-block mb-2">Classic Theme</span>
+                    <div class="color-picker-classic"></div>
+                </div>
+                <div class="text-center">
+                    <span class="small text-muted d-block mb-2">Monolith Theme</span>
+                    <div class="color-picker-monolith"></div>
+                </div>
+                <div class="text-center">
+                    <span class="small text-muted d-block mb-2">Nano Theme</span>
+                    <div class="color-picker-nano"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Clock Pickers Section -->
+    <div class="col-12">
+        <div class="card-box">
+            <div class="d-flex align-items-center mb-4">
+                <div class="icon-shape bg-warning-subtle text-warning rounded-3 p-3 me-3">
+                    <i class="bi bi-alarm fs-4"></i>
+                </div>
+                <div>
+                    <h4 class="section-title-modern mb-0">Precision Clock Pickers</h4>
+                    <p class="text-muted small mb-0">Interactive time selection with timedropper</p>
+                </div>
+            </div>
+            <div class="row g-4 text-center">
+                <div class="col-md-3">
+                    <div class="p-3 rounded-4 bg-light hover-shadow transition-all border border-opacity-10">
+                        <label class="apple-label text-muted small mb-2">Delivery</label>
+                        <input id="time-delivery" class="form-control modern-input text-center td-input fw-bold"
+                            value="09:00 AM" type="text" readonly />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-4 bg-light hover-shadow transition-all border border-opacity-10">
+                        <label class="apple-label text-muted small mb-2">Departure</label>
+                        <input id="train-departure" class="form-control modern-input text-center td-input fw-bold"
+                            value="12:00 PM" type="text" readonly />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div
+                        class="p-3 rounded-4 bg-light hover-shadow transition-all border border-primary border-opacity-25 shadow-sm">
+                        <label class="apple-label text-primary small mb-2">Wake Up</label>
+                        <input id="alarm-clock"
+                            class="form-control modern-input text-center border-primary border-opacity-10 fw-bold td-input"
+                            value="07:30 AM" type="text" readonly />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="p-3 rounded-4 bg-light hover-shadow transition-all border border-opacity-10">
+                        <label class="apple-label text-muted small mb-2">Reminder</label>
+                        <input id="quick-entry" class="form-control modern-input text-center td-input fw-bold"
+                            value="06:00 PM" type="text" readonly />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Palette Section -->
+    <div class="col-12">
+        <div class="card-box">
+            <h4 class="section-title-modern">Elite Color Designers</h4>
+            <div class="row g-4">
+
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 border h-100">
+                        <label class="apple-label">Simple & UI Accent</label>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="color-preview-wrapper d-flex align-items-center p-2">
+                                <input type="color" class="apple-color-trigger" id="simple-picker" value="#0071e3">
+                                <input type="text" id="simple-input"
+                                    class="form-control border-0 bg-transparent fw-bold" value="#0071E3">
+                            </div>
+                            <div class="p-3 bg-light rounded-4 d-flex align-items-center border border-dashed">
+                                <input type="color" id="appleColorPicker" value="#0071e3"
+                                    class="apple-color-trigger border-white border-2 shadow-sm">
+                                <div class="ms-3">
+                                    <span class="small text-muted d-block">Global Accent</span>
+                                    <input type="text" id="colorValue" class="fw-black border-0 bg-transparent p-0 fs-5"
+                                        value="#0071E3" readonly>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 border h-100 bg-body-tertiary">
+                        <label class="apple-label">RGBA Studio</label>
+                        <div class="mb-4">
+                            <div class="d-flex align-items-center gap-3 p-3 bg-body rounded-4 mb-3 border">
+                                <input type="color" id="rgba-picker" value="#0d6efd"
+                                    class="apple-color-trigger border-0">
+                                <div class="flex-grow-1">
+                                    <div class="d-flex justify-content-between mb-1">
+                                        <span class="small text-muted">Alpha</span>
+                                        <span id="opacity-val" class="small fw-bold">100%</span>
+                                    </div>
+                                    <input type="range" id="rgba-opacity" class="form-range" min="0" max="1" step="0.1"
+                                        value="1">
+                                </div>
+                            </div>
+                            <input type="text" id="rgba-output" class="form-control modern-input text-center fw-mono"
+                                readonly>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="p-4 rounded-4 border h-100">
+                        <label class="apple-label">Gradient Architect</label>
+                        <div class="row g-2 mb-4">
+                            <div class="col-6">
+                                <div class="color-preview-wrapper p-2 d-flex align-items-center">
+                                    <input type="color" id="grad-start-picker" value="#f56767"
+                                        class="apple-color-trigger me-2">
+                                    <input type="text" id="grad-start-input"
+                                        class="form-control border-0 bg-transparent p-0 small fw-bold" value="#F56767">
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="color-preview-wrapper p-2 d-flex align-items-center">
+                                    <input type="color" id="grad-end-picker" value="#fab27a"
+                                        class="apple-color-trigger me-2">
+                                    <input type="text" id="grad-end-input"
+                                        class="form-control border-0 bg-transparent p-0 small fw-bold" value="#FAB27A">
+                                </div>
+                            </div>
+                        </div>
+                        <div id="gradient-result-preview"
+                            class="rounded-4 shadow-lg w-100 position-relative d-flex align-items-center justify-content-center"
+                            style="height: 100px; background: linear-gradient(90deg, #f56767, #fab27a);">
+                            <span class="text-white fw-black small text-uppercase tracking-widest opacity-75">Live
+                                Preview</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

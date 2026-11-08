@@ -1,0 +1,5 @@
+// 0. VENDOR CSS - Third Party Plugins
+// Moved to main.js for better Vite asset resolution
+
+// Fix Font Paths - May be needed for SCSS that still uses FA
+$fa-font-path: "@fortawesome/fontawesome-free/webfonts";

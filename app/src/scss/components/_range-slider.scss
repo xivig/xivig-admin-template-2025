@@ -1,0 +1,97 @@
+/* Elite Range Slider Styling */
+.elite-range {
+    height: 6px;
+    background: var(--bg-subtle);
+    /* Soft track color */
+    border-radius:50rem;
+    appearance: none;
+    cursor: pointer;
+}
+
+/* Custom Thumb (The Handle) */
+.elite-range::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    background: var(--card-bg);
+    border: 3px solid var(--elite-primary);
+    /* Primary Color */
+    border-radius:50%;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.2);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    appearance: none;
+    margin-top: -7px;
+    /* Centers thumb on 6px track */
+}
+
+/* Hover Interaction */
+.elite-range::-webkit-slider-thumb:hover {
+    transform: scale(1.25);
+    background-color: var(--elite-primary);
+    border-color: var(--card-bg);
+    box-shadow: 0 0 15px rgba(99, 102, 241, 0.4);
+}
+
+/* Track Focus */
+.elite-range:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+/* Color Variants */
+.range-success::-webkit-slider-thumb {
+    border-color: var(--elite-success);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.2);
+}
+
+.range-success::-webkit-slider-thumb:hover {
+    background-color: var(--elite-success);
+}
+
+.range-info::-webkit-slider-thumb {
+    border-color: var(--elite-info);
+    box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);
+}
+
+.range-info::-webkit-slider-thumb:hover {
+    background-color: var(--elite-info);
+}
+
+.range-warning::-webkit-slider-thumb {
+    border-color: var(--elite-warning);
+    box-shadow: 0 4px 10px rgba(245, 158, 11, 0.2);
+}
+
+.range-warning::-webkit-slider-thumb:hover {
+    background-color: var(--elite-warning);
+}
+
+.range-danger::-webkit-slider-thumb {
+    border-color: var(--elite-danger);
+    box-shadow: 0 4px 10px rgba(239, 68, 68, 0.2);
+}
+
+.range-danger::-webkit-slider-thumb:hover {
+    background-color: var(--elite-danger);
+}
+
+/* Soft Badge Utilities */
+.bg-primary-soft {
+    background-color: var(--elite-primary-soft) !important;
+}
+
+.bg-success-soft {
+    background-color: var(--elite-success-soft) !important;
+}
+
+.bg-info-soft {
+    background-color: var(--elite-info-soft) !important;
+}
+
+.bg-warning-soft {
+    background-color: var(--elite-warning-soft) !important;
+}
+
+/* Typography */
+.letter-spacing-1 {
+    letter-spacing: 1px;
+}

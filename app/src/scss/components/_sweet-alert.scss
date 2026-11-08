@@ -1,0 +1,145 @@
+  :root {
+      --xivig-primary-gradient: var(--primary-gradient);
+      --xivig-card-shadow: var(--card-shadow);
+      --xivig-bg-subtle: var(--bg-body);
+  }
+
+  body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      padding-bottom: 50px;
+  }
+
+  /* Page Header Styling */
+  .page-header {
+      padding: 40px 0;
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--card-border);
+      margin-bottom: 40px;
+  }
+
+  .breadcrumb-item a {
+      color: var(--elite-primary);
+      text-decoration: none;
+      font-weight: 500;
+  }
+
+  /* Card Styling */
+  .alert-card {
+      background: var(--card-bg);
+      border: none;
+      border-radius:var(--elite-radius-md);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--card-shadow);
+      border: 1px solid var(--card-border);
+  }
+
+  .alert-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--card-shadow-hover);
+  }
+
+  .alert-card h5 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-main);
+      line-height: 1.5;
+      margin-bottom: 25px;
+  }
+
+  /* Button Styling */
+  .btn-modern {
+      background: var(--primary-gradient);
+      border: none;
+      color: white;
+      padding: 10px 24px;
+      border-radius:10px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      transition: opacity 0.2s;
+  }
+
+  .btn-modern:hover {
+      opacity: 0.9;
+      color: white;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+
+  /* Unique IDs and Indicators */
+  .card-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--bg-subtle);
+      border-radius:var(--elite-radius-xs);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      font-size: 1.2rem;
+      color: var(--text-main);
+  }
+
+  /* Global SweetAlert2 Customization */
+  /* Add !important if the default SweetAlert styles are winning */
+  .xivig-swal-popup {
+      border-radius:var(--elite-radius-md) !important;
+      backdrop-filter: blur(10px) !important;
+      background: var(--card-bg) !important;
+      border: 1px solid var(--card-border) !important;
+      box-shadow: var(--card-shadow) !important;
+  }
+
+  .xivig-swal-title {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 700 !important;
+      color: var(--text-main) !important;
+  }
+
+  /* Ensure buttons match your Bootstrap 5 UI */
+  .swal2-styled.swal2-confirm {
+      border-radius:var(--elite-radius-xs) !important;
+      font-weight: 600 !important;
+  }
+
+  // 3. Custom Xivig "Elite" Refinements
+  .swal2-popup {
+      backdrop-filter: blur(10px);
+      background: var(--card-bg) !important;
+      border: 1px solid var(--card-border) !important;
+      box-shadow: var(--card-shadow);
+  }
+
+  .swal2-title {
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--text-main) !important;
+  }
+
+  .swal2-html-container {
+      color: var(--text-muted) !important;
+  }
+
+  /* Use the .swal2-container prefix to override default library styles */
+  .swal2-container .xivig-swal-popup {
+      border-radius:var(--elite-radius-md) !important;
+      backdrop-filter: blur(10px) !important;
+      background: var(--card-bg) !important;
+      border: 1px solid var(--card-border) !important;
+      box-shadow: var(--card-shadow) !important;
+  }
+
+  .swal2-container .xivig-swal-title {
+      font-family: 'Inter', sans-serif !important;
+      font-weight: 700 !important;
+      color: var(--text-main) !important;
+  }
+
+  /* Ensure the progress bar matches your Indigo theme */
+  .swal2-timer-progress-bar {
+      background: var(--elite-primary) !important;
+  }

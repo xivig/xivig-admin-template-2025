@@ -1,0 +1,91 @@
+/* FAQ Wrapper Container */
+.faq-wrap {
+    border: 1px solid var(--card-border);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    background: var(--card-bg);
+    border-radius: var(--elite-radius);
+
+    &:hover {
+        box-shadow: var(--card-shadow-hover) !important;
+        transform: translateY(-2px);
+    }
+}
+
+/* Accordion Customization */
+.accordion-flush {
+    .accordion-item {
+        border-bottom: 1px solid var(--card-border);
+        background: transparent;
+
+        &:last-child {
+            border-bottom: 0;
+        }
+    }
+
+    .accordion-button {
+        background-color: transparent;
+        color: var(--text-main);
+        font-size: 0.95rem;
+        letter-spacing: -0.01em;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        padding: 1.25rem 1.5rem;
+
+        /* Remove the default focus ring */
+        &:focus {
+            box-shadow: none;
+            background-color: var(--elite-primary-soft);
+        }
+
+        /* Active State (Opened) */
+        &:not(.collapsed) {
+            color: var(--elite-primary);
+            background-color: var(--elite-primary-soft);
+
+            &::after {
+                filter: brightness(0) invert(1) hue-rotate(210deg) saturate(500%);
+            }
+        }
+
+        /* Hover State */
+        &:hover {
+            background-color: var(--bg-subtle);
+        }
+    }
+
+    .accordion-body {
+        font-size: 0.9rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+        background-color: transparent;
+        padding: 0 1.5rem 1.5rem;
+    }
+}
+
+/* Icon Box Styling */
+.bg-primary-subtle,
+.bg-success-subtle {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+}
+
+/* Subtle animation when hovering over a category title */
+h5:hover span {
+    transform: rotate(-10deg) scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .faq-wrap {
+        padding: 1.5rem !important;
+    }
+
+    .accordion-button {
+        padding: 1rem !important;
+        font-size: 0.9rem;
+    }
+}

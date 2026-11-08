@@ -1,0 +1,68 @@
+/* Typography Design System */
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Tracking & Spacing */
+.letter-spacing-1 {
+    letter-spacing: 1.5px;
+}
+
+.tracking-tighter {
+    letter-spacing: -2px;
+}
+
+/* Elite Headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--text-main);
+    /* Deep Slate vs Pure Black */
+    font-weight: 700;
+}
+
+/* Soft Color Utilities */
+.bg-warning-soft {
+    background-color: var(--elite-warning-soft) !important;
+}
+
+.text-warning {
+    color: var(--elite-warning) !important;
+}
+
+.bg-primary-soft {
+    background-color: var(--elite-primary-soft) !important;
+}
+
+.text-primary-soft-text {
+    color: var(--elite-primary) !important;
+}
+
+/* Quote Styling */
+.blockquote {
+    border: none;
+    padding: 0;
+    color: var(--text-main);
+}
+
+.italic {
+    font-style: italic;
+}
+
+/* Descriptions */
+dt {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+}
+
+dd {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-main);
+}

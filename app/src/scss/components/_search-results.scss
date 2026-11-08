@@ -1,0 +1,21 @@
+@use "../base/mixins" as *;
+
+// search result
+#searchResults {
+    transition: all 0.3s ease;
+    min-height: 200px;
+    /* Prevents layout shift */
+}
+
+.result-item {
+    transition: background-color 0.2s ease;
+}
+
+.result-item:hover {
+    background-color: var(--bg-subtle) !important;
+}
+
+.menu-icon * {
+    pointer-events: none;
+    /* Icons won't steal the click from the parent button */
+}

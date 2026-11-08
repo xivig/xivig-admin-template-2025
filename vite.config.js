@@ -9,38 +9,52 @@ import handlebars from 'vite-plugin-handlebars';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const getHtmlEntries = () => {
-  const entries = {};
-  const files = fs.readdirSync(__dirname);
-  files.forEach(file => {
-    if (file.endsWith('.html') && file !== 'index.html') {
-      const name = path.parse(file).name;
-      entries[name] = path.resolve(__dirname, file);
-    }
-  });
-  // Ensure index is included as 'index' instead of 'main' to avoid conflicts
-  entries['index'] = path.resolve(__dirname, 'index.html');
+// Helper to find all HTML files recursively
+const getHtmlEntries = (baseDir) => {
+  let entries = {};
+  
+  // 1. Add root index.html
+  if (fs.existsSync(path.join(baseDir, 'index.html'))) {
+    entries['index'] = path.resolve(baseDir, 'index.html');
+  }
+
+  // 2. Scan app/pages recursively
+  const scanDir = (dir, prefix = 'pages') => {
+    if (!fs.existsSync(dir)) return;
+    const items = fs.readdirSync(dir, { withFileTypes: true });
+    items.forEach(item => {
+      if (item.isDirectory()) {
+        scanDir(path.join(dir, item.name), path.join(prefix, item.name));
+      } else if (item.name.endsWith('.html')) {
+        const name = path.join(prefix, path.parse(item.name).name).replace(/\\/g, '/');
+        entries[name] = path.resolve(dir, item.name);
+      }
+    });
+  };
+
+  scanDir(path.join(baseDir, 'app/pages'));
+
   return entries;
 };
 
 export default defineConfig({
-  base: './', // 👈 Ensures relative paths for assets
+  // Root is current directory
+  base: '/', 
   plugins: [
     handlebars({
-      partialDirectory: path.resolve(__dirname, 'src/partials'),
+      partialDirectory: path.resolve(__dirname, 'app/src/partials'),
     }),
   ],
   css: {
     preprocessorOptions: {
       scss: {
-        // This is the key to stopping the "310 repetitive warnings"
         quietDeps: true,
-        // This explicitly silences the modern deprecation warnings you're seeing
         silenceDeprecations: [
           'import',
           'global-builtin',
           'color-functions',
-          'if-function'
+          'if-function',
+          'mixed-decls'
         ],
       },
     },
@@ -48,27 +62,18 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
-    // Prevent Vite from clearing the folder if Gulp is also writing there
     emptyOutDir: true,
     chunkSizeWarningLimit: 2000,
     rollupOptions: {
-      input: {
-        ...getHtmlEntries(),
-        // Vendor CSS Bundle
-        vendors: path.resolve(__dirname, 'src/scss/vendors.scss'),
-        // Master CSS Bundle
-        main: path.resolve(__dirname, 'src/scss/main.scss'),
-        // Components CSS Bundle
-        components: path.resolve(__dirname, 'src/scss/components-bundle.scss'),
-        // Custom Logic
-        custom_scripts: path.resolve(__dirname, 'src/main.js'),
-      },
+      input: getHtmlEntries(__dirname),
       output: {
-        // This keeps the filenames clean in the dist folder
         entryFileNames: `assets/[name].js`,
         chunkFileNames: `assets/[name].js`,
         assetFileNames: `assets/[name].[ext]`,
         manualChunks(id) {
+          if (id.includes('node_modules/jquery/') || id.includes('app/src/scripts/core/jquery-setup.js')) {
+            return 'vendor-jquery';
+          }
           if (id.includes('node_modules')) {
             if (id.includes('echarts') || id.includes('zrender')) {
               return 'vendor-echarts';
@@ -93,9 +98,8 @@ export default defineConfig({
   },
   resolve: {
     alias: {
-      // This allows you to use @use "bootstrap" without path headaches
       '~bootstrap': path.resolve(__dirname, 'node_modules/bootstrap'),
-      'jquery': path.resolve(__dirname, 'src/jquery-shim.js'),
+      '@': path.resolve(__dirname, 'app/src'),
     }
   },
   server: {

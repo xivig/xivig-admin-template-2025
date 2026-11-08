@@ -1,0 +1,15 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+// System Metrics Specific Styles
+.metric-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--elite-dark);
+}
+
+#realtimeChart {
+    background: var(--elite-dark);
+    border-radius: 1rem;
+    padding: 1rem;
+}

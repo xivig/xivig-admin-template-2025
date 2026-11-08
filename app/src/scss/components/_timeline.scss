@@ -1,0 +1,111 @@
+/* Unique Elite Timeline - Final Build */
+.elite-timeline {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* The Vertical Spine */
+.elite-timeline::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    /* Gradient starts and ends at the dot centers */
+    background: linear-gradient(to bottom, transparent, var(--card-border) 5%, var(--card-border) 95%, transparent);
+    top: 20px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+}
+
+/* Timeline Item Base */
+.timeline-item {
+    position: relative;
+    width: 50%;
+    padding: 10px 40px;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+/* Dots */
+.timeline-dot {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: var(--card-bg);
+    border: 3px solid var(--elite-primary);
+    border-radius:50%;
+    top: 28px;
+    /* Aligned with the card title */
+    z-index: 3;
+    transition: all 0.3s ease;
+}
+
+/* Left/Right Alignment */
+.left {
+    align-self: flex-start;
+}
+
+.right {
+    align-self: flex-end;
+}
+
+.left .timeline-dot {
+    right: -8px;
+}
+
+.right .timeline-dot {
+    left: -8px;
+}
+
+/* Date Styling - Consistent Placement */
+.timeline-date {
+    display: block;
+    font-weight: 700;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+/* Elite Card Style */
+.timeline-content {
+    background: var(--card-bg);
+    border-radius:var(--elite-radius-md) !important;
+    border: 1px solid var(--card-border) !important;
+    transition: var(--transition-elite);
+    box-shadow: var(--card-shadow) !important;
+}
+
+.timeline-content:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--card-shadow-hover) !important;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+    .elite-timeline::after {
+        left: 20px;
+        transform: none;
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 45px;
+        padding-right: 15px;
+        align-self: flex-start !important;
+    }
+
+    .timeline-dot {
+        left: 12px !important;
+    }
+
+    .left .timeline-dot {
+        right: auto;
+    }
+}

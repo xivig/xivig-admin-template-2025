@@ -1,0 +1,226 @@
+@use "shared" as *;
+
+/* ==========================================================================
+   ELITE MOBILE OVERRIDES - ADMIN LAYOUT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    // 1. Core Layout Adjustments
+    .main {
+        margin-left: 0 !important;
+        margin-top: 0 !important;    // Override .mt-5 from HTML
+        padding-top: 55px !important; // Match mobile header height
+        padding-bottom: 10px !important; // Allow for margin below content
+    }
+
+    .main__container {
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        padding-bottom: 0 !important;
+
+        // Apply mt-1 margin (0.25rem) as requested for the element above the footer
+        & > *:last-child {
+            margin-bottom: 0.25rem !important;
+        }
+    }
+
+    // 2. Elite Header (Mobile)
+    .header {
+        left: 0 !important;
+        height: 55px !important;
+        padding: 0 10px;
+
+        &__search-input {
+            width: 100px !important;
+            &:focus {
+                width: 130px !important;
+            }
+        }
+    }
+
+    // Standardized Page Header (Top Spacing Fix)
+    .page-header {
+        margin: 0 -10px 15px -10px !important; // Flush to top and edges
+        padding: 12px 10px !important;
+        border-radius: 0 !important; // Square top for flush look
+        
+        &__title {
+            font-size: 1.15rem !important;
+            margin-bottom: 2px !important;
+        }
+
+        .breadcrumb {
+            margin-bottom: 0 !important;
+            font-size: 0.75rem;
+        }
+    }
+
+    // 3. Optimized Cards (Spacing Fix)
+    .card {
+        @include card-elite-mobile;
+        margin-bottom: 12px !important;
+
+        // Reset margin for the last card specifically
+        &:last-of-type {
+            margin-bottom: 0 !important; 
+        }
+
+        .card-body {
+            padding: 12px !important;
+        }
+    }
+
+    // Footer Mobile Adjustment (Visibility Fix)
+    .footer {
+        position: static !important;
+        display: flex !important;
+        flex-direction: column !important;  // Stack for better mobile alignment
+        align-items: center !important;     // Horizontal centering
+        justify-content: center !important; // Vertical centering
+        text-align: center !important;
+        width: 100% !important;             // Strict width
+        max-width: 100% !important;
+        margin: 0.5rem 0 75px 0 !important; // mt-2 (0.5rem), mb-bottom-nav
+        padding: 20px !important;           // 20px small padding
+        background: transparent !important;
+        border-top: 1px solid var(--card-border) !important;
+        box-sizing: border-box !important;  // Prevent width issues
+        left: auto !important;
+        right: auto !important;
+
+        &__container, &__box {
+            width: 100% !important;
+            max-width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        &__text {
+            font-size: 0.8rem !important;
+            margin-bottom: 0 !important;
+            line-height: 1.4 !important;
+        }
+    }
+
+    // Row Gaps
+
+    // 4. Mobile-Elite Typography
+    h1, .h1 { font-size: 1.75rem; }
+    h2, .h2 { font-size: 1.5rem; }
+    h3, .h3 { font-size: 1.25rem; }
+
+    // 5. Elite Bottom Navigation (Mobile Exclusive)
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 65px;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(0, 0, 0, 0.05);
+        z-index: 2000;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 10px;
+
+        [data-bs-theme="dark"] & {
+            background: rgba(15, 23, 42, 0.8);
+            border-top-color: rgba(255, 255, 255, 0.05);
+        }
+
+        &__item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.7rem;
+            font-weight: 500;
+            gap: 4px;
+            transition: var(--transition-elite);
+
+            i {
+                font-size: 1.2rem;
+            }
+
+            &.active {
+                color: var(--elite-primary);
+            }
+        }
+    }
+
+    // 6. Sidebar Mobile Behavior
+    .sidebar {
+        width: 85% !important;
+        max-width: 300px;
+        z-index: 3000;
+        
+        &.open {
+            transform: translateX(0);
+        }
+
+        &__close {
+            display: block !important;
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 1.5rem;
+        }
+    }
+
+    // Overlay for sidebar
+    .sidebar-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 2500;
+        
+        &.active {
+            display: block;
+        }
+    }
+
+    // 7. Ecommerce Mobile Fixes
+    .cart-item {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 1.5rem !important;
+        
+        & > div {
+            width: 100% !important;
+            justify-content: space-between !important;
+        }
+
+        .text-end {
+            text-align: left !important;
+        }
+    }
+
+    .summary-card {
+        position: static !important;
+        margin-top: 2rem;
+    }
+
+    // 8. Scrollable Tabs (Mobile)
+    .custom-tabs {
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        padding-bottom: 5px;
+        -webkit-overflow-scrolling: touch;
+        
+        &::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .nav-link {
+            white-space: nowrap !important;
+        }
+    }
+}

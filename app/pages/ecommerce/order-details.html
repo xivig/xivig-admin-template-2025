@@ -1,0 +1,103 @@
+{{#> admin-layout title="Order Details" parentTitle="Ecommerce" }}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="h3 fw-black mb-1 text-dark">Order Details</h2>
+        <p class="text-muted small mb-0">Viewing details for order #ORD-7891</p>
+    </div>
+    <div>
+        <a href="ecommerce-orders.html" class="btn btn-secondary px-3 py-2 fw-bold shadow-sm rounded-pill me-2">
+            <i class="fa-solid fa-arrow-left me-2"></i> Back to Orders
+        </a>
+        <a href="edit-order.html" class="btn btn-primary px-4 py-2 fw-bold shadow-primary rounded-pill">
+            <i class="bi bi-pencil-square me-2"></i> Edit Order
+        </a>
+    </div>
+</div>
+
+<div class="row g-4">
+    <!-- Left Column: Order Details -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white border-0 py-3 d-flex justify-content-between align-items-center">
+                <h5 class="fw-bold mb-0">Order #ORD-7891</h5>
+                <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Completed</span>
+            </div>
+            <div class="card-body p-4">
+                <h6 class="fw-bold text-dark mb-3">Products Ordered</h6>
+                <table class="table table-borderless">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="d-flex">
+                                    <img src="/app/src/images/product-1.jpg" class="rounded-3" width="60" alt="Product">
+                                    <div class="ms-3">
+                                        <h6 class="fw-bold text-dark mb-1">Laptop Pro X</h6>
+                                        <p class="text-muted small mb-0">SKU: LPX-1001</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="text-center text-muted">x 1</td>
+                            <td class="text-end fw-bold text-dark">$1,299.00</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <div class="row text-end">
+                    <div class="col-md-8">
+                        <p class="text-muted mb-2">Subtotal:</p>
+                        <p class="text-muted mb-2">Shipping:</p>
+                        <p class="text-muted mb-2">Tax (10%):</p>
+                        <h5 class="fw-black text-dark mt-3 mb-0">Total:</h5>
+                    </div>
+                    <div class="col-md-4">
+                        <p class="fw-medium text-dark mb-2">$1,180.91</p>
+                        <p class="fw-medium text-dark mb-2">$0.00</p>
+                        <p class="fw-medium text-dark mb-2">$118.09</p>
+                        <h5 class="fw-black text-dark mt-3 mb-0">$1,299.00</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer bg-white border-0 p-4 text-center">
+                 <button class="btn btn-outline-secondary btn-sm"><i class="bi bi-file-earmark-arrow-down me-2"></i> Download Invoice</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Right Column: Customer & Shipping -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 mb-4">
+            <div class="card-header bg-white border-0 py-3">
+                <h5 class="fw-bold mb-0">Customer</h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="avatar bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 45px; height: 45px;">EW</div>
+                    <div>
+                        <h6 class="fw-bold text-dark mb-0">Emma Wilson</h6>
+                        <p class="text-muted extra-small mb-0">12 previous orders</p>
+                    </div>
+                </div>
+                <ul class="list-unstyled small text-muted">
+                    <li class="mb-2"><i class="bi bi-envelope-fill me-2 text-primary"></i> emma.w@example.com</li>
+                    <li><i class="bi bi-telephone-fill me-2 text-primary"></i> +1 234 567 890</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-header bg-white border-0 py-3">
+                <h5 class="fw-bold mb-0">Shipping Information</h5>
+            </div>
+            <div class="card-body p-4">
+                <h6 class="fw-bold text-dark small">Shipping Address</h6>
+                <p class="text-muted small">123 Main St, Anytown, USA, 12345</p>
+                <hr>
+                <h6 class="fw-bold text-dark small">Billing Address</h6>
+                <p class="text-muted small">Same as shipping address</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

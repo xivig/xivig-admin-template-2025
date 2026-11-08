@@ -1,0 +1,27 @@
+// Sub-directories
+@forward "auth/auth-shared";
+@forward "auth/auth-page";
+@forward "error/error-pages";
+@forward "error/error-404";
+@forward "error/error-503";
+@forward "error/error-legacy";
+
+// General Pages
+@forward "admin-settings";
+@forward "landing";
+@forward "maintenance";
+@forward "gallery";
+@forward "price";
+@forward "faq";
+@forward "sitemap";
+@forward "invoice";
+@forward "kanban";
+@forward "chat";
+@forward "inbox";
+@forward "help-support";
+@forward "analytics";
+@forward "calendar";
+@forward "system-metrics";
+@forward "dashboard-v2";
+
+

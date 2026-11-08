@@ -1,0 +1,34 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* ============================
+   Forms & Inputs
+   ============================ */
+
+.form-control, .form-select {
+    border: 1px solid var(--card-border);
+    padding: 0.6rem 1rem;
+    transition: var(--transition-elite);
+    background-color: var(--card-bg);
+    color: var(--text-main);
+    border-radius:var(--elite-radius-xs);
+
+    &:focus {
+        background-color: var(--card-bg);
+        border-color: var(--elite-primary);
+        box-shadow: 0 0 0 0.25rem var(--xivig-primary-glow);
+        outline: 0;
+        color: var(--text-main);
+    }
+
+    &::placeholder {
+        color: var(--text-muted);
+        opacity: 0.6;
+    }
+}
+
+[data-bs-theme="dark"] {
+    .form-control, .form-select {
+        background-color: rgba(var(--card-bg-rgb), 0.5);
+    }
+}

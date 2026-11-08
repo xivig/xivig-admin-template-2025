@@ -1,0 +1,295 @@
+/* --- Theme Consistency Fixes --- */
+.card {
+    background-color: var(--card-bg) !important;
+    border-color: var(--card-border) !important;
+    color: var(--text-main);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.bg-white {
+    background-color: var(--card-bg) !important;
+
+    &.progress-bar {
+        background-color: #fff !important;
+    }
+}
+
+.bg-light {
+    background-color: var(--bg-body) !important;
+}
+
+.border-light {
+    border-color: var(--card-border) !important;
+}
+
+.text-dark {
+    color: var(--text-main) !important;
+}
+
+.text-muted {
+    color: var(--text-muted) !important;
+}
+
+[data-bs-theme="dark"] {
+    .border-white,
+    .border-light {
+        border-color: var(--card-border) !important;
+    }
+
+    .bg-white.bg-opacity-10 {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+    }
+
+    .bg-white.bg-opacity-20 {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    .bg-white.bg-opacity-50 {
+        background-color: rgba(255, 255, 255, 0.15) !important;
+    }
+
+    .breadcrumb-item+.breadcrumb-item::before {
+        color: var(--text-muted);
+    }
+
+    .table,
+    .table-dark {
+        --bs-table-color: var(--text-main);
+        --bs-table-bg: transparent;
+        --bs-table-border-color: var(--card-border);
+        --bs-table-striped-bg: rgba(255, 255, 255, 0.02);
+        --bs-table-hover-bg: rgba(255, 255, 255, 0.04);
+        border-color: var(--card-border);
+
+        thead,
+        thead tr,
+        thead th,
+        &.table-dark thead,
+        &.table-dark tr,
+        &.table-dark th,
+        .bg-light,
+        .bg-light-subtle {
+            background-color: var(--bg-subtle) !important;
+            color: var(--text-muted) !important;
+            border-bottom-color: var(--card-border) !important;
+            --bs-table-bg: var(--bg-subtle) !important;
+        }
+    }
+
+    .btn-light,
+    .btn-light-subtle,
+    .btn-light-soft,
+    .btn-outline-light {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            color: #fff !important;
+        }
+    }
+
+    .btn-outline-light {
+        background-color: transparent !important;
+        
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05) !important;
+        }
+    }
+
+    .btn-white {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+
+        &:hover {
+            background-color: #fff !important;
+            color: #000 !important;
+        }
+    }
+
+    .dropdown-menu {
+        background-color: var(--card-bg);
+        border-color: var(--card-border);
+        color: var(--text-main);
+    }
+
+    .dropdown-item {
+        color: var(--text-main);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+    }
+
+    input,
+    select,
+    textarea {
+        background-color: rgba(255, 255, 255, 0.05) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+
+        &::placeholder {
+            color: var(--text-muted) !important;
+        }
+
+        // Fix for native dropdown list
+        option {
+            background-color: var(--bg-body);
+            color: var(--text-main);
+        }
+    }
+
+    /* Fix for Searchable Dropdowns & Custom Selects (Common Classes) */
+    .select2-dropdown,
+    .select2-container--default .select2-results__option,
+    .select2-container--default .select2-selection--single,
+    .select2-container--default .select2-selection--multiple,
+    .select2-container--default .select2-search--dropdown .select2-search__field {
+        background-color: var(--card-bg) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main) !important;
+    }
+
+    .select2-container--default .select2-results__option--highlighted[aria-selected],
+    .select2-container--default .select2-results__option[aria-selected=true] {
+        background-color: var(--elite-primary) !important;
+        color: #fff !important;
+    }
+
+    /* Flatpickr Dark Mode Fix */
+    .flatpickr-calendar {
+        background: var(--card-bg) !important;
+        border-color: var(--card-border) !important;
+        box-shadow: var(--card-shadow) !important;
+        color: var(--text-main) !important;
+
+        .flatpickr-day {
+            color: var(--text-main) !important;
+
+            &.today {
+                border-color: var(--elite-primary) !important;
+            }
+
+            &.selected,
+            &:hover {
+                background: var(--elite-primary) !important;
+                border-color: var(--elite-primary) !important;
+                color: #fff !important;
+            }
+
+            &.flatpickr-disabled,
+            &.notAllowed {
+                color: var(--text-muted) !important;
+                opacity: 0.3;
+            }
+        }
+
+        .flatpickr-months,
+        .flatpickr-weekdays,
+        span.flatpickr-weekday {
+            background: transparent !important;
+            color: var(--text-main) !important;
+            fill: var(--text-main) !important;
+        }
+
+        .numInputWrapper span.arrowUp:after { border-bottom-color: var(--text-muted); }
+        .numInputWrapper span.arrowDown:after { border-top-color: var(--text-muted); }
+    }
+
+    /* Timedropper Dark Mode */
+    .td-overlay, .td-clock {
+        background-color: var(--card-bg) !important;
+        color: var(--text-main) !important;
+    }
+
+    /* Pickr Dark Mode */
+    .pcr-app {
+        background: var(--card-bg) !important;
+        border: 1px solid var(--card-border) !important;
+        box-shadow: var(--card-shadow) !important;
+
+        .pcr-interaction input {
+            background: var(--bg-subtle) !important;
+            color: var(--text-main) !important;
+            border: 1px solid var(--card-border) !important;
+        }
+    }
+
+    /* Accordion Dark Mode */
+    .accordion-item {
+        background-color: var(--card-bg);
+        border-color: var(--card-border);
+        color: var(--text-main);
+    }
+
+    .accordion-button {
+        background-color: transparent;
+        color: var(--text-main);
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        &:not(.collapsed) {
+            background-color: rgba(var(--elite-primary-rgb), 0.1);
+            color: var(--elite-primary);
+            box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--card-border);
+
+            &::after {
+                filter: brightness(0) invert(1) hue-rotate(210deg) saturate(500%);
+            }
+        }
+
+        &::after {
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+        }
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
+
+    .accordion-body {
+        background-color: transparent;
+        color: var(--text-muted);
+    }
+
+    /* Collapsible Content */
+    .collapse-content {
+        background: var(--bg-subtle) !important;
+        border-color: var(--card-border) !important;
+        color: var(--text-main);
+    }
+}
+
+/* --- Theme-Aware Utilities --- */
+.bg-primary-light {
+    background-color: rgba(99, 102, 241, 0.1) !important;
+}
+
+.bg-success-light {
+    background-color: rgba(16, 185, 129, 0.1) !important;
+}
+
+.bg-info-light {
+    background-color: rgba(14, 165, 233, 0.1) !important;
+}
+
+.bg-warning-light {
+    background-color: rgba(245, 158, 11, 0.1) !important;
+}
+
+.bg-danger-light {
+    background-color: rgba(239, 68, 68, 0.1) !important;
+}
+
+.bg-light-subtle {
+    background-color: var(--bg-subtle) !important;
+}
+
+[data-bs-theme="dark"] .bg-light {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+}

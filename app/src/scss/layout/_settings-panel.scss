@@ -1,0 +1,183 @@
+@use "../base/variables"as *;
+@use "../base/mixins"as *;
+
+.settings-panel {
+    border: none;
+    width: 350px !important;
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    z-index: 3500 !important;
+    color: var(--text-main);
+
+    &__header {
+        position: relative !important;
+        display: block !important;
+        padding: 30px 25px !important;
+        background: var(--bg-subtle);
+        border-bottom: 1px solid var(--card-border);
+        min-height: 90px;
+        transition: background 0.3s ease;
+
+        [data-bs-theme="dark"] & {
+            background: rgba(255, 255, 255, 0.02) !important;
+            border-bottom-color: rgba(255, 255, 255, 0.05) !important;
+        }
+    }
+
+    &__title-wrapper {
+        display: flex;
+        flex-direction: column;
+        padding-right: 40px;
+    }
+
+    &__title {
+        font-weight: 800;
+        color: var(--elite-primary);
+        margin: 0;
+        letter-spacing: -0.5px;
+        line-height: 1.2;
+    }
+
+    &__subtitle {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: var(--text-muted);
+        font-weight: 600;
+        margin-top: 4px;
+    }
+
+    &__close {
+        position: absolute !important;
+        top: 20px;
+        right: 20px;
+        background: var(--xivig-input-bg) !important;
+        border: 1px solid var(--card-border) !important;
+        width: 36px;
+        height: 36px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 10005 !important;
+
+        i {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            line-height: 1;
+            display: block;
+            pointer-events: none;
+        }
+
+        &:hover {
+            background: var(--elite-primary) !important;
+            transform: rotate(90deg) scale(1.1);
+            border-color: var(--elite-primary) !important;
+            
+            i {
+                color: #ffffff;
+            }
+        }
+    }
+
+    &__body {
+        padding: 25px;
+    }
+
+    &__section {
+        margin-bottom: 30px;
+
+        &-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-main);
+        }
+    }
+
+    &__group {
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    &__btn {
+        &--outline {
+            border: 1px solid var(--card-border) !important;
+            background: var(--xivig-input-bg);
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 10px;
+            @include transition;
+
+            &:hover {
+                background: var(--bg-body);
+                color: var(--text-main);
+            }
+        }
+    }
+
+    // Handle Checked States
+    .btn-check:checked+&__btn--outline {
+        background-color: var(--elite-primary) !important;
+        border-color: var(--elite-primary) !important;
+        color: $white !important;
+        box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+
+    &__icon-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+    }
+
+    &__icon-label {
+        height: 45px;
+        @include center-flex;
+        border: 1px solid var(--card-border);
+        background: var(--xivig-input-bg);
+        border-radius: 8px;
+        cursor: pointer;
+        color: var(--text-muted);
+        @include transition;
+
+        &:hover {
+            border-color: var(--elite-primary);
+            color: var(--elite-primary);
+            background: var(--bg-body);
+        }
+    }
+
+    .btn-check:checked+&__icon-label {
+        background: rgba(99, 102, 241, 0.1);
+        border-color: var(--elite-primary);
+        color: var(--elite-primary);
+    }
+
+    &__footer {
+        padding-top: 20px;
+        border-top: 1px solid var(--card-border);
+    }
+
+    &__reset-btn {
+        width: 100%;
+        padding: 14px;
+        border-radius: 12px;
+        border: none;
+        background: var(--elite-danger);
+        color: $white;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        @include transition;
+
+        &:hover {
+            background: darken(#ef4444, 5%);
+            box-shadow: 0 5px 15px rgba(239, 68, 68, 0.2);
+        }
+    }
+}

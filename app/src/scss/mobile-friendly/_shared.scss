@@ -1,0 +1,18 @@
+@use "../base/tokens";
+@use "../base/variables" as vars;
+@use "../base/mixins" as *;
+
+// Mobile Design Tokens
+$mobile-padding: 15px;
+$touch-target: 44px;
+$bottom-nav-height: 60px;
+
+@mixin mobile-container {
+    padding-left: $mobile-padding;
+    padding-right: $mobile-padding;
+}
+
+@mixin card-elite-mobile {
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}

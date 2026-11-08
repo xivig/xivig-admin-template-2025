@@ -1,0 +1,70 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* ============================
+   Stat Cards
+   ============================ */
+.stat-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border-radius:var(--elite-radius-md);
+    border: 1px solid var(--card-border);
+    box-shadow: var(--card-shadow);
+    height: 100%;
+    transition: var(--transition-elite);
+
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--card-shadow-hover);
+        border-color: var(--xivig-primary-glow);
+    }
+
+    &__body {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__value {
+        font-weight: 700;
+        margin-bottom: 0.25rem;
+        color: var(--text-main);
+    }
+
+    &__label {
+        color: var(--text-muted);
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    &__icon {
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        border-radius:var(--elite-radius-xs);
+        transition: var(--transition-elite);
+
+        &--info {
+            color: var(--elite-info) !important;
+            background: var(--elite-info-soft);
+        }
+
+        &--danger {
+            color: var(--elite-danger) !important;
+            background: var(--elite-danger-soft);
+        }
+
+        &--primary {
+            color: var(--elite-primary) !important;
+            background: var(--elite-primary-soft);
+        }
+
+        &--success {
+            color: var(--elite-success) !important;
+            background: var(--elite-success-soft);
+        }
+    }
+}

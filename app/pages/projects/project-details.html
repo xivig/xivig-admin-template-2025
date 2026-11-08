@@ -1,0 +1,164 @@
+{{#> admin-layout title="Project Details" parentTitle="Projects" }}
+
+<div class="row g-4">
+    <!-- Project Header Info -->
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+            <div class="d-flex align-items-center justify-content-between mb-4">
+                <div class="d-flex align-items-center">
+                    <div class="icon-shape bg-soft-primary text-primary rounded-3 me-3 p-3">
+                        <i class="bi bi-laptop fs-3"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-black mb-1">Elite Dashboard UI</h3>
+                        <p class="text-muted small mb-0"><i class="bi bi-person me-1"></i> XIVIG Corp • <i class="bi bi-calendar-event ms-2 me-1"></i> Created Oct 12, 2025</p>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <span class="badge bg-success-subtle text-success px-4 py-2 rounded-pill fw-bold mb-2">In Progress</span>
+                    <div class="small fw-bold text-muted">75% Complete</div>
+                </div>
+            </div>
+
+            <div class="progress mb-4" style="height: 8px;">
+                <div class="progress-bar bg-success" role="progressbar" style="width: 75%"></div>
+            </div>
+
+            <h5 class="fw-bold mb-3">Project Description</h5>
+            <p class="text-secondary lh-lg mb-4">
+                The Elite Dashboard UI project aims to redefine the administrative experience for XIVIG's next-generation applications. 
+                Our focus is on blending high-performance data visualization with a minimalist "Glassmorphism" aesthetic. 
+                The current phase involves finalizing the modular SCSS architecture and integrating advanced ApexCharts modules.
+            </p>
+
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <div class="p-3 border rounded-3 bg-light">
+                        <p class="text-muted small fw-bold text-uppercase mb-1">Budget</p>
+                        <h5 class="fw-black mb-0">$12,500.00</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded-3 bg-light">
+                        <p class="text-muted small fw-bold text-uppercase mb-1">Deadline</p>
+                        <h5 class="fw-black mb-0">Dec 15, 2026</h5>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 border rounded-3 bg-light">
+                        <p class="text-muted small fw-bold text-uppercase mb-1">Spent</p>
+                        <h5 class="fw-black mb-0 text-danger">$8,240.00</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project Tasks -->
+        <div class="card border-0 shadow-sm rounded-4 p-4">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h5 class="fw-black mb-0">Recent Tasks</h5>
+                <button class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-bold"><i class="bi bi-plus-lg me-1"></i> Add Task</button>
+            </div>
+            <div class="list-group list-group-flush">
+                <div class="list-group-item px-0 py-3 border-bottom d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox" checked>
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold text-decoration-line-through text-muted">Refactor Sidebar Scss</h6>
+                            <span class="extra-small text-muted">Completed by Admin</span>
+                        </div>
+                    </div>
+                    <span class="badge bg-light text-dark border extra-small">Core</span>
+                </div>
+                <div class="list-group-item px-0 py-3 border-bottom d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Integrate ApexCharts</h6>
+                            <span class="extra-small text-muted">Assigned to Developer</span>
+                        </div>
+                    </div>
+                    <span class="badge bg-light text-dark border extra-small">UI</span>
+                </div>
+                <div class="list-group-item px-0 py-3 border-bottom d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center">
+                        <div class="form-check me-3">
+                            <input class="form-check-input" type="checkbox">
+                        </div>
+                        <div>
+                            <h6 class="mb-0 fw-bold">Setup Vite Bundler for Production</h6>
+                            <span class="extra-small text-muted">Pending Review</span>
+                        </div>
+                    </div>
+                    <span class="badge bg-light text-dark border extra-small">DevOps</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sidebar Stats/Team -->
+    <div class="col-lg-4">
+        <div class="card border-0 shadow-sm rounded-4 p-4 mb-4">
+            <h5 class="fw-black mb-4">Project Team</h5>
+            <div class="d-flex flex-column gap-3">
+                <div class="d-flex align-items-center">
+                    <img src="/app/src/images/chat-img1.jpg" class="rounded-circle me-3" width="45" height="45">
+                    <div>
+                        <h6 class="mb-0 fw-bold">Sarah Connor</h6>
+                        <p class="text-muted extra-small mb-0">Project Manager</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-circle ms-auto"><i class="bi bi-envelope"></i></button>
+                </div>
+                <div class="d-flex align-items-center">
+                    <img src="/app/src/images/chat-img2.jpg" class="rounded-circle me-3" width="45" height="45">
+                    <div>
+                        <h6 class="mb-0 fw-bold">John Doe</h6>
+                        <p class="text-muted extra-small mb-0">UI Architect</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-circle ms-auto"><i class="bi bi-envelope"></i></button>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="avatar-placeholder rounded-circle bg-soft-info text-info fw-bold d-flex align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">AM</div>
+                    <div>
+                        <h6 class="mb-0 fw-bold">Alex Miller</h6>
+                        <p class="text-muted extra-small mb-0">Frontend Dev</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-circle ms-auto"><i class="bi bi-envelope"></i></button>
+                </div>
+            </div>
+            <button class="btn btn-light w-100 rounded-pill mt-4 fw-bold border">Manage Team</button>
+        </div>
+
+        <div class="card border-0 shadow-sm rounded-4 p-4">
+            <h5 class="fw-black mb-4">Attachments</h5>
+            <div class="list-group list-group-flush">
+                <a href="#" class="list-group-item list-group-item-action px-0 py-3 border-bottom d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center text-dark">
+                        <i class="bi bi-file-pdf fs-4 text-danger me-3"></i>
+                        <div>
+                            <h6 class="mb-0 fw-bold small">Style-Guide.pdf</h6>
+                            <span class="extra-small text-muted">2.4 MB</span>
+                        </div>
+                    </div>
+                    <i class="bi bi-download text-muted"></i>
+                </a>
+                <a href="#" class="list-group-item list-group-item-action px-0 py-3 border-bottom d-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center text-dark">
+                        <i class="bi bi-file-earmark-zip fs-4 text-primary me-3"></i>
+                        <div>
+                            <h6 class="mb-0 fw-bold small">Design-Assets.zip</h6>
+                            <span class="extra-small text-muted">45.8 MB</span>
+                        </div>
+                    </div>
+                    <i class="bi bi-download text-muted"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

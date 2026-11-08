@@ -1,0 +1,107 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+// Dashboard v2 Specific Styles
+.dashboard-v2 {
+    h1, h2, h3 {
+        font-family: 'Sora', sans-serif;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+    }
+
+    .dashboard-card {
+        background: var(--card-bg);
+        border-radius: 1rem;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+        overflow: hidden;
+        transition: transform .3s ease, box-shadow .3s ease;
+        height: 100%;
+
+        &:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+        }
+    }
+
+    .dashboard-header {
+        background: var(--elite-soft);
+        border-bottom: 1px solid var(--card-border);
+        color: var(--elite-primary);
+        padding: 1rem 1.25rem;
+        font-weight: 700;
+        font-size: 0.95rem;
+        font-family: 'Sora', sans-serif;
+    }
+
+    .chart-container {
+        height: 280px;
+        padding: 1rem;
+    }
+
+    /* Elite Analytics Card */
+    .card-elite {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        border-radius: 28px;
+        padding: 24px;
+        transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.03);
+        height: 100%;
+        text-align: center;
+
+        &:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(15, 23, 42, 0.08);
+            border-color: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    .chart-box {
+        position: relative;
+        margin: 0 auto;
+        height: 220px; // Matched to script
+        width: 100%;
+    }
+
+    .stat-label {
+        font-family: 'Sora', sans-serif;
+        font-weight: 700;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+        color: #1e293b;
+    }
+
+    .stat-meta {
+        font-size: 0.85rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .trend-up {
+        color: #10b981;
+    }
+
+    .trend-down {
+        color: #ef4444;
+    }
+
+    .fade-in {
+        animation: dashboardFadeIn .8s ease forwards;
+    }
+}
+
+@keyframes dashboardFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

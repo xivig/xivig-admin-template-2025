@@ -1,0 +1,44 @@
+/* Modern Icon List Styles */
+.fa-hover {
+    transition: var(--transition-elite);
+    cursor: pointer;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+}
+
+.fa-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--card-shadow-hover);
+    background-color: var(--elite-primary) !important;
+    border-color: var(--elite-primary) !important;
+}
+
+.fa-hover:hover .icon-preview {
+    background-color: rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
+}
+
+.fa-hover:hover .icon-class {
+    color: #fff !important;
+}
+
+.icon-preview {
+    transition: all 0.2s ease;
+    background-color: var(--bg-subtle);
+}
+
+/* Elite Scrollbar specifically for this page */
+#iconContainer {
+    max-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+#iconContainer::-webkit-scrollbar {
+    width: 4px;
+}
+
+#iconContainer::-webkit-scrollbar-thumb {
+    background: var(--elite-primary);
+    border-radius: 10px;
+}

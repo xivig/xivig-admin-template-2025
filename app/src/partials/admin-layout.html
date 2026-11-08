@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> head title=title }}
+</head>
+
+<body class="d-flex flex-column min-vh-100" data-bs-spy="scroll" data-bs-target="#blog-toc" data-bs-offset="100">
+
+    <a href="#main-content" class="skip-link px-3 py-2 bg-primary text-white position-absolute start-0 top-0 translate-middle-y z-index-1000 visually-hidden-focusable">Skip to main content</a>
+
+    {{> preloader }}
+
+    {{> header }}
+
+    {{> sidebar }}
+
+    {{> right-sidebar }}
+
+    <main id="main-content" class="main" role="main">
+        <div id="main-container" class="main__container container-fluid {{containerClass}}">
+            
+            <!-- Elite Architect Page Header -->
+            <div id="section-header" class="page-header shadow-sm animate__animated animate__fadeIn">
+                <div class="d-md-flex align-items-center justify-content-between">
+                    <div>
+                        <h2 id="page-title" class="page-header__title mb-1">{{title}}</h2>
+                        <p id="page-subtitle" class="page-header__subtitle text-muted mb-0 small">
+                            {{#if subtitle}}{{subtitle}}{{else}}Management and monitoring of {{title}}{{/if}}
+                        </p>
+                    </div>
+                    <nav class="page-header__nav mt-3 mt-md-0" aria-label="breadcrumb">
+                        <ol class="breadcrumb mb-0">
+                            <li class="breadcrumb-item">
+                                <a href="/index.html"><i class="bi bi-house-door me-1"></i>Home</a>
+                            </li>
+                            {{#if parentTitle}}
+                            <li class="breadcrumb-item">
+                                <a href="#">{{parentTitle}}</a>
+                            </li>
+                            {{/if}}
+                            <li class="breadcrumb-item active" aria-current="page">{{title}}</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content Stage -->
+            <div class="main__stage">
+                {{> @partial-block }}
+            </div>
+
+        </div>
+    </main>
+
+    {{> footer }}
+
+    {{> mobile-nav }}
+
+    {{> scripts }}
+
+</body>
+
+</html>

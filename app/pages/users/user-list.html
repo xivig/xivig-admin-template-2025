@@ -1,0 +1,177 @@
+{{#> admin-layout title="User List" parentTitle="Users" }}
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Total Users</p>
+                    <h3 class="fw-black mb-0">1,284</h3>
+                    <span class="text-success extra-small fw-bold">+42 this week</span>
+                </div>
+                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3">
+                    <i class="bi bi-people fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Developers</p>
+                    <h3 class="fw-black mb-0">86</h3>
+                    <span class="text-info extra-small fw-bold">12 On Bench</span>
+                </div>
+                <div class="icon-shape bg-info-light text-info rounded-3 p-3">
+                    <i class="bi bi-code-slash fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Total Clients</p>
+                    <h3 class="fw-black mb-0">412</h3>
+                    <span class="text-warning extra-small fw-bold">8 New Leads</span>
+                </div>
+                <div class="icon-shape bg-warning-light text-warning rounded-3 p-3">
+                    <i class="bi bi-person-badge fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Roles</p>
+                    <h3 class="fw-black mb-0">412</h3>
+                    <span class="text-danger extra-small fw-bold">8 modes</span>
+                </div>
+                <div class="icon-shape bg-danger-subtle text-danger rounded-3 p-3">
+                    <i class="bi bi-list-stars fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 mt-4 has-table">
+    <div class="card-header bg-white py-4 border-0">
+        <div class="row align-items-center g-3">
+            <div class="col-md-4">
+                <h5 class="fw-black text-dark mb-0">User Management</h5>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <div class="d-flex gap-2 justify-content-md-end">
+                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0"
+                        style="max-width: 300px;">
+                        <span class="input-group-text bg-transparent border-0"><i
+                                class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent shadow-none small"
+                            placeholder="Search users...">
+                    </div>
+                    <button class="btn btn-dark btn-sm rounded-3 px-4 fw-bold" onclick="location.href='user-add.html'">
+                        <i class="bi bi-person-plus me-2"></i> Add User
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive pb-5">
+        <table class="table table-hover align-middle mb-0" id="usersTable">
+            <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
+                <tr>
+                    <th class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Email</th>
+                    <th>Status</th>
+                    <th>Joined Date</th>
+                    <th class="text-end pe-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="/app/src/images/chat-img1.jpg" class="rounded-circle me-3" width="40" height="40">
+                            <div>
+                                <h6 class="mb-0 fw-bold">Sarah Connor</h6>
+                                <p class="text-muted extra-small mb-0">@sarah.c</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-info-subtle text-info px-3 py-2 rounded-pill small">Developer</span></td>
+                    <td><span class="small">sarah.connor@example.com</span></td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">Active</span>
+                    </td>
+                    <td><span class="small text-muted">Oct 12, 2024</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button"
+                                data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item py-2" href="user-edit.html"><i
+                                            class="bi bi-pencil-square me-2 opacity-50"></i> Edit User</a></li>
+                                <li><a class="dropdown-item py-2" href="user-details.html"><i
+                                            class="bi bi-eye me-2 opacity-50"></i> View Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item py-2 text-danger" href="#"><i
+                                            class="bi bi-person-x me-2"></i> Suspend</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar-placeholder rounded-circle bg-soft-warning text-warning fw-bold d-flex align-items-center justify-content-center me-3"
+                                style="width: 40px; height: 40px;">JW</div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">John Wick</h6>
+                                <p class="text-muted extra-small mb-0">@wick.j</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill small">Client</span>
+                    </td>
+                    <td><span class="small">john.wick@high-table.com</span></td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">Active</span>
+                    </td>
+                    <td><span class="small text-muted">Jan 05, 2025</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button"
+                                data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item py-2" href="user-edit.html"><i
+                                            class="bi bi-pencil-square me-2 opacity-50"></i> Edit User</a></li>
+                                <li><a class="dropdown-item py-2" href="user-details.html"><i
+                                            class="bi bi-eye me-2 opacity-50"></i> View Profile</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item py-2 text-danger" href="#"><i
+                                            class="bi bi-person-x me-2"></i> Suspend</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{/admin-layout}}

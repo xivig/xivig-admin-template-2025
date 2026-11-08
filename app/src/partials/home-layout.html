@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> home-head title=title }}
+</head>
+
+<body class="home-layout {{bodyClass}}" data-bs-spy="scroll" data-bs-target="#mainNav">
+
+    {{> preloader }}
+
+    {{#unless hideHeader}}
+    {{> home-header }}
+    {{/unless}}
+
+    <main {{#unless hideHeader}}class="pt-5 mt-5"{{/unless}}>
+        {{> @partial-block }}
+    </main>
+
+    {{#unless hideFooter}}
+    {{> home-footer }}
+    {{/unless}}
+
+    {{> home-scripts }}
+
+</body>
+
+</html>

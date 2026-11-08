@@ -1,0 +1,113 @@
+{{#> admin-layout title="Add User" parentTitle="Users" }}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="card-header bg-white py-4 px-5 border-0">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h4 class="fw-black text-dark mb-1">Create New User</h4>
+                        <p class="text-muted small mb-0">Onboard a new developer or client to the platform</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
+                        <i class="bi bi-arrow-left me-2"></i> Back
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body p-5 pt-0">
+                <form id="addUserForm">
+                    <div class="row g-4">
+                        <!-- Profile Image -->
+                        <div class="col-12 text-center mb-4">
+                            <div class="position-relative d-inline-block">
+                                <div class="icon-shape bg-light rounded-circle border p-5" style="width: 120px; height: 120px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-camera text-muted fs-2"></i>
+                                </div>
+                                <button type="button" class="btn btn-primary btn-sm rounded-circle position-absolute bottom-0 end-0 border-white border-3" style="width: 35px; height: 35px; display: flex; align-items: center; justify-content: center;">
+                                    <i class="bi bi-plus-lg"></i>
+                                </button>
+                            </div>
+                            <p class="text-muted small mt-2">Upload Profile Picture</p>
+                        </div>
+
+                        <!-- Basic Info -->
+                        <div class="col-md-6">
+                            <label class="apple-label">Full Name</label>
+                            <input type="text" class="form-control modern-input" placeholder="e.g. John Doe" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Email Address</label>
+                            <input type="email" class="form-control modern-input" placeholder="e.g. john@example.com" required>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Username</label>
+                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
+                                <span class="input-group-text bg-light border-0 px-3">@</span>
+                                <input type="text" class="form-control border-0 shadow-none py-2" placeholder="johndoe">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">User Role</label>
+                            <select class="form-select modern-input">
+                                <option selected>Select Role</option>
+                                <option value="developer">Developer</option>
+                                <option value="client">Client</option>
+                                <option value="admin">Administrator</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Password</label>
+                            <input type="password" class="form-control modern-input" placeholder="Minimum 8 characters">
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Confirm Password</label>
+                            <input type="password" class="form-control modern-input" placeholder="Repeat password">
+                        </div>
+
+                        <div class="col-12">
+                            <label class="apple-label">Biography / Notes</label>
+                            <textarea class="form-control modern-input" rows="4" placeholder="Brief professional summary..."></textarea>
+                        </div>
+
+                        <div class="col-md-12">
+                            <label class="apple-label">Account Permissions</label>
+                            <div class="row g-2 pt-2">
+                                <div class="col-md-4">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="permProjects" checked>
+                                        <label class="form-check-label small" for="permProjects">Access Projects</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="permFinance">
+                                        <label class="form-check-label small" for="permFinance">View Financials</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="permSupport" checked>
+                                        <label class="form-check-label small" for="permSupport">Customer Support</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 border-top pt-4 mt-5 text-end">
+                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary">Create Account</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

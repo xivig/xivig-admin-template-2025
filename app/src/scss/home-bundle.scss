@@ -1,0 +1,18 @@
+/* ==========================================================================
+   XIVIG ELITE - HOME BUNDLE (LANDING)
+   ========================================================================== */
+
+@use "base/tokens";
+@use "base/variables" as vars;
+@use "base/mixins" as *;
+@use "../../../node_modules/bootstrap/scss/bootstrap";
+
+@use "base";
+@use "layout/header";
+@use "layout/footer";
+@use "layout/preloader";
+@use "pages/landing";
+@use "utilities";
+
+// MOBILE OVERRIDES
+@use "mobile-friendly/home";

@@ -1,0 +1,237 @@
+{{#> admin-layout title="Account Onboarding" }}
+
+<div class="onboarding-module">
+    <div class="card card-onboarding">
+        <!-- Header -->
+        <div
+            class="px-4 py-4 d-flex flex-column flex-md-row align-items-md-center justify-content-between border-bottom">
+            <div class="mb-3 mb-md-0">
+                <div class="h4 mb-0 brand-gradient">Xivig — Account Onboarding</div>
+                <p class="text-muted small mb-0">Complete your profile to unlock full dashboard potential</p>
+            </div>
+            <div class="progress-container">
+                <div class="d-flex justify-content-between mb-1">
+                    <span class="small text-muted fw-bold">Setup Progress</span>
+                    <span class="small text-primary fw-bold" id="progressPercent">0%</span>
+                </div>
+                <div class="progress-elite">
+                    <i class="progress-bar-elite"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-row">
+            <div class="tab-item active" data-step="1">
+                <div class="tab-badge">1</div>
+                <div>
+                    <div class="tab-title">Account</div>
+                    <div class="tab-meta">Identity basics</div>
+                </div>
+            </div>
+
+            <div class="tab-item" data-step="2">
+                <div class="tab-badge">2</div>
+                <div>
+                    <div class="tab-title">Billing</div>
+                    <div class="tab-meta">Payment info</div>
+                </div>
+            </div>
+
+            <div class="tab-item" data-step="3">
+                <div class="tab-badge">3</div>
+                <div>
+                    <div class="tab-title">Preferences</div>
+                    <div class="tab-meta">System behavior</div>
+                </div>
+            </div>
+
+            <div class="tab-item" data-step="4">
+                <div class="tab-badge">4</div>
+                <div>
+                    <div class="tab-title">Review</div>
+                    <div class="tab-meta">Final check</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content -->
+        <div class="tab-content-area">
+            <!-- Step 1 -->
+            <div class="tab-pane-step active" data-step="1">
+                <h5 class="fw-bold mb-4">Step 1: Account Information</h5>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label">Username</label>
+                        <input id="username" type="text" class="form-control" placeholder="Unique ID"
+                            value="Valerie_Architect">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Email Address</label>
+                        <input id="email" type="email" class="form-control" value="valerie@xivig.com">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">First Name</label>
+                        <input id="firstName" class="form-control" value="Valerie">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Last Name</label>
+                        <input id="lastName" class="form-control" value="Luna">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Organization</label>
+                        <input id="org" class="form-control" value="Elite Dev Core">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Primary Location</label>
+                        <input id="location" class="form-control" value="San Francisco, CA">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Phone Number</label>
+                        <input id="phone" class="form-control" value="+1 (555) 123-4567">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Date of Birth</label>
+                        <input id="birthday" type="date" class="form-control" value="1988-06-10">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end mt-5 pt-3 border-top">
+                    <button class="btn btn-light rounded-pill px-4 me-2" id="skipToBilling">Skip Billing</button>
+                    <button class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" data-action="next">Continue <i
+                            class="bi bi-arrow-right ms-2"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="tab-pane-step" data-step="2">
+                <h5 class="fw-bold mb-4">Step 2: Billing & Subscriptions</h5>
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <label class="form-label">Name on Card</label>
+                        <input id="cardName" class="form-control" placeholder="Full name" value="Valerie Luna">
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Card Number</label>
+                        <input id="cardNumber" class="form-control" value="4444 3333 2222 1111">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Expiry Month</label>
+                        <select id="expMonth" class="form-select">
+                            <option selected>06</option>
+                            <option>12</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Expiry Year</label>
+                        <select id="expYear" class="form-select">
+                            <option selected>2024</option>
+                            <option>2026</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">CVV</label>
+                        <input id="cvv" type="password" class="form-control" value="123">
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-5 pt-3 border-top">
+                    <button class="btn btn-light rounded-pill px-4" data-action="prev"><i
+                            class="bi bi-arrow-left me-2"></i> Back</button>
+                    <button class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" data-action="next">Verify & Next
+                        <i class="bi bi-arrow-right ms-2"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="tab-pane-step" data-step="3">
+                <h5 class="fw-bold mb-4">Step 3: System Preferences</h5>
+                <p class="text-muted mb-4">Customize how you interact with the Xivig ecosystem.</p>
+                <div class="row g-3">
+                    <div class="col-12">
+                        <div class="card bg-light border-0 rounded-4 p-4">
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="pref1" checked>
+                                <label class="form-check-label fw-bold" for="pref1">Real-time Analytics
+                                    Notifications</label>
+                            </div>
+                            <div class="form-check form-switch mb-3">
+                                <input class="form-check-input" type="checkbox" id="pref2" checked>
+                                <label class="form-check-label fw-bold" for="pref2">Weekly Performance Reports</label>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="pref3">
+                                <label class="form-check-label fw-bold" for="pref3">Beta Feature Access</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-5 pt-3 border-top">
+                    <button class="btn btn-light rounded-pill px-4" data-action="prev"><i
+                            class="bi bi-arrow-left me-2"></i> Back</button>
+                    <button class="btn btn-primary rounded-pill px-5 fw-bold shadow-sm" data-action="next">Review <i
+                            class="bi bi-arrow-right ms-2"></i></button>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="tab-pane-step" data-step="4">
+                <h5 class="fw-bold mb-4">Step 4: Final Verification</h5>
+                <p class="text-muted small mb-4">Please review your profile details before submission.</p>
+
+                <div class="card border-0 bg-light-subtle p-3 mb-4 rounded-4">
+                    <div class="summary-line">
+                        <div>Username</div>
+                        <div id="s-username"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Full Name</div>
+                        <div id="s-name"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Date of Birth</div>
+                        <div id="s-bday"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Organization</div>
+                        <div id="s-org"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Location</div>
+                        <div id="s-location"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Email</div>
+                        <div id="s-email"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Phone</div>
+                        <div id="s-phone"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Card Name</div>
+                        <div id="s-card-name"></div>
+                    </div>
+                    <div class="summary-line">
+                        <div>Card Reference</div>
+                        <div id="s-card-num"></div>
+                    </div>
+                    <div class="summary-line border-0">
+                        <div>Primary Contact</div>
+                        <div id="s-email-alt">Same as Login</div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <button class="btn btn-light rounded-pill px-4" data-action="prev"><i
+                            class="bi bi-arrow-left me-2"></i> Back</button>
+                    <button class="btn btn-success rounded-pill px-5 fw-bold shadow-lg" id="submitBtn">Finalize
+                        Profile</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

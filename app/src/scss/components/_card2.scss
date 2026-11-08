@@ -1,0 +1,179 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* ============================
+   Card Variations & Helpers
+   ============================ */
+
+.extra-small {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.timestamp {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.flex-content-wrapper {
+    min-width: 0;
+    flex: 1 1 auto;
+}
+
+.row-section {
+    margin-bottom: 2.5rem;
+}
+
+@media (max-width: 767.98px) {
+    .action-buttons {
+        opacity: 1;
+    }
+
+    .text-truncate-mobile {
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        line-height: 1.4;
+    }
+}
+
+/* Style Variations (Status Outlines) */
+.card-outline-primary {
+    border: 2px solid var(--elite-primary);
+    background: var(--elite-soft);
+}
+
+.card-outline-success {
+    border: 2px solid var(--elite-success);
+    background: var(--elite-success-soft);
+}
+
+.card-outline-danger {
+    border: 2px solid var(--elite-danger);
+    background: var(--elite-danger-soft);
+}
+
+/* Category & Metadata */
+.category-badge {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--card-bg);
+    backdrop-filter: blur(5px);
+    padding: 5px 12px;
+    border-radius:var(--elite-radius-pill);
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-main);
+    text-transform: uppercase;
+    z-index: 2;
+    border: 1px solid var(--card-border);
+}
+
+.author-info {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid var(--card-border);
+}
+
+.author-initials {
+    width: 32px;
+    height: 32px;
+    background: var(--elite-gradient);
+    color: var(--white);
+    border-radius:50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.read-more-btn {
+    color: var(--elite-primary);
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: gap 0.3s ease;
+
+    &:hover {
+        gap: 10px;
+        color: var(--elite-primary);
+        filter: brightness(1.2);
+    }
+}
+
+/* Image Overlays */
+.img-overlay-grad {
+    background: linear-gradient(to top, rgba(var(--black-rgb, 0,0,0), 0.8) 0%, transparent 100%);
+    border-radius:var(--elite-radius-xl);
+}
+
+.card-footer-custom {
+    padding: 0 1.5rem 1.5rem;
+    background: transparent;
+    border: none;
+}
+
+/* Placeholder box from Xivig section */
+.placeholder-box {
+    background: var(--bg-subtle);
+    border-radius:var(--elite-radius-lg);
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--elite-primary);
+    font-size: 2rem;
+    transition: var(--transition-elite);
+    border: 1px solid var(--card-border);
+}
+
+/* Custom Pill Styling */
+.custom-pills {
+    background: var(--bg-subtle);
+    padding: 6px;
+    border-radius:var(--elite-radius-sm);
+    display: inline-flex;
+    border: 1px solid var(--card-border);
+
+    .nav-link {
+        color: var(--text-muted);
+        font-weight: 600;
+        font-size: 0.875rem;
+        padding: 8px 20px;
+        border-radius:var(--elite-radius-xs);
+        transition: var(--transition-elite);
+
+        &.active {
+            background: var(--card-bg) !important;
+            color: var(--elite-primary) !important;
+            box-shadow: var(--card-shadow);
+        }
+    }
+}
+
+/* Floating Badge for Editorial Cards */
+.badge-float {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    backdrop-filter: blur(8px);
+    background: var(--card-bg);
+    color: var(--text-main);
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius:var(--elite-radius-sm);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,124 @@
+{{#> admin-layout title="Create Order" parentTitle="Ecommerce" }}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="h3 fw-black mb-1 text-dark">Create New Order</h2>
+        <p class="text-muted small mb-0">Fill out the form below to add a new order.</p>
+    </div>
+    <a href="ecommerce-orders.html" class="btn btn-secondary px-4 py-2 fw-bold shadow-sm rounded-pill">
+        <i class="fa-solid fa-arrow-left me-2"></i> Back to Orders
+    </a>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4">
+    <div class="card-body p-4">
+        <form id="createOrderForm">
+            <div class="row g-3">
+                <!-- Customer Information -->
+                <div class="col-md-6">
+                    <h5 class="fw-bold mb-3">Customer Details</h5>
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Customer Name</label>
+                        <input type="text" class="form-control" id="customerName" placeholder="Enter full name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="customerEmail" placeholder="e.g., mail@example.com" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="shippingAddress" class="form-label">Shipping Address</label>
+                        <textarea class="form-control" id="shippingAddress" rows="3" placeholder="Enter shipping address"></textarea>
+                    </div>
+                </div>
+
+                <!-- Order Details -->
+                <div class="col-md-6">
+                    <h5 class="fw-bold mb-3">Order Information</h5>
+                    <div class="mb-3">
+                        <label for="orderStatus" class="form-label">Order Status</label>
+                        <select class="form-select" id="orderStatus">
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="completed">Completed</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="orderTotal" class="form-label">Total Amount</label>
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input type="number" class="form-control" id="orderTotal" placeholder="0.00" required>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Products -->
+                <div class="col-12">
+                    <h5 class="fw-bold mb-3">Products</h5>
+                    <div id="product-items">
+                        <div class="row g-3 align-items-center product-item mb-3">
+                            <div class="col-md-5">
+                                <input type="text" class="form-control" placeholder="Product Name">
+                            </div>
+                            <div class="col-md-2">
+                                <input type="number" class="form-control" placeholder="Qty" value="1">
+                            </div>
+                            <div class="col-md-3">
+                                <input type="number" class="form-control" placeholder="Price">
+                            </div>
+                            <div class="col-md-2">
+                                <button type="button" class="btn btn-danger btn-sm remove-product-item w-100">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" id="addProductItem" class="btn btn-outline-primary btn-sm mt-2">Add Product</button>
+                </div>
+            </div>
+
+            <div class="mt-4 text-end">
+                <button type="submit" class="btn btn-primary px-5 py-2 fw-bold shadow-primary rounded-pill">Create Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        const addProductBtn = document.getElementById('addProductItem');
+        const productItemsContainer = document.getElementById('product-items');
+
+        addProductBtn.addEventListener('click', () => {
+            const newItem = document.createElement('div');
+            newItem.classList.add('row', 'g-3', 'align-items-center', 'product-item', 'mb-3');
+            newItem.innerHTML = `
+                <div class="col-md-5">
+                    <input type="text" class="form-control" placeholder="Product Name">
+                </div>
+                <div class="col-md-2">
+                    <input type="number" class="form-control" placeholder="Qty" value="1">
+                </div>
+                <div class="col-md-3">
+                    <input type="number" class="form-control" placeholder="Price">
+                </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-danger btn-sm remove-product-item w-100">Remove</button>
+                </div>
+            `;
+            productItemsContainer.appendChild(newItem);
+        });
+
+        productItemsContainer.addEventListener('click', (e) => {
+            if (e.target.classList.contains('remove-product-item')) {
+                e.target.closest('.product-item').remove();
+            }
+        });
+
+        document.getElementById('createOrderForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Handle form submission logic, e.g., via AJAX
+            alert('Order created successfully!');
+        });
+    });
+</script>
+
+{{/admin-layout}}

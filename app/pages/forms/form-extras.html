@@ -1,0 +1,291 @@
+{{#> admin-layout title="Form Extras" parentTitle="Forms" }}
+
+<div class="form-adv-module">
+    <!-- Page Header -->
+    <div class="row g-4 mb-4">
+        <div class="col-12">
+            <div class="glass-card p-5 text-center shadow-sm border-0 position-relative overflow-hidden">
+                <div class="position-absolute top-0 start-0 w-100 h-100 opacity-10"
+                    style="background: radial-gradient(circle at 20% 20%, var(--bs-primary) 0%, transparent 40%);"></div>
+                <h2 class="display-5 fw-bold mb-2">Advanced Form Extras</h2>
+                <p class="text-muted lead mb-0">Elite components for complex data entry and visualization.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Input Masks Section -->
+        <div class="col-lg-6">
+            <div class="card-box h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape bg-primary-light text-primary rounded-3 p-3 me-3">
+                            <i class="bi bi-input-cursor-fw fs-4"></i>
+                        </div>
+                        <h4 class="fw-bold mb-0">Input Masks</h4>
+                    </div>
+                    <button class="btn btn-link btn-collapse p-0 text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseInputMasks">
+                        <i class="bi bi-chevron-up"></i>
+                    </button>
+                </div>
+                
+                <div class="collapse show" id="collapseInputMasks">
+                    <p class="text-muted small mb-4">Formatted input fields with automatic masking using Cleave.js.</p>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="apple-label">Date (MM/DD/YYYY)</label>
+                            <input type="text" class="form-control modern-input" id="maskDate" placeholder="MM/DD/YYYY"/>
+                        </div>
+                        <div class="col-12">
+                            <label class="apple-label">Phone Number (US)</label>
+                            <input type="text" class="form-control modern-input" id="maskPhone" placeholder="(999) 999-9999"/>
+                        </div>
+                        <div class="col-12">
+                            <label class="apple-label">Credit Card</label>
+                            <input type="text" class="form-control modern-input" id="maskCreditCard" placeholder="9999-9999-9999-9999"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="apple-label">Tax ID</label>
+                            <input type="text" class="form-control modern-input" id="maskTaxId" placeholder="99-9999999"/>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="apple-label">Serial Number</label>
+                            <input type="text" class="form-control modern-input text-uppercase" id="maskSerial" placeholder="AAA-999-AAA"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Color Studio Section -->
+        <div class="col-lg-6">
+            <div class="card-box h-100">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape bg-info-light text-info rounded-3 p-3 me-3">
+                            <i class="bi bi-palette fs-4"></i>
+                        </div>
+                        <h4 class="fw-bold mb-0">Color Studio</h4>
+                    </div>
+                    <button class="btn btn-link btn-collapse p-0 text-decoration-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapseColorPickers">
+                        <i class="bi bi-chevron-up"></i>
+                    </button>
+                </div>
+
+                <div class="collapse show" id="collapseColorPickers">
+                    <p class="text-muted small mb-4">Modern color selection with multi-theme Pickr integration.</p>
+                    <div class="row g-4">
+                        <div class="col-md-6">
+                            <label class="apple-label">Classic Palette</label>
+                            <div class="p-3 border rounded-4 bg-light d-flex align-items-center">
+                                <div id="classicPickr"></div>
+                                <input type="text" class="form-control border-0 bg-transparent fw-bold ms-2" value="#5367CE" readonly/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="apple-label">Monolith Theme</label>
+                            <div class="p-3 border rounded-4 bg-light d-flex align-items-center">
+                                <div id="monolithPickr"></div>
+                                <input type="text" class="form-control border-0 bg-transparent fw-bold ms-2" value="#E91E63" readonly/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="apple-label">Nano Minimal</label>
+                            <div class="p-3 border rounded-4 bg-light d-flex align-items-center">
+                                <div id="nanoPickr"></div>
+                                <input type="text" class="form-control border-0 bg-transparent fw-bold ms-2" value="#FF9800" readonly/>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="apple-label">Alpha Channel</label>
+                            <div class="p-3 border rounded-4 bg-light d-flex align-items-center">
+                                <div id="opacityPickr"></div>
+                                <input type="text" class="form-control border-0 bg-transparent fw-bold ms-2 small" value="rgba(156, 39, 176, 1)" readonly/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Date & Time Pickers Section -->
+        <div class="col-12">
+            <div class="card-box">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape bg-success-light text-success rounded-3 p-3 me-3">
+                            <i class="bi bi-calendar-event fs-4"></i>
+                        </div>
+                        <h4 class="fw-bold mb-0">Precision Chronology</h4>
+                    </div>
+                </div>
+                
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <label class="apple-label">Full Timestamp</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-3">
+                                <i class="bi bi-clock text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control modern-input border-start-0" id="pickerDateTime" placeholder="Select date & time"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label">Standard Date</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-3">
+                                <i class="bi bi-calendar3 text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control modern-input border-start-0" id="pickerDate" placeholder="Select date"/>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label">Isolated Time</label>
+                        <div class="input-group">
+                            <span class="input-group-text bg-white border-end-0 rounded-start-3">
+                                <i class="bi bi-alarm text-primary"></i>
+                            </span>
+                            <input type="text" class="form-control modern-input border-start-0" id="pickerTime" placeholder="Select time"/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="apple-label">Range Architect (Start)</label>
+                        <input type="text" class="form-control modern-input" id="pickerStart" placeholder="Entry Point"/>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="apple-label">Range Architect (End)</label>
+                        <input type="text" class="form-control modern-input" id="pickerEnd" placeholder="Exit Point"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Range Sliders Section -->
+        <div class="col-12">
+            <div class="card-box">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape bg-warning-light text-warning rounded-3 p-3 me-3">
+                            <i class="bi bi-sliders fs-4"></i>
+                        </div>
+                        <h4 class="fw-bold mb-0">Elite Range Sliders</h4>
+                    </div>
+                </div>
+
+                <div class="row g-5 py-3">
+                    <div class="col-md-4">
+                        <label class="apple-label fw-bold">Valuation Range</label>
+                        <div class="slider-container">
+                            <input type="range" class="range-slider" min="200" max="800" value="200" id="sliderPrice"/>
+                            <div class="slider-tooltip" id="tooltipPrice">$200</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label fw-bold">Efficiency Scale</label>
+                        <div class="slider-container">
+                            <input type="range" class="range-slider" min="0" max="100" value="50" id="sliderPercentage"/>
+                            <div class="slider-tooltip" id="tooltipPercentage">50%</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label fw-bold">User Demographics</label>
+                        <div class="slider-container">
+                            <input type="range" class="range-slider" min="18" max="99" value="25" id="sliderAge"/>
+                            <div class="slider-tooltip" id="tooltipAge">25 yrs</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label fw-bold">Thermal Control</label>
+                        <div class="slider-container">
+                            <input type="range" class="range-slider" min="-20" max="50" value="22" id="sliderTemp"/>
+                            <div class="slider-tooltip" id="tooltipTemp">+22°C</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label fw-bold">Schedule Allocation</label>
+                        <div class="slider-container">
+                            <input type="range" class="range-slider" min="0" max="24" value="12" id="sliderTime"/>
+                            <div class="slider-tooltip" id="tooltipTime">12:00</div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="apple-label fw-bold">Memory Utilization</label>
+                        <div class="slider-container">
+                            <input type="range" class="range-slider" min="1" max="128" value="16" id="sliderMemory"/>
+                            <div class="slider-tooltip" id="tooltipMemory">16 GB</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gauge Controls Section -->
+        <div class="col-12">
+            <div class="card-box">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div class="d-flex align-items-center">
+                        <div class="icon-shape bg-danger-light text-danger rounded-3 p-3 me-3">
+                            <i class="bi bi-speedometer fs-4"></i>
+                        </div>
+                        <h4 class="fw-bold mb-0">System Biometrics (Gauges)</h4>
+                    </div>
+                </div>
+
+                <div class="gauge-control-group py-4">
+                    <div class="gauge-item gauge-progress">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="background-circle" cx="50" cy="50" r="45"/>
+                                <circle class="progress-circle" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <div class="gauge-value">0</div>
+                        </div>
+                        <span class="gauge-label">Progress</span>
+                    </div>
+                    <div class="gauge-item gauge-performance">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="background-circle" cx="50" cy="50" r="45"/>
+                                <circle class="progress-circle" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <div class="gauge-value">0</div>
+                        </div>
+                        <span class="gauge-label">Performance</span>
+                    </div>
+                    <div class="gauge-item gauge-score">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="background-circle" cx="50" cy="50" r="45"/>
+                                <circle class="progress-circle" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <div class="gauge-value">0</div>
+                        </div>
+                        <span class="gauge-label">Trust Score</span>
+                    </div>
+                    <div class="gauge-item gauge-temperature">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="background-circle" cx="50" cy="50" r="45"/>
+                                <circle class="progress-circle" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <div class="gauge-value">0</div>
+                        </div>
+                        <span class="gauge-label">Thermal Engine</span>
+                    </div>
+                    <div class="gauge-item gauge-rating">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 100 100">
+                                <circle class="background-circle" cx="50" cy="50" r="45"/>
+                                <circle class="progress-circle" cx="50" cy="50" r="45"/>
+                            </svg>
+                            <div class="gauge-value">0</div>
+                        </div>
+                        <span class="gauge-label">Quality Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

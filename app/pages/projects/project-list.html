@@ -1,0 +1,169 @@
+{{#> admin-layout title="Project List" parentTitle="Projects" }}
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Total Projects</p>
+                    <h3 class="fw-black mb-0">24</h3>
+                    <span class="text-success extra-small fw-bold">+2 this month</span>
+                </div>
+                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3">
+                    <i class="bi bi-briefcase fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Tasks</p>
+                    <h3 class="fw-black mb-0">142</h3>
+                    <span class="text-primary extra-small fw-bold">12 due today</span>
+                </div>
+                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
+                    <i class="bi bi-list-check fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 mt-4 has-table">
+    <div class="card-header bg-white py-4 border-0">
+        <div class="row align-items-center g-3">
+            <div class="col-md-4">
+                <h5 class="fw-black text-dark mb-0">Project Overview</h5>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <div class="d-flex gap-2 justify-content-md-end">
+                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0"
+                        style="max-width: 300px;">
+                        <span class="input-group-text bg-transparent border-0"><i
+                                class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent shadow-none small"
+                            placeholder="Search projects...">
+                    </div>
+                    <button class="btn btn-dark btn-sm rounded-3 px-4 fw-bold"
+                        onclick="location.href='project-add.html'">
+                        <i class="bi bi-plus-lg me-2"></i> New Project
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive pb-5">
+        <table class="table table-hover align-middle mb-0" id="projectsTable">
+            <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
+                <tr>
+                    <th class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
+                    <th>Project Name</th>
+                    <th>Client</th>
+                    <th>Progress</th>
+                    <th>Deadline</th>
+                    <th>Budget</th>
+                    <th>Status</th>
+                    <th class="text-end pe-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="icon-shape bg-soft-primary text-primary rounded-3 me-3 p-2">
+                                <i class="bi bi-laptop fs-5"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Elite Dashboard UI</h6>
+                                <p class="text-muted extra-small mb-0">Internal Project</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="small fw-medium">XIVIG Corp</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
+                                <div class="progress-bar bg-success" style="width: 75%"></div>
+                            </div>
+                            <span class="small fw-bold">75%</span>
+                        </div>
+                    </td>
+                    <td><span class="small text-muted">Dec 15, 2026</span></td>
+                    <td class="fw-black">$12,500</td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">In
+                            Progress</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button"
+                                data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item py-2" href="project-edit.html"><i
+                                            class="bi bi-pencil-square me-2 opacity-50"></i> Edit Project</a></li>
+                                <li><a class="dropdown-item py-2" href="project-details.html"><i
+                                            class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i>
+                                        Archive</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="icon-shape bg-soft-warning text-warning rounded-3 me-3 p-2">
+                                <i class="bi bi-phone fs-5"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Mobile App Design</h6>
+                                <p class="text-muted extra-small mb-0">Client Project</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="small fw-medium">TechFlow Inc</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
+                                <div class="progress-bar bg-warning" style="width: 40%"></div>
+                            </div>
+                            <span class="small fw-bold">40%</span>
+                        </div>
+                    </td>
+                    <td><span class="small text-muted">Jan 20, 2027</span></td>
+                    <td class="fw-black">$8,200</td>
+                    <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill small">Planning</span>
+                    </td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button"
+                                data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item py-2" href="project-edit.html"><i
+                                            class="bi bi-pencil-square me-2 opacity-50"></i> Edit Project</a></li>
+                                <li><a class="dropdown-item py-2" href="project-details.html"><i
+                                            class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i>
+                                        Archive</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{{/admin-layout}}

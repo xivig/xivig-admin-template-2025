@@ -1,0 +1,78 @@
+{{#> admin-layout title="Releases" parentTitle="Pipeline" }}
+
+<div class="row g-4 mb-5">
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4 rounded-4 bg-dark text-white">
+            <p class="small fw-bold text-uppercase opacity-75 mb-1">Latest Stable</p>
+            <h3 class="fw-black mb-1">v2.4.0</h3>
+            <span class="text-success extra-small fw-bold"><i class="bi bi-patch-check me-1"></i> Production
+                Ready</span>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card border-0 shadow-sm p-4 rounded-4 bg-light">
+            <p class="text-muted small fw-bold text-uppercase mb-1">Next Release</p>
+            <h3 class="fw-black mb-1">v2.5.0-rc1</h3>
+            <span class="text-primary extra-small fw-bold">In Testing</span>
+        </div>
+    </div>
+</div>
+
+<div class="timeline-releases">
+    <!-- Release v2.4.0 -->
+    <div class="release-item mb-5">
+        <div class="d-flex align-items-center mb-3">
+            <div class="icon-shape bg-primary text-white rounded-circle p-2 me-3"
+                style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-tag-fill small"></i>
+            </div>
+            <div>
+                <h5 class="fw-black mb-0">Version 2.4.0 <span
+                        class="badge bg-success small ms-2 px-3 rounded-pill extra-small">Latest</span></h5>
+                <p class="text-muted extra-small mb-0">Released on Oct 12, 2025 • <code
+                        class="extra-small">7a1b2c3</code></p>
+            </div>
+        </div>
+        <div class="card border-0 shadow-sm rounded-4 p-4 ms-5">
+            <h6 class="fw-bold mb-3 small">🚀 New Features & Improvements</h6>
+            <ul class="text-secondary small lh-lg">
+                <li><strong>Glassmorphism UI:</strong> Introduced a comprehensive set of glass-style components.</li>
+                <li><strong>Pipeline Module:</strong> New interface for tracking builds, deployments, and releases.</li>
+                <li><strong>Vite 5 Upgrade:</strong> Migrated the entire build pipeline for 30% faster HMR.</li>
+            </ul>
+            <h6 class="fw-bold mt-4 mb-3 small">🐞 Bug Fixes</h6>
+            <ul class="text-secondary small lh-lg">
+                <li>Fixed sidebar overflow issue on mobile devices.</li>
+                <li>Resolved chart resizing bug in Analytics overview.</li>
+            </ul>
+            <div class="mt-4 pt-3 border-top d-flex gap-2">
+                <button class="btn btn-white btn-sm border rounded-pill px-3"><i
+                        class="bi bi-file-earmark-zip me-2"></i>Source Code (zip)</button>
+                <button class="btn btn-white btn-sm border rounded-pill px-3"><i
+                        class="bi bi-book me-2"></i>Documentation</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Release v2.3.9 -->
+    <div class="release-item mb-5">
+        <div class="d-flex align-items-center mb-3">
+            <div class="icon-shape bg-light text-muted rounded-circle p-2 me-3"
+                style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;">
+                <i class="bi bi-tag small"></i>
+            </div>
+            <div>
+                <h5 class="fw-black mb-0 text-muted">Version 2.3.9</h5>
+                <p class="text-muted extra-small mb-0">Released on Sep 28, 2025 • <code
+                        class="extra-small">f2e3d4c</code></p>
+            </div>
+        </div>
+        <div class="card border-0 shadow-sm rounded-4 p-4 ms-5 opacity-75">
+            <h6 class="fw-bold mb-3 small">🔧 Maintenance Update</h6>
+            <p class="text-secondary small">Minor security patches and performance optimizations for the course
+                dashboard modules.</p>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

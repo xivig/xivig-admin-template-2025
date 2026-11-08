@@ -1,0 +1,119 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+// Form Wizard Circles
+.wizard-circle {
+    @include circle(50px);
+    @include center-flex;
+    margin: 0 auto;
+    transition: var(--transition-elite);
+    text-decoration: none;
+    cursor: default;
+    border: 2px solid transparent;
+
+    &.active {
+        transform: scale(1.15);
+        box-shadow: 0 10px 20px var(--xivig-primary-glow);
+    }
+
+    &.done {
+        background-color: var(--elite-success);
+        color: var(--white);
+    }
+
+    &.disabled {
+        pointer-events: none;
+        opacity: 0.6;
+    }
+}
+
+// Form Validation Tweaks
+.form-control.is-invalid {
+    border-color: var(--elite-danger);
+    background-image: none;
+
+    &:focus {
+        box-shadow: 0 0 0 0.25rem var(--elite-danger-soft);
+    }
+}
+
+// Form Pickers Enhancements
+.apple-style-inline {
+    .air-datepicker {
+        width: 100%;
+        border: none;
+        box-shadow: none;
+        background: transparent;
+    }
+
+    .air-datepicker-nav {
+        border: none;
+        padding-top: 0;
+    }
+
+    .air-datepicker-body--cells.-days- {
+        grid-gap: 5px;
+    }
+
+    .air-datepicker-cell.-day-.-other-month- {
+        opacity: 0.3;
+    }
+}
+
+.apple-color-trigger {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border: none;
+    border-radius:10px;
+    cursor: pointer;
+    background: none;
+
+    &::-webkit-color-swatch-wrapper {
+        padding: 0;
+    }
+
+    &::-webkit-color-swatch {
+        border: none;
+        border-radius:var(--elite-radius-xs);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1);
+    }
+}
+
+/* Picker Specific Dark Mode Fixes */
+[data-bs-theme="dark"] {
+    .air-datepicker {
+        --adp-background-color: var(--bg-subtle);
+        --adp-color: var(--text-main);
+        --adp-accent-color: var(--elite-primary);
+        --adp-cell-background-color-hover: var(--elite-soft);
+        --adp-cell-background-color-selected: var(--elite-primary);
+        --adp-border-color: var(--card-border);
+        background: var(--bg-subtle);
+        border-color: var(--card-border);
+        color: var(--text-main);
+    }
+    .air-datepicker-nav--title, .air-datepicker-nav--title i {
+        color: var(--text-main);
+    }
+    .air-datepicker-cell.-day-.-other-month-, .air-datepicker-cell.-year-.-other-decade- {
+        color: var(--text-muted);
+        opacity: 0.4;
+    }
+    
+    /* Timedropper Dark Fix */
+    .td-wrap {
+        background: var(--bg-subtle) !important;
+        border-color: var(--card-border) !important;
+    }
+    .td-clock {
+        background: var(--card-bg) !important;
+        border-color: var(--card-border) !important;
+    }
+    .td-time span {
+        color: var(--text-main) !important;
+    }
+    .td-bullet {
+        background: var(--card-border) !important;
+    }
+}

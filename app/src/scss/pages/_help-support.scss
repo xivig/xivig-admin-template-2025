@@ -1,0 +1,215 @@
+ /* --- UI Utility Classes --- */
+ .fw-800 {
+     font-weight: 800;
+ }
+
+ .fw-500 {
+     font-weight: 500;
+ }
+
+ /* --- Variables & Theme --- */
+ :root {
+     --help-sidebar-bg: var(--card-bg);
+     --help-sidebar-border: rgba(0, 0, 0, 0.05);
+     --help-menu-link: #64748b;
+     --help-faq-gradient: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+     --help-accordion-bg: #fff;
+     --help-accordion-border: #e2e8f0;
+     --help-contact-bg: #fff;
+     --help-footer-card-bg: var(--bg-light);
+     --help-footer-icon-bg: #f0f1f7;
+ }
+
+ [data-bs-theme="dark"] {
+     --help-sidebar-bg: #1e293b;
+     --help-sidebar-border: rgba(255, 255, 255, 0.1);
+     --help-menu-link: #94a3b8;
+     --help-faq-gradient: linear-gradient(135deg, #e2e8f0 0%, #94a3b8 100%);
+     --help-accordion-bg: #1e293b;
+     --help-accordion-border: rgba(255, 255, 255, 0.1);
+     --help-contact-bg: #1e293b;
+     --help-footer-card-bg: rgba(255, 255, 255, 0.03);
+     --help-footer-icon-bg: rgba(255, 255, 255, 0.05);
+ }
+
+ /* --- Sidebar --- */
+ .sidebar-menu {
+     position: sticky;
+     top: 2rem;
+     background: var(--help-sidebar-bg);
+     backdrop-filter: blur(10px);
+     border: 1px solid var(--help-sidebar-border);
+     border-radius: 20px;
+     padding: 1.5rem;
+     box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.05);
+ }
+
+ .menu-link {
+     display: flex;
+     align-items: center;
+     padding: 12px 16px;
+     border-radius: 12px;
+     text-decoration: none;
+     color: var(--help-menu-link);
+     font-weight: 600;
+     margin-bottom: 8px;
+     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+ }
+
+ .menu-link i {
+     font-size: 1.2rem;
+     margin-right: 12px;
+ }
+
+ .menu-link:hover {
+     background: rgba(var(--elite-primary-rgb), 0.05);
+     color: var(--elite-primary);
+     transform: translateX(5px);
+ }
+
+ .menu-link.active {
+     background: var(--elite-primary);
+     color: white;
+     box-shadow: 0 10px 15px -3px rgba(var(--elite-primary-rgb), 0.3);
+ }
+
+ /* --- FAQ & Accordion --- */
+ .faq-title {
+     font-weight: 800;
+     background: var(--help-faq-gradient);
+     -webkit-background-clip: text;
+     -webkit-text-fill-color: transparent;
+ }
+
+ .accordion-item {
+     background: var(--help-accordion-bg);
+     border: 1px solid var(--help-accordion-border) !important;
+     border-radius: 16px !important;
+     margin-bottom: 1rem;
+     overflow: hidden;
+     transition: 0.3s;
+ }
+
+ .accordion-item:hover {
+     border-color: var(--elite-primary) !important;
+     box-shadow: 0 10px 20px -5px rgba(0, 0, 0, 0.03);
+ }
+
+ .accordion-button {
+     padding: 1.25rem 1.5rem;
+     font-weight: 700;
+     color: var(--text-main);
+     background: var(--help-accordion-bg);
+     box-shadow: none !important;
+ }
+
+ .accordion-button:not(.collapsed) {
+     background-color: transparent;
+     color: var(--elite-primary);
+ }
+
+ /* --- Contact Cards --- */
+ .contact-card {
+     background: var(--help-contact-bg);
+     border-radius: 20px;
+     padding: 2rem;
+     border: 1px solid transparent;
+     transition: 0.4s;
+     cursor: pointer;
+     height: 100%;
+ }
+
+ .contact-card:hover {
+     transform: translateY(-8px);
+     border-color: var(--elite-primary);
+     box-shadow: 0 20px 40px -10px rgba(var(--elite-primary-rgb), 0.1);
+ }
+
+ .icon-circle {
+     width: 56px;
+     height: 56px;
+     background: rgba(var(--elite-primary-rgb), 0.1);
+     color: var(--elite-primary);
+     border-radius: 14px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 1.5rem;
+     margin: 0 auto 1.5rem;
+ }
+
+ /* --- Footer Section --- */
+ .contact-footer-card {
+     background: var(--help-footer-card-bg);
+     border-radius: 24px;
+     padding: 3rem 2rem;
+     text-align: center;
+     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+     border: 1px solid var(--card-border);
+     cursor: pointer;
+     height: 100%;
+ }
+
+ .contact-footer-card:hover {
+     transform: translateY(-10px);
+     background: var(--card-bg);
+     border-color: var(--elite-primary);
+     box-shadow: 0 20px 40px -15px rgba(var(--elite-primary-rgb), 0.15);
+ }
+
+ .footer-icon-box {
+     width: 60px;
+     height: 60px;
+     background: var(--help-footer-icon-bg);
+     color: var(--elite-primary);
+     border-radius: 16px;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-size: 1.5rem;
+     margin: 0 auto 1.5rem;
+     transition: 0.3s;
+ }
+
+ .contact-footer-card:hover .footer-icon-box {
+     background: var(--elite-primary);
+     color: white;
+     transform: scale(1.1);
+ }
+
+ /* --- Buttons --- */
+ .btn-glass {
+     backdrop-filter: blur(8px);
+     -webkit-backdrop-filter: blur(8px);
+     transition: all 0.3s ease;
+     &:hover {
+         background: rgba(255, 255, 255, 0.2) !important;
+         transform: translateY(-2px);
+     }
+ }
+
+ .btn-white {
+     background: var(--white);
+     color: var(--elite-primary);
+     &:hover {
+         background: var(--bg-subtle);
+         color: var(--elite-primary);
+     }
+ }
+
+ /* --- Animations --- */
+ .fadeInUp {
+     animation: fadeInUpAnim 0.6s ease backwards;
+ }
+
+ @keyframes fadeInUpAnim {
+     from {
+         opacity: 0;
+         transform: translateY(20px);
+     }
+
+     to {
+         opacity: 1;
+         transform: translateY(0);
+     }
+ }

@@ -1,0 +1,76 @@
+@use "shared" as *;
+
+/* ==========================================================================
+   ELITE MOBILE OVERRIDES - HOME / LANDING LAYOUT
+   ========================================================================== */
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 80px 0 40px;
+        text-align: center;
+
+        &__title {
+            font-size: 2.2rem !important;
+        }
+
+        &__content {
+            padding: 0 15px;
+        }
+
+        &__image-wrapper {
+            margin-top: 30px;
+        }
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+
+    .feature-card {
+        margin-bottom: 20px;
+        text-align: center;
+        padding: 25px !important;
+    }
+
+    // Mobile Navigation (Home)
+    .navbar {
+        padding: 10px 0;
+        
+        .container {
+            @include mobile-container;
+        }
+
+        &-brand img {
+            height: 30px;
+        }
+    }
+
+    // Centering logic for mobile
+    .text-md-start {
+        text-align: center !important;
+    }
+
+    .d-flex.gap-3 {
+        justify-content: center;
+    }
+
+    // Pricing Tables
+    .pricing-card {
+        margin-bottom: 30px;
+        
+        &--featured {
+            transform: none !important;
+        }
+    }
+
+    // Footer Mobile
+    .footer {
+        text-align: center;
+        
+        &__socials {
+            justify-content: center;
+            margin-top: 20px;
+        }
+    }
+}

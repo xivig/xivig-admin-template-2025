@@ -1,0 +1,77 @@
+@use "../base/variables"as *;
+@use "../base/mixins"as *;
+
+/* ================================
+   MAIN LAYOUT ARCHITECTURE
+   =============================== */
+
+.main {
+    // 1. Position & Transition
+    position: relative;
+    display: block;
+    min-height: 100vh;
+    background-color: var(--bg-body);
+    background-image: 
+        radial-gradient(at 0% 0%, rgba(var(--elite-primary-rgb), 0.03) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(var(--elite-success-rgb), 0.03) 0px, transparent 50%);
+    color: var(--text-main);
+    transition: var(--transition-elite);
+    padding-top: $header-height !important;
+    
+    // 2. Default Desktop State (Sidebar Visible)
+    margin-left: $sidebar-width !important;
+    width: auto !important; 
+    
+    // 3. Reset any padding/margin that could cause gaps
+    margin-right: 0 !important;
+    padding-bottom: 3.5rem !important; 
+    overflow-x: hidden !important; 
+}
+
+/* --- Expanded State (Sidebar Collapsed) --- */
+.sidebar--collapsed .main {
+    margin-left: 0 !important;
+    width: 100% !important;
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1200px) {
+    .main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+}
+
+/* --- Main Content Stage --- */
+.main__stage {
+    position: relative;
+    padding: 0.5rem 0;
+    min-height: calc(100vh - 250px);
+    transition: var(--transition-elite);
+}
+
+/* --- Container Interior --- */
+.main__container, .main-container {
+    padding: 1.5rem 2rem;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-left: 1px solid var(--card-border);
+    background: linear-gradient(to bottom, rgba(var(--elite-primary-rgb), 0.01), transparent);
+
+    // Reset margin for the very last element and apply mt-1 spacing above footer
+    & > *:last-child {
+        margin-bottom: 0.25rem !important; // Consistent mt-1 gap
+    }
+}
+
+[data-bs-theme="dark"] .main__container {
+    border-left-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Grid System --- */
+.main__grid {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}

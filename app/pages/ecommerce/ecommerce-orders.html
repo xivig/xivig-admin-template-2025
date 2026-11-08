@@ -1,0 +1,318 @@
+{{#> admin-layout title="Orders" parentTitle="Ecommerce" }}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <div>
+        <h2 class="h3 fw-black mb-1 text-dark">Order Management</h2>
+        <p class="text-muted small mb-0">Track and manage customer orders and fulfillment.</p>
+    </div>
+        <a href="create-order.html" class="btn btn-primary px-4 py-2 fw-bold shadow-primary rounded-pill">
+            <i class="fa-solid fa-plus me-2"></i> Create Order
+        </a>
+</div>
+
+<div class="row g-4 mb-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100 bg-primary text-white position-relative overflow-hidden">
+            <div class="position-absolute top-0 end-0 p-3 opacity-25">
+                <i class="bi bi-box-seam display-1"></i>
+            </div>
+            <div class="position-relative z-1">
+                <p class="small fw-bold text-uppercase mb-1 opacity-75">Total Orders</p>
+                <h3 class="fw-black mb-0">4,289</h3>
+                <span class="extra-small fw-bold">+12.5% this month</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Pending</p>
+                    <h3 class="fw-black mb-0 text-warning">142</h3>
+                </div>
+                <div class="icon-shape bg-warning-light text-warning rounded-3 p-3">
+                    <i class="bi bi-clock-history fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Processing</p>
+                    <h3 class="fw-black mb-0 text-info">85</h3>
+                </div>
+                <div class="icon-shape bg-info-light text-info rounded-3 p-3">
+                    <i class="bi bi-gear-wide-connected fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Completed</p>
+                    <h3 class="fw-black mb-0 text-success">4,062</h3>
+                </div>
+                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
+                    <i class="bi bi-check-circle fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="card-header bg-white py-4 border-0">
+        <div class="row align-items-center g-3">
+            <div class="col-lg-6">
+                <div class="nav nav-pills custom-tabs gap-2" id="orderFilters">
+                    <button class="nav-link active rounded-pill px-4 fw-bold" data-filter="all">All</button>
+                    <button class="nav-link rounded-pill px-4 fw-bold" data-filter="completed">Completed</button>
+                    <button class="nav-link rounded-pill px-4 fw-bold" data-filter="processing">Processing</button>
+                    <button class="nav-link rounded-pill px-4 fw-bold" data-filter="pending">Pending</button>
+                    <button class="nav-link rounded-pill px-4 fw-bold text-danger" data-filter="cancelled">Cancelled</button>
+                </div>
+            </div>
+            <div class="col-lg-6 text-md-end">
+                <div class="d-flex gap-2 justify-content-lg-end">
+                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0" style="max-width: 250px;">
+                        <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search orders...">
+                    </div>
+                    <button class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-sliders me-2"></i>Filters</button>
+                    <button id="exportOrdersBtn" class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted"><i class="bi bi-download me-2"></i>Export</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0" id="ordersTable">
+            <thead class="bg-light-subtle border-bottom">
+                <tr class="text-muted small text-uppercase fw-bold">
+                    <th class="ps-4 py-3" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
+                    <th class="py-3">Order ID</th>
+                    <th class="py-3">Customer</th>
+                    <th class="py-3">Date</th>
+                    <th class="py-3">Status</th>
+                    <th class="py-3">Amount</th>
+                    <th class="text-end pe-4 py-3">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Completed Order -->
+                <tr data-status="completed">
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7891</a></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar bg-success-subtle text-success rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">EW</div>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0">Emma Wilson</h6>
+                                <p class="text-muted extra-small mb-0">emma.w@example.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="d-block fw-medium text-dark">Oct 24, 2026</span>
+                        <span class="text-muted extra-small">09:42 AM</span>
+                    </td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-check-circle-fill me-1"></i> Completed</span></td>
+                    <td class="fw-black text-dark">$1,299.00</td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Processing Order -->
+                <tr data-status="processing">
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7892</a></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <img src="/app/src/images/photo1.jpg" class="rounded-circle me-3 border" width="40" height="40" alt="Avatar">
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0">James Peterson</h6>
+                                <p class="text-muted extra-small mb-0">j.peterson@company.com</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="d-block fw-medium text-dark">Oct 24, 2026</span>
+                        <span class="text-muted extra-small">11:15 AM</span>
+                    </td>
+                    <td><span class="badge bg-info-subtle text-info px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-arrow-repeat me-1"></i> Processing</span></td>
+                    <td class="fw-black text-dark">$450.50</td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Pending Order -->
+                <tr data-status="pending">
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td><a href="#" class="fw-bold text-primary text-decoration-none">#ORD-7893</a></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="avatar bg-warning-subtle text-warning rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">SL</div>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0">Sarah Lin</h6>
+                                <p class="text-muted extra-small mb-0">sarah.lin@studio.net</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="d-block fw-medium text-dark">Oct 23, 2026</span>
+                        <span class="text-muted extra-small">04:20 PM</span>
+                    </td>
+                    <td><span class="badge bg-warning-subtle text-warning px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-clock-fill me-1"></i> Pending</span></td>
+                    <td class="fw-black text-dark">$85.00</td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+
+                <!-- Cancelled Order -->
+                <tr data-status="cancelled">
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td><a href="#" class="fw-bold text-primary text-decoration-none opacity-50">#ORD-7894</a></td>
+                    <td>
+                        <div class="d-flex align-items-center opacity-50">
+                            <div class="avatar bg-danger-subtle text-danger rounded-circle d-flex align-items-center justify-content-center me-3 fw-bold" style="width: 40px; height: 40px;">MR</div>
+                            <div>
+                                <h6 class="fw-bold text-dark mb-0">Mark Ruffalo</h6>
+                                <p class="text-muted extra-small mb-0">mark.r@test.org</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <span class="d-block fw-medium text-dark opacity-50">Oct 22, 2026</span>
+                        <span class="text-muted extra-small opacity-50">09:00 AM</span>
+                    </td>
+                    <td><span class="badge bg-danger-subtle text-danger px-3 py-2 rounded-pill small fw-bold"><i class="bi bi-x-circle-fill me-1"></i> Cancelled</span></td>
+                    <td class="fw-black text-dark opacity-50">$320.00</td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li><a class="dropdown-item" href="order-details.html"><i class="bi bi-eye me-2"></i>View Details</a></li>
+                                <li><a class="dropdown-item" href="edit-order.html"><i class="bi bi-pencil-square me-2"></i>Edit</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item text-danger" href="#"><i class="bi bi-trash me-2"></i>Delete</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="card-footer bg-white border-0 py-4 px-4 d-flex align-items-center justify-content-between">
+        <span class="text-muted small fw-medium">Showing 1 to 4 of 4,289 entries</span>
+        <nav aria-label="Order pagination">
+            <ul class="pagination pagination-sm mb-0">
+                <li class="page-item disabled"><a class="page-link border-0 rounded-circle text-muted" href="#"><i class="bi bi-chevron-left"></i></a></li>
+                <li class="page-item active"><a class="page-link border-0 rounded-circle shadow-sm mx-1" href="#">1</a></li>
+                <li class="page-item"><a class="page-link border-0 rounded-circle text-dark mx-1" href="#">2</a></li>
+                <li class="page-item"><a class="page-link border-0 rounded-circle text-dark mx-1" href="#">3</a></li>
+                <li class="page-item"><a class="page-link border-0 rounded-circle text-dark" href="#"><i class="bi bi-chevron-right"></i></a></li>
+            </ul>
+        </nav>
+    </div>
+</div>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        // Simple Order Filter Logic
+        const filterBtns = document.querySelectorAll('#orderFilters .nav-link');
+        const rows = document.querySelectorAll('#ordersTable tbody tr');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                
+                // Update active state
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                rows.forEach(row => {
+                    if (filterValue === 'all' || row.getAttribute('data-status') === filterValue) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // CSV Export Logic
+        const exportBtn = document.getElementById('exportOrdersBtn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                let csv = [];
+                const table = document.getElementById('ordersTable');
+                const rows = table.querySelectorAll('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    if (rows[i].style.display === 'none') continue;
+                    
+                    let row = [], cols = rows[i].querySelectorAll('td, th');
+                    
+                    for (let j = 1; j < cols.length - 1; j++) { // Skip checkbox and action columns
+                        let text = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/"/g, '""');
+                        row.push('"' + text + '"');
+                    }
+                    csv.push(row.join(","));
+                }
+
+                const csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+                const downloadLink = document.createElement("a");
+                downloadLink.download = `orders-export-${new Date().toISOString().slice(0,10)}.csv`;
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        }
+    });
+</script>
+
+{{/admin-layout}}

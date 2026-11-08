@@ -1,0 +1,211 @@
+@use "../base/variables"as *;
+@use "../base/mixins"as *;
+
+.header {
+    position: fixed;
+    top: 0;
+    left: $sidebar-width;
+    right: 0;
+    height: $header-height;
+    background: var(--header-bg);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--card-border);
+    z-index: 1500;
+    transition: var(--transition-elite);
+
+    // Responsive Logic
+    .sidebar--collapsed & {
+        left: 0;
+    }
+
+    @media (max-width: 1200px) {
+        left: 0;
+    }
+
+    &__container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
+        padding: 0 25px;
+    }
+
+    &__left,
+    &__right {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    // --- Menu Toggle ---
+    &__menu-toggle {
+        background: transparent;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--text-main);
+        cursor: pointer;
+        @include transition;
+
+        &:hover {
+            color: var(--elite-primary);
+        }
+    }
+
+    // --- Search ---
+    &__search {
+        &-wrapper {
+            position: relative;
+            background: rgba(0, 0, 0, 0.03);
+            border-radius: 50px;
+            padding: 5px 15px 5px 40px;
+            @include transition;
+        }
+
+        [data-bs-theme="dark"] &-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        &-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+        }
+
+        &-input {
+            border: none;
+            background: transparent;
+            outline: none;
+            font-size: 0.9rem;
+            width: 200px;
+            color: var(--text-main);
+            @include transition;
+
+            &:focus {
+                width: 250px;
+            }
+        }
+    }
+
+    // --- Action Buttons ---
+    &__action-btn {
+        background: transparent;
+        border: none;
+        font-size: 1.3rem;
+        color: var(--text-muted);
+        position: relative;
+        padding: 5px;
+        @include transition;
+
+        &:hover {
+            color: var(--elite-primary);
+        }
+
+        &--badge {
+            position: relative;
+
+            .badge {
+                font-size: 0.6rem;
+                padding: 0.25em 0.5em;
+                min-width: 18px;
+                border: 2px solid var(--header-bg);
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+    // --- User Profile ---
+    &__user {
+        &-btn {
+            background: transparent;
+            border: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 5px 10px;
+            border-radius: 50px;
+            @include transition;
+
+            &:hover {
+                background: rgba(0, 0, 0, 0.03);
+            }
+        }
+
+        &-img {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid $white;
+            box-shadow: $shadow-1;
+        }
+
+        &-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+    }
+
+    // --- Dropdowns ---
+    &__dropdown-menu {
+        border: none;
+        background: var(--card-bg);
+        backdrop-filter: blur(15px);
+        border: 1px solid var(--card-border);
+        border-radius: 12px;
+        margin-top: 10px !important;
+        padding: 10px;
+        min-width: 280px;
+        box-shadow: var(--card-shadow);
+
+        .dropdown-header {
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+        }
+        
+        .dropdown-item {
+            color: var(--text-main);
+            &:hover {
+                background: rgba(var(--xivig-primary-glow), 0.1);
+            }
+        }
+    }
+
+    &__dropdown-item {
+        display: flex;
+        gap: 12px;
+        padding: 10px;
+        border-radius: 8px;
+        @include transition;
+
+        &:hover {
+            background: rgba(0, 0, 0, 0.03);
+        }
+        
+        [data-bs-theme="dark"] &:hover {
+            background: rgba(255, 255, 255, 0.05);
+        }
+    }
+
+    &__dropdown-img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+    }
+
+    &__dropdown-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__dropdown-title {
+        font-weight: 600;
+        font-size: 0.85rem;
+        color: var(--text-main);
+    }
+}

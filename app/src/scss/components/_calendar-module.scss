@@ -1,0 +1,58 @@
+/* calendar.css */
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* Draggable event styling */
+.fc-event {
+    cursor: grab;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    border-radius:var(--elite-radius-xs); // Matching design system
+    transition: var(--transition-elite);
+    border: none !important;
+}
+
+.fc-event:active {
+    cursor: grabbing;
+    transform: scale(0.98);
+}
+
+.fc-event:hover {
+    box-shadow: var(--card-shadow);
+    filter: brightness(95%);
+}
+
+/* Customizing FullCalendar Header */
+.fc .fc-button-primary {
+    background: var(--elite-primary);
+    border-color: var(--elite-primary);
+    text-transform: capitalize;
+    font-weight: 600;
+    border-radius:10px; // Slightly rounded
+    
+    &:hover {
+        background: var(--primary-hover);
+        border-color: var(--primary-hover);
+    }
+}
+
+.fc .fc-toolbar-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-main);
+}
+
+.color-btn.active {
+    outline: 2px solid var(--elite-primary);
+    outline-offset: 2px;
+    transform: scale(1.1);
+}
+
+[data-bs-theme="dark"] {
+    .fc-theme-bootstrap5 .fc-list-day-cushion {
+        background: var(--bg-subtle);
+    }
+    .fc .fc-daygrid-day.fc-day-today {
+        background: var(--elite-soft);
+    }
+}

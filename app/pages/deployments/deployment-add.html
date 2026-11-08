@@ -1,0 +1,89 @@
+{{#> admin-layout title="Trigger Deployment" parentTitle="Deployments" }}
+
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-5">
+            <div class="card-header bg-white py-4 px-5 border-0">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h4 class="fw-black text-dark mb-1">New Deployment</h4>
+                        <p class="text-muted small mb-0">Push latest changes to your infrastructure</p>
+                    </div>
+                    <button class="btn btn-light btn-sm rounded-pill px-4 border" onclick="history.back()">
+                        <i class="bi bi-arrow-left me-2"></i> Back
+                    </button>
+                </div>
+            </div>
+
+            <div class="card-body p-5 pt-0">
+                <form id="triggerDeployForm">
+                    <div class="row g-4">
+                        <div class="col-12">
+                            <label class="apple-label">Target Project</label>
+                            <select class="form-select modern-input" required>
+                                <option value="" selected disabled>Select Project</option>
+                                <option>Elite Dashboard UI</option>
+                                <option>Mobile App Redesign</option>
+                                <option>Marketing Landing Page</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Environment</label>
+                            <select class="form-select modern-input" required>
+                                <option>Staging</option>
+                                <option>Production</option>
+                                <option>Development</option>
+                            </select>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label class="apple-label">Branch / Tag</label>
+                            <div class="input-group modern-input-group border rounded-3 overflow-hidden">
+                                <span class="input-group-text bg-light border-0 px-3"><i class="bi bi-git"></i></span>
+                                <input type="text" class="form-control border-0 shadow-none py-2" placeholder="main" value="main">
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <label class="apple-label">Deployment Strategy</label>
+                            <div class="d-flex gap-4 pt-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="strategy" id="rolling" checked>
+                                    <label class="form-check-label small" for="rolling">Rolling Update</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="strategy" id="bluegreen">
+                                    <label class="form-check-label small" for="bluegreen">Blue/Green</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="strategy" id="recreate">
+                                    <label class="form-check-label small" for="recreate">Recreate</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="alert alert-info border-0 rounded-4 p-4 mb-0">
+                                <div class="d-flex">
+                                    <i class="bi bi-info-circle-fill fs-4 me-3"></i>
+                                    <div>
+                                        <h6 class="fw-bold mb-1">Pre-deployment Check</h6>
+                                        <p class="small mb-0 opacity-75">All unit tests passed. 45 assets are ready for bundling. The deployment will take approximately 3 minutes.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 border-top pt-4 mt-5 text-end">
+                            <button type="button" class="btn btn-light rounded-pill px-5 py-2 border me-2" onclick="history.back()">Cancel</button>
+                            <button type="submit" class="btn btn-primary rounded-pill px-5 py-2 fw-bold shadow-primary"><i class="bi bi-rocket-takeoff me-2"></i> Deploy Now</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

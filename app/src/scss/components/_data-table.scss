@@ -1,0 +1,44 @@
+/* ============================
+   Data Table
+   ============================ */
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table__th {
+    background: var(--bg-subtle);
+    padding: 1rem;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--card-border);
+}
+
+.data-table__td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--card-border);
+    vertical-align: middle;
+    color: var(--text-main);
+}
+
+.data-table__avatar {
+    width: 40px;
+    height: 40px;
+    border-radius:50%;
+    margin-right: 0.75rem;
+}
+
+/* Table Design Refinement (Bootstrap Overrides) */
+.table-light {
+    --bs-table-bg: var(--bg-subtle);
+    --bs-table-color: var(--text-main);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+
+/* ===== End Data Table ===== */

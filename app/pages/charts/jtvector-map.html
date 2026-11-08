@@ -1,0 +1,25 @@
+{{#> admin-layout title="Vector Map" parentTitle="Charts" }}
+
+<div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+    <div class="card-header bg-white py-3 px-4 border-0 d-flex justify-content-between align-items-center">
+        <div>
+            <h5 class="fw-bold mb-0">Interactive Global Map</h5>
+            <small class="text-muted">Real-time node distribution and status monitoring</small>
+        </div>
+    </div>
+    <div class="card-body p-0">
+        <div class="vector-map-module position-relative">
+            <div class="map-info-panel">
+                <strong>Global Intelligence</strong><br>
+                <div class="d-flex align-items-center mt-1">
+                    <span class="pulse-dot"></span>
+                    <small class="text-muted fw-semibold">Nodes Active</small>
+                </div>
+            </div>
+
+            <div id="map-vector" class="map-container" style="border: none; border-radius: 0; min-height: 600px; height: 600px;"></div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

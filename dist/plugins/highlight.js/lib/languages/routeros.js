@@ -80,7 +80,7 @@ function routeros(hljs) {
             end: />/
           }
         ],
-        illegal: /./
+        illegal: /
       },
       hljs.COMMENT('^#', '$'),
       QUOTE_STRING,

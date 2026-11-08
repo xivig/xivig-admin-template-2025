@@ -1,0 +1,118 @@
+{{#> admin-layout title="Dashboard v2" }}
+
+<div class="dashboard-v2 container py-2">
+    <h2 class="mb-4 text-center fw-bold">📊 Elite Analytics Dashboard</h2>
+
+    <!-- Primary Radial Charts -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartEarnings1"></div>
+                <div class="stat-label">Annual Growth</div>
+                <div class="stat-meta trend-up">
+                    31% Average <i class="fa-solid fa-arrow-up-right-dots"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartBusiness1"></div>
+                <div class="stat-label">Market Share</div>
+                <div class="stat-meta trend-up">
+                    60% Average <i class="fa-solid fa-globe"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartSpeed1"></div>
+                <div class="stat-label">Server Response</div>
+                <div class="stat-meta trend-up">
+                    46% Average <i class="fa-solid fa-microchip"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="card-elite">
+                <div class="chart-box" id="chartPending1"></div>
+                <div class="stat-label">User Retention</div>
+                <div class="stat-meta trend-up">
+                    90% Average <i class="fa-solid fa-user-check"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Chart.js Widgets -->
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Customer Segmentation</div>
+                <div class="chart-container">
+                    <canvas id="scatterChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Website Analytics</div>
+                <div class="chart-container">
+                    <canvas id="lineAnalytics"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Top Programming Languages</div>
+                <div class="chart-container">
+                    <canvas id="langBar"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Global User Distribution</div>
+                <div class="chart-container">
+                    <canvas id="userBar"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Device Share</div>
+                <div class="chart-container">
+                    <canvas id="pieChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Traffic Sources</div>
+                <div class="chart-container">
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Regional Distribution</div>
+                <div class="chart-container">
+                    <canvas id="polarChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 fade-in">
+            <div class="dashboard-card">
+                <div class="dashboard-header">Model Comparison</div>
+                <div class="chart-container">
+                    <canvas id="radarChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{{/admin-layout}}

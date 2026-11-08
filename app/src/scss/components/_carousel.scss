@@ -1,0 +1,207 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* =========================================================
+   Carousel Systems
+   ========================================================= */
+
+/* --- Compact 700x400 Carousel --- */
+.carousel-elite-mini {
+    border-radius:var(--elite-radius-xl);
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+    aspect-ratio: 700 / 400;
+}
+
+.carousel-elite-mini .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.carousel-elite-mini .carousel-caption {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    text-align: left;
+}
+
+/* --- Core Elite Carousel --- */
+.carousel-elite-main {
+    border-radius:32px;
+    overflow: hidden;
+    aspect-ratio: 700 / 400;
+    box-shadow: var(--card-shadow);
+    height: 100%;
+    position: relative;
+}
+
+.carousel-elite-main .carousel-inner,
+.carousel-elite-main .carousel-item {
+    height: 100%;
+}
+
+.carousel-elite-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 16 / 9;
+}
+
+/* --- High-End Frame Carousel --- */
+.carousel-elite-frame {
+    border-radius:32px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: var(--card-shadow);
+}
+
+.carousel-elite-frame img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.carousel-elite-frame:hover img {
+    transform: scale(1.05);
+}
+
+/* --- Caption Refinements --- */
+.carousel-caption-glass {
+    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+    padding: 2.5rem !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    text-align: left !important;
+    width: 100%;
+}
+
+.carousel-elite-mini .carousel-caption-glass {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: left;
+}
+
+/* --- Responsive Scaling --- */
+.carousel-col-4 .carousel-caption {
+    padding: 1.5rem;
+}
+
+.carousel-col-4 h4 {
+    font-size: 1.1rem;
+}
+
+.carousel-col-4 p {
+    font-size: 0.85rem;
+}
+
+.carousel-col-8 .carousel-caption {
+    padding: 3rem;
+}
+
+.carousel-col-8 h2 {
+    font-size: 2.5rem;
+    letter-spacing: -1px;
+}
+
+@media (min-width: 992px) {
+    .carousel-col-4 .carousel-caption-glass {
+        padding: 1.5rem !important;
+    }
+
+    .carousel-col-4 h4 {
+        font-size: 1.1rem;
+    }
+}
+
+/* =========================================================
+   Cards & Badges
+   ========================================================= */
+.elite-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius:28px;
+    padding: 1.5rem;
+    transition: var(--transition-elite);
+    height: 100%;
+}
+
+.elite-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--card-shadow-hover);
+    border-color: var(--xivig-primary);
+}
+
+.card-img-wrapper {
+    border-radius:var(--elite-radius-lg);
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    line-height: 0;
+}
+
+.badge-elite {
+    background: var(--elite-primary-soft);
+    color: var(--xivig-primary);
+    padding: 4px 10px;
+    border-radius:10px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: inline-block;
+}
+
+/* =========================================================
+   Buttons
+   ========================================================= */
+.btn-xivig {
+    background: var(--xivig-grad);
+    color: var(--white);
+    border: none;
+    padding: 10px 24px;
+    border-radius:var(--elite-radius-sm);
+    font-weight: 600;
+    box-shadow: 0 10px 20px var(--xivig-primary-glow);
+    transition: var(--transition-elite);
+}
+
+.btn-xivig:hover {
+    transform: translateY(-2px);
+    color: var(--white);
+    box-shadow: var(--card-shadow-hover);
+}
+
+/* =========================================================
+   Glass Overlay Content
+   ========================================================= */
+.glass-overlay-content {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    background: var(--header-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius:var(--elite-radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--card-shadow);
+    z-index: 5;
+}
+
+.col-lg-4 .glass-overlay-content {
+    padding: 1rem;
+}
+
+.col-lg-4 h5 {
+    font-size: 1rem;
+    margin-bottom: 0.25rem;
+}

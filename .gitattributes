@@ -1,0 +1,19 @@
+# Set default behavior: auto-normalize text files to LF on commit
+* text=auto eol=lf
+
+# Explicit text files
+*.sh text eol=lf
+*.bash text eol=lf
+*.js text eol=lf
+*.mjs text eol=lf
+*.json text eol=lf
+*.html text eol=lf
+*.hbs text eol=lf
+*.scss text eol=lf
+*.css text eol=lf
+*.md text eol=lf
+
+# Scripts
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf

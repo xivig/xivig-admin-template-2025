@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {{> auth-head title=title }}
+</head>
+
+<body class="auth-page">
+
+    {{> preloader }}
+
+    <div class="auth-card animate__animated animate__zoomIn">
+        {{> @partial-block }}
+    </div>
+
+    {{> auth-scripts }}
+</body>
+
+</html>

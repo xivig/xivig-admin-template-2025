@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {{> head title=title }}
+    {{#if customStyle}}
+    <style>
+        {{{customStyle}}}
+    </style>
+    {{/if}}
+</head>
+
+<body class="{{bodyClass}}">
+    {{> @partial-block }}
+    {{> scripts }}
+</body>
+
+</html>

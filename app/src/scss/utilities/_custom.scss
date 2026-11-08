@@ -1,0 +1,89 @@
+@use "../base/variables"as *;
+@use "../base/mixins"as *;
+
+/* XIVIG CUSTOM PAGE & PLUGIN TWEAKS */
+
+// 1. PAGE SPECIFIC TWEAKS
+.profile-header-bg {
+    height: 120px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, #6f42c1 100%);
+}
+
+// 2. THIRD-PARTY OVERRIDES
+.plyr--full-ui {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.custom-scroll {
+    @include elite-scrollbar(6px, 0.05);
+}
+
+
+// system health chart
+
+.chart-container {
+    width: 100%;
+    height: 320px;
+    /* HARD STOP overflow */
+    position: relative;
+}
+
+#health-chart {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* ApexCharts fix */
+.apexcharts-canvas,
+.apexcharts-svg {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* --- ELITE SIDEBAR REFINEMENTS --- */
+.sidebar__item,
+.sidebar__link,
+.sidebar__submenu-wrapper,
+.sidebar__submenu,
+.sidebar__sub-item,
+.sidebar__sub-link {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+// Absolute transparency for links and items
+.sidebar__link, .sidebar__sub-link {
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+// Maintain the indicator bar
+.sidebar__item.active > .sidebar__link::before {
+    background: var(--elite-primary) !important;
+    transform: translateY(-50%) scaleY(1) !important;
+}
+
+/* --- Responsive Utilities --- */
+@media (min-width: 768px) {
+    .border-end-md {
+        border-right: 1px solid var(--card-border) !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .border-end-md {
+        border-right: none !important;
+        border-bottom: 1px solid var(--card-border) !important;
+    }
+}
+
+.fw-black { font-weight: 900 !important; }
+.extra-small { font-size: 0.75rem !important; }
+
+
+
+

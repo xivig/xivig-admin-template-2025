@@ -1,0 +1,181 @@
+{{#> admin-layout title="Product List" parentTitle="Ecommerce" }}
+
+<div class="row g-4">
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Store Sales</p>
+                    <h3 class="fw-black mb-0">$5,345</h3>
+                    <span class="text-success extra-small fw-bold">+5.7% from last month</span>
+                </div>
+                <div class="icon-shape bg-primary-light text-primary rounded-3 p-3">
+                    <i class="bi bi-shop fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card border-0 shadow-sm p-4 rounded-4 h-100">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <p class="text-muted small fw-bold text-uppercase mb-1">Active Orders</p>
+                    <h3 class="fw-black mb-0">1,284</h3>
+                    <span class="text-primary extra-small fw-bold">Processing</span>
+                </div>
+                <div class="icon-shape bg-success-light text-success rounded-3 p-3">
+                    <i class="bi bi-cart-check fs-3"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card border-0 shadow-sm rounded-4 mt-4 has-table">
+    <div class="card-header bg-white py-4 border-0">
+        <div class="row align-items-center g-3">
+            <div class="col-md-4">
+                <h5 class="fw-black text-dark mb-0">Product Inventory</h5>
+            </div>
+            <div class="col-md-8 text-md-end">
+                <div class="d-flex gap-2 justify-content-md-end">
+                    <div class="input-group modern-input-group bg-light rounded-pill px-3 py-1 border-0" style="max-width: 300px;">
+                        <span class="input-group-text bg-transparent border-0"><i class="bi bi-search text-muted"></i></span>
+                        <input type="text" class="form-control border-0 bg-transparent shadow-none small" placeholder="Search inventory...">
+                    </div>
+                    <button id="exportProductsBtn" class="btn btn-white border rounded-pill px-3 shadow-sm fw-bold text-muted me-2"><i class="bi bi-download me-2"></i>Export</button>
+                    <button class="btn btn-dark btn-sm rounded-3 px-4 fw-bold" onclick="location.href='ecommerce-add-product.html'">
+                        <i class="bi bi-plus-lg me-2"></i> Add Product
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="table-responsive pb-5">
+        <table class="table table-hover align-middle mb-0" id="productsTable">
+            <thead class="bg-light-subtle text-muted small text-uppercase fw-bold">
+                <tr>
+                    <th class="ps-4" style="width: 40px;"><input type="checkbox" class="form-check-input"></th>
+                    <th>Product Details</th>
+                    <th>Category</th>
+                    <th>Inventory</th>
+                    <th>Base Price</th>
+                    <th>Status</th>
+                    <th class="text-end pe-4">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="p-1 border rounded-3 bg-light me-3">
+                                <img src="/app/src/images/product-2.jpg" class="rounded-2" width="40" height="40" style="object-fit: cover;">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Air Jordan Elite</h6>
+                                <p class="text-muted extra-small mb-0">SKU: AJ-8829-21</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-white text-dark border shadow-sm px-3 py-2 rounded-pill small fw-medium">Footwear</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
+                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            </div>
+                            <span class="small fw-bold">125</span>
+                        </div>
+                    </td>
+                    <td class="fw-black">$125.00</td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">Active</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button" data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item py-2" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 opacity-50"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item py-2" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="ps-4"><input type="checkbox" class="form-check-input"></td>
+                    <td>
+                        <div class="d-flex align-items-center">
+                            <div class="p-1 border rounded-3 bg-light me-3">
+                                <img src="/app/src/images/product-1.jpg" class="rounded-2" width="40" height="40" style="object-fit: cover;">
+                            </div>
+                            <div>
+                                <h6 class="mb-0 fw-bold">Air Jordan Elite</h6>
+                                <p class="text-muted extra-small mb-0">SKU: AJ-8829-21</p>
+                            </div>
+                        </div>
+                    </td>
+                    <td><span class="badge bg-white text-dark border shadow-sm px-3 py-2 rounded-pill small fw-medium">Footwear</span></td>
+                    <td>
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="progress flex-grow-1" style="height: 4px; width: 60px;">
+                                <div class="progress-bar bg-success" style="width: 85%"></div>
+                            </div>
+                            <span class="small fw-bold">125</span>
+                        </div>
+                    </td>
+                    <td class="fw-black">$125.00</td>
+                    <td><span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill small">Active</span></td>
+                    <td class="text-end pe-4">
+                        <div class="dropdown">
+                            <button class="btn btn-light btn-sm rounded-circle border shadow-sm" type="button" data-bs-toggle="dropdown" data-bs-boundary="viewport">
+                                <i class="bi bi-three-dots-vertical"></i>
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end shadow-lg border-0 rounded-3">
+                                <li><a class="dropdown-item py-2" href="ecommerce-edit-product.html"><i class="bi bi-pencil-square me-2 opacity-50"></i> Edit Product</a></li>
+                                <li><a class="dropdown-item py-2" href="ecommerce-product-detail.html"><i class="bi bi-eye me-2 opacity-50"></i> View Details</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item py-2 text-danger" href="#"><i class="bi bi-trash3 me-2"></i> Remove</a></li>
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <!-- More rows would go here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        const exportBtn = document.getElementById('exportProductsBtn');
+        if (exportBtn) {
+            exportBtn.addEventListener('click', () => {
+                let csv = [];
+                const table = document.getElementById('productsTable');
+                const rows = table.querySelectorAll('tr');
+                
+                for (let i = 0; i < rows.length; i++) {
+                    let row = [], cols = rows[i].querySelectorAll('td, th');
+                    for (let j = 1; j < cols.length - 1; j++) {
+                        let text = cols[j].innerText.replace(/(\r\n|\n|\r)/gm, " ").replace(/"/g, '""');
+                        row.push('"' + text + '"');
+                    }
+                    csv.push(row.join(","));
+                }
+
+                const csvFile = new Blob([csv.join("\n")], {type: "text/csv"});
+                const downloadLink = document.createElement("a");
+                downloadLink.download = `products-export-${new Date().toISOString().slice(0,10)}.csv`;
+                downloadLink.href = window.URL.createObjectURL(csvFile);
+                downloadLink.style.display = "none";
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            });
+        }
+    });
+</script>
+
+{{/admin-layout}}

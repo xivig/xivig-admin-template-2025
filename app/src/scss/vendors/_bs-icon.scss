@@ -1,0 +1,29 @@
+/* Elite Bootstrap Icon Architecture */
+.fa-hover {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    text-decoration: none;
+    transition: var(--transition-elite);
+    color: var(--text-main);
+    cursor: pointer;
+}
+
+.fa-hover:hover {
+    background: var(--elite-primary) !important;
+    border-color: var(--elite-primary) !important;
+    transform: translateY(-3px);
+    color: #fff !important;
+    box-shadow: var(--card-shadow-hover);
+}
+
+.fa-hover:hover i {
+    color: #fff !important;
+}
+
+.fa-hover i {
+    transition: color 0.3s ease;
+}

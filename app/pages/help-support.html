@@ -1,0 +1,104 @@
+{{#> admin-layout title="Help & Support" parentTitle="Support" subtitle="Search our knowledge base or contact our expert
+team" }}
+
+<div class="help-support-module pb-5">
+
+    <!-- Hero Search Section -->
+    <section
+        class="header-search-box text-center py-5 mb-5 rounded-4 position-relative overflow-hidden shadow-lg animate__animated animate__fadeIn"
+        style="background: var(--elite-gradient); color: white;" aria-labelledby="search-heading">
+
+        <div class="position-absolute top-0 start-0 w-100 h-100 opacity-25" aria-hidden="true"
+            style="background: url('data:image/svg+xml,...'); pointer-events: none;"></div>
+
+        <div class="position-relative z-1 py-4">
+            <h2 class="display-6 fw-900 mb-3" id="search-heading">How can we help you?</h2>
+            <div class="col-lg-7 mx-auto px-4">
+                <form action="#" method="GET" class="glass-search-wrapper p-2 rounded-pill shadow-2xl"
+                    style="background: rgba(255,255,255,0.15); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.25);">
+                    <div class="input-group input-group-lg">
+                        <span class="input-group-text border-0 bg-transparent ps-3"><i
+                                class="bi bi-search text-white"></i></span>
+                        <input type="search" class="form-control border-0 bg-transparent text-white shadow-none"
+                            placeholder="Type your question here...">
+                        <button class="btn btn-white rounded-pill px-5 fw-800 text-primary shadow-sm"
+                            type="submit">SEARCH</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <div class="row g-5">
+        <!-- Sidebar Navigation -->
+        <aside class="col-lg-4">
+            <div class="sidebar-menu animate__animated animate__fadeInLeft shadow-sm p-3 rounded-4 bg-white">
+                <div class="mb-4 ps-2">
+                    <h3 class="h5 fw-800 mb-1">Knowledge Base</h3>
+                    <p class="text-muted small">Select a category</p>
+                </div>
+                <nav class="d-grid gap-2" id="kb-nav">
+                    <a href="javascript:void(0)" class="menu-link active" data-type="payment">
+                        <i class="bi bi-credit-card-2-front me-2"></i> Payment & Billing
+                    </a>
+                    <a href="javascript:void(0)" class="menu-link" data-type="shipping">
+                        <i class="bi bi-truck me-2"></i> Shipping Logistics
+                    </a>
+                    <a href="javascript:void(0)" class="menu-link" data-type="returns">
+                        <i class="bi bi-arrow-left-right me-2"></i> Returns & Refunds
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- FAQ Content Section -->
+        <section class="col-lg-8" id="faq-content-area">
+            <header class="mb-5">
+                <h2 class="faq-title display-5 mb-3">Payment Solutions</h2>
+                <p class="text-muted lead faq-description">Everything you need to know about managing your transactions.
+                </p>
+            </header>
+
+            <div class="accordion accordion-flush" id="faqAccordion">
+                <!-- Content will be injected or toggled here -->
+                <div class="accordion-item shadow-sm rounded-3 mb-2 border">
+                    <h3 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                            When will I be charged for my purchase?
+                        </button>
+                    </h3>
+                    <div id="q1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">Final charges are typically finalized once the order is dispatched.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Direct Support Section -->
+    <section class="py-5 mt-5 border-top">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5 col-lg-4">
+                <a href="tel:+125482568" class="text-decoration-none contact-card-wrapper">
+                    <article class="contact-footer-card shadow-sm text-center p-4 rounded-4 border bg-white">
+                        <i class="bi bi-telephone-outbound fs-2 text-primary mb-3 d-block"></i>
+                        <h3 class="h4 fw-bold mb-2 text-dark">+(1) 2548 2568</h3>
+                        <p class="text-muted mb-0 small">Live phone support 24/7</p>
+                    </article>
+                </a>
+            </div>
+            <div class="col-md-5 col-lg-4">
+                <a href="mailto:support@elitepro.com" class="text-decoration-none contact-card-wrapper">
+                    <article class="contact-footer-card shadow-sm text-center p-4 rounded-4 border bg-white">
+                        <i class="bi bi-envelope-paper fs-2 text-primary mb-3 d-block"></i>
+                        <h3 class="h4 fw-bold mb-2 text-dark">support@elitepro.com</h3>
+                        <p class="text-muted mb-0 small">Average response: 2 hours</p>
+                    </article>
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+
+{{/admin-layout}}

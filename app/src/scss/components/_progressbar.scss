@@ -1,0 +1,49 @@
+/* Modern Progress Bar Aesthetics */
+.elite-progress {
+    background-color: var(--bg-subtle) !important;
+    /* Soft track color */
+    border-radius:50rem !important;
+    /* Pill shape */
+    overflow: visible;
+    /* Allows glow to show */
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.progress-bar {
+    border-radius:50rem !important;
+    /* Match track */
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+}
+
+/* Glow Effects */
+.glow-primary {
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.glow-success {
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.glow-info {
+    box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+}
+
+.glow-warning {
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+}
+
+.glow-danger {
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Animation Overrides */
+.progress-bar-animated {
+    animation: progress-bar-stripes 1s linear infinite !important;
+}
+
+/* Ensure equal card heights */
+.card-box.h-100 {
+    display: flex;
+    flex-direction: column;
+}

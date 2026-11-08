@@ -1,0 +1,102 @@
+{{#> admin-layout title="Notifications" }}
+
+<div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+                        <div class="card-header bg-white py-4 px-4 border-0 d-flex justify-content-between align-items-center">
+                            <div>
+                                <h5 class="fw-bold mb-0">Notification Directory</h5>
+                                <small class="text-muted">Manage your latest system alerts</small>
+                            </div>
+                            <div class="form-check mb-0">
+                                <input class="form-check-input" type="checkbox" id="select-all-notifications">
+                                <label class="form-check-label small fw-bold ms-1" for="select-all-notifications">
+                                    Select All
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="card-body p-0">
+                            <div class="notification-list">
+                                <!-- Notification Item 1 -->
+                                <div class="notification-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input shadow-none" type="checkbox">
+                                    </div>
+                                    <div class="avatar bg-primary">
+                                        <span>A</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6 class="text-truncate">New Security Update available</h6>
+                                        <p class="text-truncate">Please update your security settings to the latest version.</p>
+                                        <div class="notification-time">5 min ago</div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-link text-danger p-1 border-0 shadow-none">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Notification Item 2 -->
+                                <div class="notification-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input shadow-none" type="checkbox">
+                                    </div>
+                                    <div class="avatar bg-success">
+                                        <span>S</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6 class="text-truncate">Deployment successful</h6>
+                                        <p class="text-truncate">The latest version has been deployed successfully to production.</p>
+                                        <div class="notification-time">12 min ago</div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-link text-danger p-1 border-0 shadow-none">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Notification Item 3 -->
+                                <div class="notification-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input shadow-none" type="checkbox">
+                                    </div>
+                                    <div class="avatar bg-warning">
+                                        <span>W</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6 class="text-truncate">Wrapped Bitcoin listing</h6>
+                                        <p class="text-truncate">WBTC is now live on the trading platform.</p>
+                                        <div class="notification-time">25 min ago</div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-link text-danger p-1 border-0 shadow-none">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Notification Item 4 -->
+                                <div class="notification-item">
+                                    <div class="form-check">
+                                        <input class="form-check-input shadow-none" type="checkbox">
+                                    </div>
+                                    <div class="avatar bg-danger">
+                                        <span>E</span>
+                                    </div>
+                                    <div class="notification-content">
+                                        <h6 class="text-truncate">Server load warning</h6>
+                                        <p class="text-truncate">Primary server is experiencing high traffic volume.</p>
+                                        <div class="notification-time">1 hour ago</div>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-link text-danger p-1 border-0 shadow-none">
+                                            <i class="fa-regular fa-trash-can"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    
+
+{{/admin-layout}}

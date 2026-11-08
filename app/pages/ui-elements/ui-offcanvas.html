@@ -1,0 +1,254 @@
+{{#> admin-layout title="Offcanvas Panels" parentTitle="UI Elements" }}
+
+<div class="row g-4">
+    <!-- Main Demo Card -->
+    <div class="col-12">
+        <div class="card shadow-sm rounded-4 overflow-hidden border" style="border-color: var(--card-border) !important;">
+            <div class="card-header bg-transparent py-3 px-4 border-0 d-flex justify-content-center align-items-center">
+                <div class="text-center">
+                    <h5 class="fw-bold mb-0">Elite Offcanvas Panels</h5>
+                    <small class="text-muted">High-performance sliding panels for modern UI</small>
+                </div>
+            </div>
+
+            <div class="card-body p-4 p-md-5">
+                <div class="offcanvas-demo-wrapper">
+                    <div class="mb-4">
+                        <div class="badge bg-primary-subtle text-primary px-3 py-2 rounded-pill mb-3 fw-bold">PRO UI KIT</div>
+                        <h2 class="fw-bold">Experience Elite Sliding Panels</h2>
+                        <p class="text-muted mx-auto" style="max-width: 600px;">Our offcanvas components utilize <code>backdrop-filter</code> and custom easing for a truly premium feel. Perfect for navigation, settings, and immersive user flows.</p>
+                    </div>
+
+                    <div class="btn-grid">
+                        <button class="btn btn-elite btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#demoOcStart">
+                            <i class="fa-solid fa-indent"></i> Left Panel
+                        </button>
+                        <button class="btn btn-elite btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#demoOcEnd">
+                            <i class="fa-solid fa-outdent"></i> Right Panel
+                        </button>
+                        <button class="btn btn-elite btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#demoOcTop">
+                            <i class="fa-solid fa-maximize"></i> Top Panel
+                        </button>
+                        <button class="btn btn-elite btn-outline-primary" data-bs-toggle="offcanvas" data-bs-target="#demoOcBottom">
+                            <i class="fa-solid fa-minimize"></i> Bottom Panel
+                        </button>
+                        <button class="btn btn-elite w-100 mt-2" style="grid-column: 1 / -1; background: #0f172a; color: white;"
+                            data-bs-toggle="offcanvas" data-bs-target="#demoOcDark">
+                            <i class="fa-solid fa-moon"></i> Launch Dark Mode Experience
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secondary Examples -->
+    <div class="col-md-6">
+        <div class="card shadow-sm rounded-4 h-100 border" style="border-color: var(--card-border) !important;">
+            <div class="card-header bg-transparent py-3 border-0">
+                <h6 class="fw-bold mb-0">Backdrop & Scrolling</h6>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small mb-4">Configure how the page behaves when an offcanvas is active. You can enable background scrolling while the panel is open.</p>
+                <div class="d-flex flex-column gap-2">
+                    <button class="btn btn-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasScrolling" aria-controls="offcanvasScrolling">
+                        <i class="fa-solid fa-mouse-pointer me-2"></i> Enable Body Scrolling
+                    </button>
+                    <button class="btn btn-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasWithBackdrop" aria-controls="offcanvasWithBackdrop">
+                        <i class="fa-solid fa-layer-group me-2"></i> Enable Backdrop (Default)
+                    </button>
+                    <button class="btn btn-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasBoth" aria-controls="offcanvasBoth">
+                        <i class="fa-solid fa-sliders me-2"></i> Enable Both Scrolling & Backdrop
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="card shadow-sm rounded-4 h-100 border" style="border-color: var(--card-border) !important;">
+            <div class="card-header bg-transparent py-3 border-0">
+                <h6 class="fw-bold mb-0">Responsive Variants</h6>
+            </div>
+            <div class="card-body">
+                <p class="text-muted small mb-4">Responsive offcanvas classes allow you to hide content on larger viewports while keeping it accessible on smaller ones.</p>
+                <div class="d-flex flex-column gap-2">
+                    <button class="btn btn-outline-primary w-100" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
+                        <i class="fa-solid fa-mobile-screen-button me-2"></i> Toggle Responsive Offcanvas
+                    </button>
+                    <div class="alert alert-info py-3 px-3 mt-3 mb-0 border-0 rounded-4">
+                        <div class="d-flex">
+                            <i class="fa-solid fa-circle-info mt-1 me-2"></i>
+                            <div class="small">
+                                Use <code>.offcanvas-{breakpoint}</code> classes to control when the content becomes a sliding panel.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Standard Offcanvas Elements -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="demoOcStart">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Navigation Menu</h5>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+    </div>
+    <div class="offcanvas-body">
+        <p>This panel is perfect for sidebar navigation or user profiles. Notice the <strong>rounded edge</strong>
+            on the right side.</p>
+        <hr class="opacity-10">
+        <div class="list-group list-group-flush">
+            <a href="#" class="list-group-item list-group-item-action border-0 py-3 rounded-3"><i
+                    class="fa-solid fa-house me-2"></i> Dashboard</a>
+            <a href="#" class="list-group-item list-group-item-action border-0 py-3 rounded-3"><i
+                    class="fa-solid fa-user me-2"></i> Accounts</a>
+            <a href="#" class="list-group-item list-group-item-action border-0 py-3 rounded-3"><i
+                    class="fa-solid fa-gear me-2"></i> Settings</a>
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="demoOcEnd">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Contextual Help</h5>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+    </div>
+    <div class="offcanvas-body text-center">
+        <i class="fa-solid fa-circle-question fa-4x text-primary-subtle mb-4"></i>
+        <h5>Need Assistance?</h5>
+        <p class="small">Detailed settings or secondary information fits beautifully here without distracting from
+            the main workflow.</p>
+        <button class="btn btn-primary w-100 mt-3 rounded-pill">Open Documentation</button>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-top" tabindex="-1" id="demoOcTop">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Global Search</h5>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+    </div>
+    <div class="offcanvas-body">
+        <div class="input-group input-group-lg border rounded-3" style="border-color: var(--card-border) !important;">
+            <span class="input-group-text bg-transparent border-0"><i class="fa-solid fa-magnifying-glass"></i></span>
+            <input type="text" class="form-control bg-transparent border-0" placeholder="Search across Elite system...">
+        </div>
+    </div>
+</div>
+
+<div class="offcanvas offcanvas-bottom" tabindex="-1" id="demoOcBottom">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Selection Tray</h5>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+    </div>
+    <div class="offcanvas-body">
+        <div class="d-flex justify-content-around align-items-center h-100">
+            <div class="text-center cursor-pointer"><i class="fa-solid fa-image fa-2x mb-2 text-primary"></i>
+                <div class="small fw-bold">Gallery</div>
+            </div>
+            <div class="text-center cursor-pointer"><i class="fa-solid fa-file-pdf fa-2x mb-2 text-danger"></i>
+                <div class="small fw-bold">Documents</div>
+            </div>
+            <div class="text-center cursor-pointer"><i class="fa-solid fa-link fa-2x mb-2 text-success"></i>
+                <div class="small fw-bold">Shortcuts</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dark Variant -->
+<div class="offcanvas offcanvas-bottom offcanvas-dark" tabindex="-1" id="demoOcDark">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title">Elite Night Shift</h5>
+        <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+            <i class="bi bi-x-lg"></i>
+        </button>
+
+    </div>
+    <div class="offcanvas-body d-flex align-items-center justify-content-center flex-column">
+        <h3 class="fw-bold mb-3">Immersive Dark Mode</h3>
+        <p class="text-center opacity-75">Utilizing deep navy glassmorphism for a truly professional feel.</p>
+        <button class="btn btn-elite border-0" style="background: white; color: black;">Learn More</button>
+    </div>
+</div>
+
+<!-- Scrolling & Backdrop Variants -->
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" id="offcanvasScrolling" aria-labelledby="offcanvasScrollingLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasScrollingLabel">Colored with scrolling</h5>
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
+
+  </div>
+  <div class="offcanvas-body">
+    <p>Try scrolling the rest of the page to see this option in action.</p>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasWithBackdrop" aria-labelledby="offcanvasWithBackdropLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasWithBackdropLabel">Offcanvas with backdrop</h5>
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
+
+  </div>
+  <div class="offcanvas-body">
+    <p>This is the default behavior. A semi-transparent backdrop appears behind the panel.</p>
+  </div>
+</div>
+
+<div class="offcanvas offcanvas-start" data-bs-scroll="true" tabindex="-1" id="offcanvasBoth" aria-labelledby="offcanvasBothLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasBothLabel">Backdrop with scrolling</h5>
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+        <i class="bi bi-x-lg"></i>
+    </button>
+
+  </div>
+  <div class="offcanvas-body">
+    <p>You can scroll the page AND have a backdrop. Best of both worlds?</p>
+  </div>
+</div>
+
+<!-- Responsive Offcanvas -->
+<div class="offcanvas-lg offcanvas-end" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Responsive offcanvas</h5>
+    <!-- Note: For responsive offcanvas, data-bs-target MUST match the offcanvas ID -->
+    <button type="button" class="btn-close-elite shadow-sm" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+  <div class="offcanvas-body">
+    <p class="mb-0">This is content within an <code>.offcanvas-lg</code>. It's hidden as an offcanvas on large viewports (≥992px) and becomes visible as standard content, but behaves like an offcanvas on smaller screens.</p>
+  </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const offcanvasList = document.querySelectorAll('.offcanvas, .offcanvas-lg');
+        offcanvasList.forEach(oc => {
+            oc.addEventListener('show.bs.offcanvas', () => {
+                console.log('Elite Panel Launching...');
+            });
+        });
+    });
+</script>
+
+{{/admin-layout}}

@@ -1,0 +1,37 @@
+{{#> auth-layout title="Lockscreen | XivigApp" }}
+
+<div class="lockscreen-card__avatar mx-auto mb-4">
+    <img src="/app/src/images/photo1.jpg" alt="User Avatar" class="rounded-circle border border-3 border-white shadow-sm" style="width: 100px; height: 100px; object-fit: cover;">
+</div>
+
+<h3 class="auth-card__title text-center">Welcome Back</h3>
+<p class="auth-card__subtitle text-center small mb-4">Please enter your password to unlock</p>
+
+<form action="index.html" class="mb-4">
+    <div class="input-group rounded-pill overflow-hidden shadow-sm mb-3 border">
+        <input type="password" class="form-control border-0 py-3 px-4 shadow-none" placeholder="Enter Password" required id="lockInput">
+        <button class="btn border-0 px-3 d-flex align-items-center justify-content-center" type="submit" style="background: transparent;">
+            <i class="bi bi-arrow-right-circle-fill fs-2 text-primary"></i>
+        </button>
+    </div>
+    <div class="text-center">
+        <a href="login.html" class="auth-link small fw-bold">
+            Sign in as a different user
+        </a>
+    </div>
+</form>
+
+<div class="text-center">
+    <span class="extra-small text-muted opacity-50 text-uppercase tracking-wider">
+        &copy; 2026 Xivig Architect OS
+    </span>
+</div>
+
+<script type="module">
+    document.addEventListener('DOMContentLoaded', () => {
+        const input = document.getElementById('lockInput');
+        if (input) input.focus();
+    });
+</script>
+
+{{/auth-layout}}

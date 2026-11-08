@@ -1,0 +1,104 @@
+@use "../base/variables" as *;
+@use "../base/mixins" as *;
+
+/* ==========================================================================
+   PAGE HEADER ARCHITECTURE - ELITE ARCHITECT OS
+   ========================================================================== */
+
+.page-header {
+    background: var(--card-bg);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--card-border);
+    border-bottom: 4px solid var(--elite-primary) !important;
+    border-radius: var(--elite-radius-md);
+    padding: 2rem 2.5rem !important;
+    margin: 1rem 0 2.5rem 0 !important;
+    box-shadow: var(--card-shadow);
+    transition: var(--transition-elite);
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 300px;
+        height: 100%;
+        background: radial-gradient(circle at top right, var(--xivig-primary-glow), transparent);
+        opacity: 0.4;
+        pointer-events: none;
+    }
+
+    &__title {
+        color: var(--elite-primary) !important;
+        font-weight: 900 !important;
+        font-size: 1.75rem;
+        letter-spacing: -0.03em;
+        margin-bottom: 0.25rem !important;
+        text-transform: capitalize;
+    }
+
+    &__subtitle {
+        font-weight: 600;
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        letter-spacing: 0.01em;
+    }
+
+    /* Breadcrumbs Architecture */
+    .breadcrumb {
+        display: inline-flex;
+        background: var(--bg-subtle);
+        padding: 0.6rem 1.25rem;
+        border-radius: var(--elite-radius-pill);
+        margin: 0;
+        border: 1px solid var(--card-border);
+        box-shadow: inset 0 2px 4px rgba(0,0,0,0.02);
+
+        .breadcrumb-item {
+            display: flex;
+            align-items: center;
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-weight: 700;
+
+            &::before {
+                color: var(--text-muted);
+                opacity: 0.3;
+                font-family: "bootstrap-icons";
+                content: "\F285"; // chevron-right
+                font-size: 0.65rem;
+                padding: 0 0.75rem;
+            }
+
+            &:first-child::before {
+                display: none;
+            }
+
+            a {
+                color: var(--text-muted);
+                text-decoration: none;
+                transition: var(--transition-elite);
+
+                &:hover {
+                    color: var(--elite-primary);
+                }
+            }
+
+            &.active {
+                color: var(--elite-primary) !important;
+                font-weight: 800;
+            }
+        }
+    }
+}
+
+/* Dark Mode Deepening */
+[data-bs-theme="dark"] .page-header {
+    background: rgba(var(--card-bg-rgb), 0.6) !important;
+    &::before {
+        opacity: 0.2;
+    }
+}

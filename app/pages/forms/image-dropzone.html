@@ -1,0 +1,43 @@
+{{#> admin-layout title="Image Dropzone" parentTitle="Forms" }}
+
+<div class="row">
+    <div class="col-12">
+        <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4">
+    <div class="card-body p-4">
+        <div class="profile-wrap py-2">
+
+
+                        <div class="row g-4">
+                            <div class="col-12">
+                                <div class="card border-0 shadow-sm rounded-4">
+                                    <div class="card-header bg-white border-0 pt-4 px-4 d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h5 class="fw-bold mb-0">Media Library</h5>
+                                            <small class="text-muted">Upload product images or documentation</small>
+                                        </div>
+                                        <span class="badge bg-primary-subtle text-primary rounded-pill px-3">Max 5MB</span>
+                                    </div>
+                                    <div class="card-body p-4">
+                                        <form action="/upload" class="dropzone admin-dropzone" id="admin-media-upload">
+                                            <div class="dz-message">
+                                                <div class="upload-icon-wrapper mb-3">
+                                                    <i class="bi bi-cloud-arrow-up-fill text-primary"></i>
+                                                </div>
+                                                <h6 class="fw-bold">Drag files here to upload</h6>
+                                                <p class="text-muted small">or <span
+                                                        class="text-primary text-decoration-underline"
+                                                        style="cursor:pointer">click to browse</span> from your computer
+                                                </p>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+    </div>
+</div>
+
+{{/admin-layout}}

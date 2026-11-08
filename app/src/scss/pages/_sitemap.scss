@@ -1,0 +1,91 @@
+/* Typography & Gradients */
+.text-gradient {
+    background: linear-gradient(135deg, var(--bs-primary) 0%, #6f42c1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.tracking-wider {
+    letter-spacing: 1px;
+}
+
+/* Sitemap Card Logic */
+.sitemap-card {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+}
+
+.sitemap-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+.sitemap-group__title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: 800;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    letter-spacing: 0.05em;
+}
+
+/* Elite Link Interaction */
+.sitemap-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-bottom: 1px solid var(--card-border);
+    transition: all 0.2s ease;
+}
+
+.sitemap-link i {
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+.sitemap-link:hover {
+    color: var(--elite-primary);
+    padding-left: 8px;
+}
+
+.sitemap-link:hover i {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Pill Modifier for UI Kit */
+.sitemap-link--pill {
+    background: var(--bg-body);
+    border: 1px solid var(--card-border);
+    padding: 8px 16px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+    font-size: 0.85rem;
+    justify-content: center;
+}
+
+.sitemap-link--pill:hover {
+    background: var(--elite-primary);
+    color: #fff;
+    padding-left: 16px;
+}
+
+[data-bs-theme="dark"] {
+    .sitemap-card:hover {
+        box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.4) !important;
+    }
+}
+
+/* Footer Accent */
+.sitemap-footer {
+    backdrop-filter: blur(10px);
+}
