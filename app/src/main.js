@@ -194,7 +194,15 @@ const Dashboard = {
     }
 };
 
-window.addEventListener("DOMContentLoaded", () => {
+const onReady = (callback) => {
+    if (document.readyState === 'loading') {
+        window.addEventListener("DOMContentLoaded", callback, { once: true });
+    } else {
+        callback();
+    }
+};
+
+onReady(() => {
     App.init();
 });
 

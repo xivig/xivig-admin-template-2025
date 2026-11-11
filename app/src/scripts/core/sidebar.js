@@ -138,16 +138,30 @@ export function initSidebar() {
 
     // 5. ACTIVE LINK LOGIC
     const highlightActiveLink = () => {
-        const currentPath = window.location.pathname;
+        const normalizePageName = (pathname) => {
+            const clean = (pathname || '').split('?')[0].split('#')[0];
+            if (!clean || clean.endsWith('/')) return 'index.html';
+            return clean.split('/').pop() || 'index.html';
+        };
+
+        const currentFile = normalizePageName(window.location.pathname);
         const allLinks = document.querySelectorAll('.sidebar__link, .sidebar__sub-link');
 
         allLinks.forEach(link => {
             const href = link.getAttribute('href');
-            if (!href || ['javascript:;', '#'].includes(href)) return;
+            if (!href || ['javascript:;', '#'].includes(href) || /^https?:\/\//i.test(href)) return;
 
-            // Strict match for home, partial match for others
-            const isHomePage = (currentPath === '/' || currentPath === '/index.html') && (href === '/' || href === '/index.html');
-            const isMatch = isHomePage || (href !== '/' && currentPath.startsWith(href));
+            let targetPath = href;
+            try {
+                const resolved = new URL(href, window.location.href);
+                if (resolved.origin !== window.location.origin) return;
+                targetPath = resolved.pathname;
+            } catch {
+                targetPath = href;
+            }
+
+            const targetFile = normalizePageName(targetPath);
+            const isMatch = targetFile === currentFile;
 
             if (isMatch) {
                 link.classList.add('active');

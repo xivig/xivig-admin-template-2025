@@ -13,9 +13,11 @@ export const initIconApp = async () => {
     // 1. Fetch the data (AJAX)
     console.log("📥 Fetching FontAwesome Icons data...");
     try {
+        const root = window.XIVIG_ROOT || '/';
         const paths = [
-            '/data/fa-icons.json',
+            `${root}data/fa-icons.json`,
             'data/fa-icons.json',
+            '/data/fa-icons.json',
             '../data/fa-icons.json',
             '../../data/fa-icons.json',
             '../../../data/fa-icons.json',

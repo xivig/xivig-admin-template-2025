@@ -87,17 +87,15 @@ Traditional bundlers often struggle with multi-page static admin templates conta
 
                         PRODUCTION WORKFLOW
                         ───────────────────
-  npm run build    ───►  Gulp 5 Task Orchestrator
-                        ├── 1. Clean dist/ and exports/
-                        ├── 2. Vite Production Compilation (Rollup)
-                        │      ├── CSS Minification & Extraction
+  npm run build    ───►  Vite 8 Native Pipeline (Rolldown + Sharp + Node ESM)
+                        ├── 1. Vite 8 Compilation (Rolldown)
+                        │      ├── CSS Extraction & Native Minification
                         │      └── Manual Chunks: vendor-core, vendor-charts...
-                        ├── 3. Sharp Image Optimization (JPG/PNG -> WebP)
-                        ├── 4. HTML Page Flattening (dist/app/pages -> dist/)
-                        ├── 5. Relative Link Normalizer (replace-links.js)
-                        ├── 6. Vendor Package Sync (node_modules -> dist/plugins)
-                        ├── 7. Terser JS & CleanCSS Final Minification
-                        └── 8. GitHub Pages Export (dist/ -> docs/)
+                        ├── 2. Native Sharp Optimization (tasks/build/optimize-images.js)
+                        │      └── PNG/JPG -> compressed + WebP, SVG/GIF/ICO preserved
+                        ├── 3. Atomic HTML Flattening (dist/app/pages -> dist/*.html)
+                        ├── 4. Idempotent Link Normalizer (replace-links.js -> ./ + single XIVIG_ROOT)
+                        └── 5. Integrity Verification (verify-dist.js -> 109 flat HTMLs, 0 broken links)
 ```
 
 ### Why Both Vite and Gulp?
@@ -610,36 +608,29 @@ All build automation is centralized in `package.json` and orchestrated by `gulpf
 # 1. Start development server with instant HMR
 npm run dev
 
-# 2. Compile full production build into dist/
+# 2. Compile full production build into flat dist/ and verify integrity
 npm run build
 
 # 3. Preview the compiled production build locally
 npm run preview
 
-# 4. Ultimate production build + immediate browser preview
-npm run production
+# 4. Run automated link and asset integrity checks on dist/
+npm run verify
 
-# 5. Serve the documentation portal
-npm run docs
+# 5. Manual idempotent link normalization on ./dist
+npm run fix-links
 
-# 6. Manual link normalization (if restructuring folders)
-npm run postbuild
+# 6. Optional minimal Gulp 5 compatibility runner
+npm run build:gulp
 ```
 
 ### Build Pipeline Step-by-Step (`npm run build`)
 
-1. **`clean`**: Asynchronously removes `dist/` and `exports/` directories.
-2. **`viteBuild`**: Compiles all SCSS, bundles ES6 JavaScript, processes Handlebars templates into HTML, and outputs to `dist/`.
-3. **`optimizeImages`**: Executes `gulp-sharp-optimize-images` across `app/src/images/**/*.{jpg,png,jpeg}`:
-   - Compresses source JPG/PNG files at 80% quality.
-   - Generates Next-Gen **`.webp`** versions for every image asset.
-4. **`moveHtmlPages`**: Flattens nested HTML views from `dist/app/pages/**` to root `dist/` paths to guarantee clean, professional URLs.
-5. **`fixDistLinks`**: Runs [`tasks/utils/replace-links.js`](file:///e:/0.2027-project/xivig-github-all/xivig-gulp-vite-bs5-admin-panel/tasks/utils/replace-links.js):
-   - Rewrites `/app/src/...` root-relative paths into relative `../../...` paths so the build works in any subdirectory or GitHub Pages.
-   - Injects `window.XIVIG_ROOT` for runtime path resolution.
-6. **`copyVendorPackages`**: Copies unbundled CSS/JS assets (Bootstrap Icons fonts, Summernote, Air-Datepicker) from `node_modules/` into `dist/plugins/`.
-7. **`minifyJs` & `minifyCss`**: Performs a final optimization pass with Terser and CleanCSS.
-8. **`exportAssets`**: Synchronizes the complete build output into `docs/` for seamless GitHub Pages hosting.
+1. **`vite build`**: Employs `vite.config.js` (Vite 8 + Rolldown) to bundle SCSS/ESM cleanly with empty-output cleanup (`emptyOutDir: true`).
+2. **`optimizeProjectImages`** ([`tasks/build/optimize-images.js`](tasks/build/optimize-images.js)): Runs inside Vite's `closeBundle` hook using `sharp` directly in parallel workers — compressing PNG/JPG alongside `.webp` variants and copying `.svg`, `.gif`, `.ico` into `dist/assets/`.
+3. **Atomic Flattening** ([`tasks/build/vite-plugins.js`](tasks/build/vite-plugins.js)): Validates zero filename collisions, moves `dist/app/pages/**/*.html` directly into `dist/*.html`, and deletes `dist/app/`.
+4. **Idempotent Link Normalization** ([`tasks/utils/replace-links.js`](tasks/utils/replace-links.js)): Rewrites `/app/pages/...`, `/pages/...`, `/app/src/images/...`, `/images/...`, `/data/...`, and CSS `url(...)` paths to portable `./...` relative paths and injects `window.XIVIG_ROOT = "./"` cleanly once.
+5. **Integrity Verification** ([`tasks/utils/verify-dist.js`](tasks/utils/verify-dist.js)): Audits all 109 flat HTML pages, single `window.XIVIG_ROOT` injection, compiled CSS `url()` targets, and local assets on disk.
 
 ---
 
@@ -682,13 +673,11 @@ python tasks/utils/organize-laravel-assets.py
 
 ## 12. Production Deployment & Web Server Setup
 
-### 1. GitHub Pages
-The project includes a ready-to-deploy static export in the `docs/` folder:
-1. In your GitHub repository settings, navigate to **Pages**.
-2. Select **Source**: `Deploy from a branch`.
-3. Choose branch: `main`, folder: `/docs`.
-4. Save. Your live site will deploy automatically.
-*(The included `public/.nojekyll` file ensures GitHub Pages serves files with underscores and avoids Jekyll processing).*
+### 1. GitHub Pages (Automated via GitHub Actions)
+This repository ships with [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which automatically builds flattened `./dist`, runs `verify-dist.js`, and publishes cleanly to the `gh-pages` branch and GitHub Pages artifact on every push to `main`:
+1. Push your commits to `main`.
+2. In repository **Settings > Pages**, choose either **GitHub Actions** or **Deploy from a branch (`gh-pages` / `(root)`)**.
+*(Developer Markdown documentation lives cleanly in [`docs/`](docs/); the included `public/.nojekyll` file ensures GitHub Pages serves all static files and asset directories cleanly without Jekyll processing).*
 
 ### 2. Nginx Web Server Configuration
 For self-hosted production deployments, point your web root to `dist/`:
@@ -746,7 +735,7 @@ Place an `.htaccess` file inside `dist/`:
 * **Fix**: Ensure the zero-FOUC script in `app/src/partials/head.html` has not been deleted or moved. The theme attribute `data-bs-theme` must be set synchronously on `document.documentElement` before stylesheets are parsed.
 
 ### Q3: Asset links show 404 when deployed to a subfolder
-* **Fix**: Run `npm run postbuild`. The script [`tasks/utils/replace-links.js`](file:///e:/0.2027-project/xivig-github-all/xivig-gulp-vite-bs5-admin-panel/tasks/utils/replace-links.js) converts root-relative `/app/...` paths into portable relative `../../...` paths based on each HTML file's directory depth.
+* **Fix**: Run `npm run fix-links` (or `npm run build`). The idempotent script [`tasks/utils/replace-links.js`](tasks/utils/replace-links.js) converts all root-relative `/app/...` and `/pages/...` paths into portable flattened `./...` relative paths matching the root `dist/*.html` layout.
 
 ### Q4: jQuery plugins throw `$ is not a function`
 * **Fix**: Global jQuery is exported in [`app/src/scripts/core/jquery-setup.js`](file:///e:/0.2027-project/xivig-github-all/xivig-gulp-vite-bs5-admin-panel/app/src/scripts/core/jquery-setup.js). Ensure `jquery-setup.js` is imported in your main JavaScript entry file prior to invoking legacy jQuery plugins.

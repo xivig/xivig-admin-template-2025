@@ -62,7 +62,7 @@ export const initAdminSettings = async () => {
         let html = `
             <div class="sidebar-mini shadow-lg" style="width: 100%; height: 100%; background: var(--elite-dark); color: #fff; border-radius: 12px; font-size: 0.75rem;">
                 <div class="p-3 border-bottom border-white border-opacity-10 d-flex align-items-center gap-2">
-                    <img src="${localStorage.getItem('xivig_logo') || '/images/logo.png'}" style="width: 20px;">
+                    <img src="${localStorage.getItem('xivig_logo') || `${window.XIVIG_ROOT || '/'}images/logo.png`}" style="width: 20px;">
                     <span class="fw-bold text-white small">${JSON.parse(localStorage.getItem('xivig_branding'))?.title || 'XivigApp'}</span>
                 </div>
                 <div class="p-2">

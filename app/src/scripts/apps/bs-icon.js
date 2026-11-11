@@ -12,9 +12,11 @@ export const initIconFilter = async (inputId, containerId) => {
     // 1. Fetch the data (AJAX)
     console.log("📥 Fetching Bootstrap Icons data...");
     try {
+        const root = window.XIVIG_ROOT || '/';
         const paths = [
-            '/data/bootstrap-icons.json',
+            `${root}data/bootstrap-icons.json`,
             'data/bootstrap-icons.json',
+            '/data/bootstrap-icons.json',
             '../data/bootstrap-icons.json',
             '../../data/bootstrap-icons.json',
             '../../../data/bootstrap-icons.json',

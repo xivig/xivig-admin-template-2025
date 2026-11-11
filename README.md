@@ -9,14 +9,14 @@
 [![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue.svg)](https://xivig.github.io/xivig-gulp-vite-bs5-admin-panel/)
 
 > **The definitive enterprise administrative dashboard and systems operations console.**  
-> Engineered with a high-performance **Dual-Engine Hybrid Pipeline** combining **Vite 8** for instantaneous Hot Module Replacement (HMR) during development and **Gulp 5** for industrial-grade Sharp image compression (WebP), vendor package isolation, stylesheet minification, and multi-tier static documentation exports.
+> Engineered with a modern **Vite 8 Native Pipeline** (Rolldown bundler, native ESM Hot Module Replacement, Sharp image optimization, atomic HTML flattening, and automated link/asset verification), retaining only a thin optional Gulp 5 compatibility layer.
 
 ---
 
 ## 📖 Essential Documentation Links
 
 * 📘 [**Complete Technical Documentation Manual (`DOCUMENTATION.md`)**](DOCUMENTATION.md) — Exhaustive 13-chapter guide detailing the dual-engine pipeline, 7-1 Sass tokens, Handlebars layout engine, modular JavaScript architecture, 108+ view catalog, multi-chart integration, and deployment recipes.
-* 🛠️ [**Developer Guides Directory (`developer-docs/`)**](developer-docs/) — Focused internal specifications for the build system, SCSS tokens, JavaScript controllers, HTML directory maps, and Laravel Blade conversion.
+* 🛠️ [**Developer Guides Directory (`docs/`)**](docs/) — Focused internal specifications for the build system, SCSS tokens, JavaScript controllers, HTML directory maps, and Laravel Blade conversion.
 
 ---
 
@@ -24,7 +24,6 @@
 
 Experience the compiled dashboard live in your browser:
 * 🔗 **[Launch XIVIG Admin Panel Live Demo (GitHub Pages) ↗](https://xivig.github.io/xivig-gulp-vite-bs5-admin-panel/)**
-* 🔗 **[Preview via HTMLPreview ↗](https://htmlpreview.github.io/?https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel/blob/main/docs/index.html)**
 
 ---
 
@@ -63,8 +62,8 @@ Experience the compiled dashboard live in your browser:
 ## 🚀 Quick Start Guide
 
 ### Prerequisites
-- **Node.js**: `v18.x` or `v20.x`+ recommended
-- **npm**: `v9.x`+ (or `pnpm` / `yarn`)
+- **Node.js**: `v20.x` or `v22.x`+ (`engines.node >= 20.0.0`)
+- **npm**: `v10.x`+ (or `pnpm` / `yarn`)
 
 ### 1. Clone & Install Dependencies
 ```bash
@@ -81,21 +80,21 @@ Launches Vite with instant HMR and opens the dashboard at `http://localhost:3000
 npm run dev
 ```
 
-### 3. Production Build
-Executes the full hybrid pipeline (clean &rarr; Vite compile &rarr; Sharp WebP optimization &rarr; HTML page flattening &rarr; relative link refinement &rarr; vendor sync &rarr; minification &rarr; docs export):
+### 3. Production Build (Flattened `dist/` + Verification)
+Executes the modern Vite 8 + Node ESM pipeline (bundle SCSS/ESM &rarr; optimize JPG/PNG to WebP via Sharp &rarr; preserve SVG/GIF/ICO &rarr; atomically flatten all 109 HTML pages into `dist/*.html` &rarr; normalize relative paths &rarr; verify links/assets via `verify-dist.js`):
 ```bash
 npm run build
 ```
 
-### 4. Preview Compiled Production Build
-Spins up a local web server serving the compiled `dist/` directory:
+### 4. Preview & Verify Compiled Production Build
+Serves the compiled flattened `dist/` directory locally via Vite Preview:
 ```bash
 npm run preview
 ```
 
-### 5. Launch Documentation Server
+Validate all 109 flattened HTML files, relative links, and compiled CSS/image assets on disk:
 ```bash
-npm run docs
+npm run verify
 ```
 
 ---
@@ -124,15 +123,15 @@ xivig-gulp-vite-bs5-admin-panel/
 │       ├── plugins/               # Vendored and patched JavaScript modules
 │       ├── scripts/               # Modular ES6 controllers, app logic, chart runners
 │       └── scss/                  # 7-1 Sass architecture (base, components, layout, pages)
-├── developer-docs/                # In-depth architectural guides and specifications
-├── dist/                          # Fully compiled production build directory
-├── docs/                          # GitHub Pages static export target (relative paths, .nojekyll)
-├── public/                        # Static assets, fonts, icons JSON, and static data
-├── tasks/                         # Modular Gulp automation modules
-│   ├── gulp/                      # Export, serve, and documentation tasks
-│   └── utils/                     # Relative link rewriter, Laravel Blade migration tools
-├── gulpfile.js                    # Gulp 5 task orchestrator
-├── vite.config.js                 # Modern Vite 8 configuration with Rollup manual chunks
+├── .github/workflows/             # GitHub Actions CI/CD (builds & deploys flat dist/ to GitHub Pages)
+├── docs/                          # Developer architectural guides and Markdown specifications
+├── dist/                          # Flattened production build directory (109 root HTML files + assets)
+├── public/                        # Static assets, icons JSON, and sidebar-config.json
+├── tasks/                         # Modular build automation modules
+│   ├── build/                     # Vite 8 plugins & Sharp ESM image optimizer
+│   └── utils/                     # Idempotent link normalizer, dist verifier, Blade migration tools
+├── gulpfile.js                    # Minimal optional Gulp 5 shim delegating to Vite 8
+├── vite.config.js                 # Modern Vite 8 + Rolldown configuration with manual chunks
 ├── package.json                   # Project manifest, dependencies, and scripts
 ├── DOCUMENTATION.md               # Exhaustive 13-chapter Technical Documentation Manual
 └── README.md                      # Primary project overview and quick reference
@@ -203,7 +202,7 @@ python tasks/utils/convert-to-laravel.py
 python tasks/utils/organize-laravel-assets.py
 ```
 
-For full step-by-step instructions, see the [Laravel Implementation Guide in developer-docs](developer-docs/LARAVEL_IMPLEMENTATION.md) and [Chapter 11 of DOCUMENTATION.md](DOCUMENTATION.md#11-laravel-blade-migration-framework).
+For full step-by-step instructions, see the [Laravel Implementation Guide in docs](docs/LARAVEL_IMPLEMENTATION.md) and [Chapter 11 of DOCUMENTATION.md](DOCUMENTATION.md#11-laravel-blade-migration-framework).
 
 ---
 

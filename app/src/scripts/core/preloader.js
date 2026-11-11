@@ -9,19 +9,30 @@ export function initPreloader() {
         if (!loader.classList.contains("preloader--hidden")) {
             loader.classList.add("preloader--hidden");
             document.body.classList.add('is-loaded');
+            document.body.classList.remove('preloader-active');
             // Clean up DOM after transition finishes
             setTimeout(() => {
                 loader.style.display = "none";
-            }, 600);
+            }, 500);
         }
     };
 
     // --- GLOBAL FAIL-SAFE ---
     setTimeout(() => {
         if (!loader.classList.contains("preloader--hidden")) {
+            if (percentDisplay) percentDisplay.textContent = '100%';
+            if (progressBar) progressBar.style.width = '100%';
             hideLoader();
         }
-    }, 4000);
+    }, 1500);
+
+    // If browser has already completed full document load when module executes, dismiss quickly
+    if (document.readyState === 'complete') {
+        if (percentDisplay) percentDisplay.textContent = '100%';
+        if (progressBar) progressBar.style.width = '100%';
+        hideLoader();
+        return;
+    }
 
     let current = 0;
     

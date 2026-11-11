@@ -1,0 +1,93 @@
+[
+  {
+    "id": "dashboard",
+    "label": "Dashboard",
+    "icon": "bi bi-grid-1x2-fill",
+    "path": "index.html",
+    "hasSubmenu": true,
+    "submenu": [
+      { "label": "Architect Overview", "path": "index.html" },
+      { "label": "Executive Telemetry v2", "path": "dashboard-v2.html" },
+      { "label": "Elite Media Gallery", "path": "elite-media-gallery.html" }
+    ]
+  },
+  {
+    "id": "analytics",
+    "label": "Analytics",
+    "icon": "bi bi-graph-up-arrow",
+    "path": "overview.html",
+    "hasSubmenu": true,
+    "submenu": [
+      { "label": "Traffic Overview", "path": "overview.html" },
+      { "label": "System Metrics", "path": "system-metrics.html" }
+    ]
+  },
+  {
+    "id": "apps",
+    "label": "Applications",
+    "icon": "bi bi-app-indicator",
+    "path": "chat.html",
+    "hasSubmenu": true,
+    "submenu": [
+      { "label": "Real-Time Chat", "path": "chat.html" },
+      { "label": "FullCalendar", "path": "calendar.html" },
+      { "label": "Mailbox Inbox", "path": "inbox.html" },
+      { "label": "Kanban Board", "path": "kanban.html" },
+      { "label": "Task Manager", "path": "task-manager.html" },
+      { "label": "File Manager", "path": "file-manager.html" },
+      { "label": "Video Player", "path": "video-player.html" }
+    ]
+  },
+  {
+    "id": "ecommerce",
+    "label": "E-Commerce",
+    "icon": "bi bi-bag-check-fill",
+    "path": "ecommerce-products.html",
+    "hasSubmenu": true,
+    "submenu": [
+      { "label": "Products Catalog", "path": "ecommerce-products.html" },
+      { "label": "Orders", "path": "ecommerce-orders.html" },
+      { "label": "Shopping Cart", "path": "ecommerce-cart.html" },
+      { "label": "Checkout", "path": "checkout.html" }
+    ]
+  },
+  {
+    "id": "deployments",
+    "label": "Deployments",
+    "icon": "bi bi-hdd-stack-fill",
+    "path": "deployment-list.html",
+    "hasSubmenu": true,
+    "submenu": [
+      { "label": "Deployment List", "path": "deployment-list.html" },
+      { "label": "Build History", "path": "build-history.html" },
+      { "label": "Releases & Tags", "path": "releases.html" }
+    ]
+  },
+  {
+    "id": "users",
+    "label": "Users & Access",
+    "icon": "bi bi-people-fill",
+    "path": "user-list.html",
+    "hasSubmenu": true,
+    "submenu": [
+      { "label": "User Directory", "path": "user-list.html" },
+      { "label": "Account Settings", "path": "account-settings.html" }
+    ]
+  },
+  {
+    "id": "admin-settings",
+    "label": "Admin Settings",
+    "icon": "bi bi-sliders",
+    "path": "admin-settings.html",
+    "hasSubmenu": false,
+    "submenu": []
+  },
+  {
+    "id": "documentation",
+    "label": "Documentation",
+    "icon": "bi bi-book-half",
+    "path": "documentation.html",
+    "hasSubmenu": false,
+    "submenu": []
+  }
+]

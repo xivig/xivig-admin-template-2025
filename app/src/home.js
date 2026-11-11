@@ -26,12 +26,24 @@ import { initPricingToggle } from './scripts/components/pricing.js';
 import { initMaintenance } from './scripts/pages/maintenance.js';
 import { initMobileController } from './scripts/core/mobile-controller.js';
 
-window.addEventListener("DOMContentLoaded", () => {
-    initPreloader();
-    initXivig();
-    initLightbox();
-    initGalleryFilter();
-    initPricingToggle();
-    initMaintenance();
-    initMobileController();
-});
+const initAll = () => {
+    try {
+        initPreloader();
+        initXivig();
+        initLightbox();
+        initGalleryFilter();
+        initPricingToggle();
+        initMaintenance();
+        initMobileController();
+    } catch (error) {
+        console.error("❌ Home Initialization Failed:", error);
+        document.body.classList.add('is-loaded');
+        document.querySelector('.preloader')?.classList.add('preloader--hidden');
+    }
+};
+
+if (document.readyState === 'loading') {
+    window.addEventListener("DOMContentLoaded", initAll, { once: true });
+} else {
+    initAll();
+}

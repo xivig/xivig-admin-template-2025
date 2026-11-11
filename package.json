@@ -14,25 +14,21 @@
   "author": "xivig",
   "type": "module",
   "main": "gulpfile.js",
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
-    "dev": "vite --open",
-    "build": "gulp build",
+    "dev": "vite",
+    "build": "vite build && node tasks/utils/verify-dist.js ./dist",
+    "build:gulp": "gulp build",
     "preview": "vite preview",
-    "production": "gulp production",
-    "postbuild": "node tasks/utils/replace-links.js",
-    "docs": "gulp serveDocs"
+    "fix-links": "node tasks/utils/replace-links.js ./dist",
+    "verify": "node tasks/utils/verify-dist.js ./dist"
   },
   "devDependencies": {
-    "browser-sync": "^3.0.4",
-    "del": "^7.1.0",
     "gulp": "^5.0.0",
-    "gulp-clean-css": "^4.3.0",
-    "gulp-plumber": "^1.2.1",
-    "gulp-rename": "^2.1.0",
-    "gulp-sharp-optimize-images": "^4.0.3",
-    "gulp-tap": "^2.0.0",
-    "gulp-terser": "^2.1.0",
     "sass": "^1.99.0",
+    "sharp": "^0.33.5",
     "vite": "^8.0.10",
     "vite-plugin-handlebars": "^2.0.0"
   },

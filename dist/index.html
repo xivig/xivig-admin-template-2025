@@ -3,7 +3,6 @@
 
 <head>
     <script>window.XIVIG_ROOT = "./";</script>
-    <script>window.XIVIG_ROOT = "./";</script>
     <meta charset="UTF-8">
     <title>Architect Dashboard</title>
     
@@ -26,7 +25,7 @@
             document.documentElement.setAttribute('data-bs-theme', resolvedTheme);
             // Set body background color immediately to prevent white flash
             const bgColor = resolvedTheme === 'dark' ? '#0b0f12' : '#f8fafc';
-            document.write(`<style>body{background-color: ${bgColor} !important; visibility: hidden;} body.is-loaded, body.preloader-active{visibility: visible;}</style>`);
+            document.write(`<style>body{background-color: ${bgColor} !important;}</style>`);
         })();
     </script>
     
@@ -36,28 +35,52 @@
             position: fixed;
             inset: 0;
             z-index: 99999;
-            background: inherit; /* Use the body background color */
+            background: inherit;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: opacity 0.6s ease, visibility 0.6s;
+            transition: opacity 0.45s ease, visibility 0.45s ease;
         }
         .preloader--hidden {
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
         }
-        body:not(.is-loaded) {
+        body.preloader-active:not(.is-loaded) {
             overflow: hidden;
         }
-        /* Ensure preloader is visible even if body is hidden */
-        .preloader { visibility: visible !important; }
     </style>
     
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.classList.add('preloader-active');
-        });
+        (function() {
+            var dismissPreloader = function() {
+                if (document.body) {
+                    document.body.classList.add('is-loaded');
+                    document.body.classList.remove('preloader-active');
+                }
+                var loader = document.querySelector('.preloader');
+                if (loader && !loader.classList.contains('preloader--hidden')) {
+                    loader.classList.add('preloader--hidden');
+                    setTimeout(function() {
+                        loader.style.display = 'none';
+                    }, 500);
+                }
+            };
+            var markActive = function() {
+                if (document.body && !document.body.classList.contains('is-loaded')) {
+                    document.body.classList.add('preloader-active');
+                }
+                setTimeout(dismissPreloader, 2200);
+            };
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', markActive, { once: true });
+            } else {
+                markActive();
+            }
+            window.addEventListener('load', function() {
+                setTimeout(dismissPreloader, 800);
+            }, { once: true });
+        })();
     </script>
     
     <!-- Vendor Styles (Third Party) -->
@@ -237,35 +260,35 @@
                         </button>
                         <div class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow" role="menu">
                             <h6 class="dropdown-header">Notifications</h6>
-                            <a class="dropdown-item header__dropdown-item" href="./pages/notification.html" role="menuitem">
+                            <a class="dropdown-item header__dropdown-item" href="./notification.html" role="menuitem">
                                 <img src="./assets/photo1.jpg" alt="Profile of Jennifer Oster" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="./pages/notification.html" role="menuitem">
+                            <a class="dropdown-item header__dropdown-item" href="./notification.html" role="menuitem">
                                 <img src="./assets/photo2.jpg" alt="Profile of Notification Sender" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="./pages/notification.html" role="menuitem">
+                            <a class="dropdown-item header__dropdown-item" href="./notification.html" role="menuitem">
                                 <img src="./assets/photo3.jpg" alt="Profile of Notification Sender" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="./pages/notification.html" role="menuitem">
+                            <a class="dropdown-item header__dropdown-item" href="./notification.html" role="menuitem">
                                 <img src="./assets/photo4.jpg" alt="Profile of Notification Sender" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
                                     <small class="header__dropdown-text">New patient registered</small>
                                 </div>
                             </a>
-                            <a class="dropdown-item header__dropdown-item" href="./pages/notification.html" role="menuitem">
+                            <a class="dropdown-item header__dropdown-item" href="./notification.html" role="menuitem">
                                 <img src="./assets/photo5.jpg" alt="Profile of Notification Sender" class="header__dropdown-img">
                                 <div class="header__dropdown-info">
                                     <span class="header__dropdown-title">Jennifer O. Oster</span>
@@ -283,21 +306,21 @@
                     </button>
                     <ul class="dropdown-menu dropdown-menu-end header__dropdown-menu shadow" role="menu">
                         <li>
-                            <a class="dropdown-item" href="./pages/profile.html" role="menuitem">
+                            <a class="dropdown-item" href="./profile.html" role="menuitem">
                                 <i class="bi bi-person me-2" aria-hidden="true"></i> Profile
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="./pages/account-settings.html" role="menuitem">
+                            <a class="dropdown-item" href="./account-settings.html" role="menuitem">
                                 <i class="bi bi-gear me-2" aria-hidden="true"></i> Account Settings
                             </a>
                         </li>
                         <li>
-                            <a class="dropdown-item" href="./pages/help-support.html" role="menuitem">
+                            <a class="dropdown-item" href="./help-support.html" role="menuitem">
                                 <i class="bi bi-1-circle me-2" aria-hidden="true"></i> Help
                             </a>
                         </li>
-                        <li><a class="dropdown-item text-danger" href="./pages/auth/login.html" role="menuitem"><i
+                        <li><a class="dropdown-item text-danger" href="./login.html" role="menuitem"><i
                                     class="bi bi-box-arrow-right me-2" aria-hidden="true"></i>
                                 Logout</a></li>
                     </ul>
@@ -335,7 +358,7 @@
                         <ul class="sidebar__submenu" role="menu" aria-label="Home Submenu">
                             <li class="sidebar__sub-item" role="none"><a href="./index.html" class="sidebar__sub-link" role="menuitem">Dashboard v1</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/dashboard-v2.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./dashboard-v2.html"
                                     class="sidebar__sub-link" role="menuitem">Dashboard v2</a>
                             </li>
                         </ul>
@@ -353,33 +376,33 @@
                                 <a href="javascript:;" class="sidebar__sub-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="product-mgmt-submenu">Product Management</a>
                                 <div class="sidebar__submenu-wrapper" id="product-mgmt-submenu">
                                     <ul class="sidebar__submenu" role="menu" aria-label="Product Management Submenu">
-                                        <li class="sidebar__sub-item" role="none"><a href="./pages/ecommerce/ecommerce-products.html"
+                                        <li class="sidebar__sub-item" role="none"><a href="./ecommerce-products.html"
                                                 class="sidebar__sub-link" role="menuitem">Product List</a></li>
                                         <li class="sidebar__sub-item" role="none"><a
-                                                href="./pages/ecommerce/ecommerce-add-product.html"
+                                                href="./ecommerce-add-product.html"
                                                 class="sidebar__sub-link" role="menuitem">Add Product</a></li>
                                         <li class="sidebar__sub-item" role="none"><a
-                                                href="./pages/ecommerce/ecommerce-product-show.html"
+                                                href="./ecommerce-product-show.html"
                                                 class="sidebar__sub-link" role="menuitem">Product Show</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ecommerce/ecommerce-product-detail.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ecommerce-product-detail.html"
                                     class="sidebar__sub-link" role="menuitem">Product Analytics</a></li>
                             <li class="sidebar__sub-item sidebar__sub-item--has-dropdown" role="none">
                                 <a href="javascript:;" class="sidebar__sub-link" role="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="order-mgmt-submenu">Order Management</a>
                                 <div class="sidebar__submenu-wrapper" id="order-mgmt-submenu">
                                     <ul class="sidebar__submenu" role="menu" aria-label="Order Management Submenu">
-                                        <li class="sidebar__sub-item" role="none"><a href="./pages/ecommerce/ecommerce-orders.html"
+                                        <li class="sidebar__sub-item" role="none"><a href="./ecommerce-orders.html"
                                                 class="sidebar__sub-link" role="menuitem">Order List</a></li>
-                                        <li class="sidebar__sub-item" role="none"><a href="./pages/ecommerce/create-order.html"
+                                        <li class="sidebar__sub-item" role="none"><a href="./create-order.html"
                                                 class="sidebar__sub-link" role="menuitem">Create Order</a></li>
                                     </ul>
                                 </div>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ecommerce/ecommerce-cart.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ecommerce-cart.html"
                                     class="sidebar__sub-link" role="menuitem">Shopping Cart</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/store-settings.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./store-settings.html"
                                     class="sidebar__sub-link" role="menuitem">Store Settings</a></li>
                         </ul>
                     </div>
@@ -392,10 +415,10 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="blog-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Blog Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/blog-list.html" class="sidebar__sub-link" role="menuitem">Blog
+                            <li class="sidebar__sub-item" role="none"><a href="./blog-list.html" class="sidebar__sub-link" role="menuitem">Blog
                                     List</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/blog-detail.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./blog-detail.html"
                                     class="sidebar__sub-link" role="menuitem">Blog
                                     Details</a></li>
                         </ul>
@@ -409,10 +432,10 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="course-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Course Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/course-dashboard.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./course-dashboard.html"
                                     class="sidebar__sub-link" role="menuitem">Course
                                     Dashboard</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/course-interface.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./course-interface.html"
                                     class="sidebar__sub-link" role="menuitem">Course
                                     Interface</a></li>
                         </ul>
@@ -426,28 +449,28 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="apps-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Apps Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/calendar.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./calendar.html"
                                     class="sidebar__sub-link" role="menuitem">Calendar</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/chat.html" class="sidebar__sub-link" role="menuitem">Chat
+                            <li class="sidebar__sub-item" role="none"><a href="./chat.html" class="sidebar__sub-link" role="menuitem">Chat
                                     <span id="sidebar-chat-badge" class="badge rounded-pill bg-info ms-auto">
                                         3
                                         <span class="visually-hidden">notifications</span>
                                     </span>
                                 </a></li>
     
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/video-player.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./video-player.html"
                                     class="sidebar__sub-link" role="menuitem">Video
                                     Player</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/kanban.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./kanban.html"
                                     class="sidebar__sub-link" role="menuitem">Kanban</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/task-manager.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./task-manager.html"
                                     class="sidebar__sub-link" role="menuitem">Task</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/file-manager.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./file-manager.html"
                                     class="sidebar__sub-link" role="menuitem">File
                                     Manager</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/apps/inbox.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./inbox.html"
                                     class="sidebar__sub-link" role="menuitem">Mailbox
                                     <span id="sidebar-inbox-badge" class="badge rounded-pill bg-primary ms-auto">
                                         12
@@ -465,9 +488,9 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="projects-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Projects Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/projects/project-list.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./project-list.html"
                                     class="sidebar__sub-link" role="menuitem">Project List</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/projects/project-add.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./project-add.html"
                                     class="sidebar__sub-link" role="menuitem">Add Project</a></li>
                         </ul>
                     </div>
@@ -480,9 +503,9 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="users-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Users Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/users/user-list.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./user-list.html"
                                     class="sidebar__sub-link" role="menuitem">User List</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/users/user-add.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./user-add.html"
                                     class="sidebar__sub-link" role="menuitem">Add User</a></li>
                         </ul>
                     </div>
@@ -495,11 +518,11 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="pipeline-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Pipeline Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/deployments/deployment-list.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./deployment-list.html"
                                     class="sidebar__sub-link" role="menuitem">Deployments</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/deployments/build-history.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./build-history.html"
                                     class="sidebar__sub-link" role="menuitem">Build History</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/deployments/releases.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./releases.html"
                                     class="sidebar__sub-link" role="menuitem">Releases</a></li>
                         </ul>
                     </div>
@@ -512,9 +535,9 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="analytics-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Analytics Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/analytics/overview.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./overview.html"
                                     class="sidebar__sub-link" role="menuitem">Overview</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/analytics/system-metrics.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./system-metrics.html"
                                     class="sidebar__sub-link" role="menuitem">System Metrics</a></li>
                         </ul>
                     </div>
@@ -527,30 +550,30 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="form-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Form Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/form-basic.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./form-basic.html"
                                     class="sidebar__sub-link" role="menuitem">Form Basic</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/summernote-editor.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./summernote-editor.html"
                                     class="sidebar__sub-link" role="menuitem">Html Editor</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/advanced-components.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./advanced-components.html"
                                     class="sidebar__sub-link" role="menuitem">Advanced Components</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/form-pickers.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./form-pickers.html"
                                     class="sidebar__sub-link" role="menuitem">Form
                                     Pickers</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/form-extras.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./form-extras.html"
                                     class="sidebar__sub-link" role="menuitem">Form
                                     Extras</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/form-grid.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./form-grid.html"
                                     class="sidebar__sub-link" role="menuitem">Form Grid</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/form-wizard.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./form-wizard.html"
                                     class="sidebar__sub-link" role="menuitem">Form
                                     Wizard</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/image-cropper.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./image-cropper.html"
                                     class="sidebar__sub-link" role="menuitem">Image
                                     Cropper</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/forms/image-dropzone.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./image-dropzone.html"
                                     class="sidebar__sub-link" role="menuitem">Image
                                     Dropzone</a></li>
                         </ul>
@@ -564,10 +587,10 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="table-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Table Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/tables/basic-table.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./basic-table.html"
                                     class="sidebar__sub-link" role="menuitem">Basic
                                     Table</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/tables/datatable.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./datatable.html"
                                     class="sidebar__sub-link" role="menuitem">Datatables</a>
                             </li>
                         </ul>
@@ -581,43 +604,43 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="ui-elements-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="UI Elements Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-buttons.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-buttons.html"
                                     class="sidebar__sub-link" role="menuitem">Buttons</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-cards.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-cards.html"
                                     class="sidebar__sub-link" role="menuitem">Cards</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-cards-hover.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-cards-hover.html"
                                     class="sidebar__sub-link" role="menuitem">Cards
                                     Hover</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-modals.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-modals.html"
                                     class="sidebar__sub-link" role="menuitem">Modals</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-tabs.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-tabs.html"
                                     class="sidebar__sub-link" role="menuitem">Tabs</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-sweet-alert.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-sweet-alert.html"
                                     class="sidebar__sub-link" role="menuitem">Sweet
                                     Alert</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-notification.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-notification.html"
                                     class="sidebar__sub-link" role="menuitem">Notification</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-timeline.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-timeline.html"
                                     class="sidebar__sub-link" role="menuitem">Timeline</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-progressbar.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-progressbar.html"
                                     class="sidebar__sub-link" role="menuitem">Progressbar</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-typography.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-typography.html"
                                     class="sidebar__sub-link" role="menuitem">Typography</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-list-group.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-list-group.html"
                                     class="sidebar__sub-link" role="menuitem">List
                                     group</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-range-slider.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-range-slider.html"
                                     class="sidebar__sub-link" role="menuitem">Range
                                     slider</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-carousel.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-carousel.html"
                                     class="sidebar__sub-link" role="menuitem">Carousel</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-toggle.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-toggle.html"
                                     class="sidebar__sub-link" role="menuitem">Collapsible
                                     Toggle</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/ui-offcanvas.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./ui-offcanvas.html"
                                     class="sidebar__sub-link" role="menuitem">Offcanvas</a></li>
                         </ul>
                     </div>
@@ -630,10 +653,10 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="icons-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Icons Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/bootstrap-icon.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./bootstrap-icon.html"
                                     class="sidebar__sub-link" role="menuitem">Bootstrap
                                     Icons</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/ui-elements/font-awesome.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./font-awesome.html"
                                     class="sidebar__sub-link" role="menuitem">FontAwesome
                                     Icons</a></li>
                         </ul>
@@ -647,17 +670,17 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="charts-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Charts Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/charts/apexcharts.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./apexcharts.html"
                                     class="sidebar__sub-link" role="menuitem">Apexcharts</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/charts/chartjs.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./chartjs.html"
                                     class="sidebar__sub-link" role="menuitem">Chart.js</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/charts/e-chart.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./e-chart.html"
                                     class="sidebar__sub-link" role="menuitem">E-Charts</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/charts/highchart.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./highchart.html"
                                     class="sidebar__sub-link" role="menuitem">Highcharts</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/charts/jtvector-map.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./jtvector-map.html"
                                     class="sidebar__sub-link" role="menuitem">Vector
                                     Map</a></li>
                         </ul>
@@ -672,20 +695,20 @@
                     <div class="sidebar__submenu-wrapper" id="extras-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Extras Submenu">
     
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/invoice.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./invoice.html"
                                     class="sidebar__sub-link" role="menuitem">Invoice</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/faq.html" class="sidebar__sub-link" role="menuitem">FAQ</a>
+                            <li class="sidebar__sub-item" role="none"><a href="./faq.html" class="sidebar__sub-link" role="menuitem">FAQ</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/gallery.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./gallery.html"
                                     class="sidebar__sub-link" role="menuitem">Gallery</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/pricing-table.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./pricing-table.html"
                                     class="sidebar__sub-link" role="menuitem">Pricing
                                     Table</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/sitemap.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./sitemap.html"
                                     class="sidebar__sub-link" role="menuitem">Sitemap</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/blank.html" class="sidebar__sub-link" role="menuitem">Blank
+                            <li class="sidebar__sub-item" role="none"><a href="./blank.html" class="sidebar__sub-link" role="menuitem">Blank
                                     Page</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/search.html" class="sidebar__sub-link" role="menuitem">Search
+                            <li class="sidebar__sub-item" role="none"><a href="./search.html" class="sidebar__sub-link" role="menuitem">Search
                                     Result</a>
                             </li>
                         </ul>
@@ -699,19 +722,19 @@
                     </a>
                     <div class="sidebar__submenu-wrapper" id="errors-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Errors Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/error/400.html" class="sidebar__sub-link" role="menuitem">400
+                            <li class="sidebar__sub-item" role="none"><a href="./400.html" class="sidebar__sub-link" role="menuitem">400
                                     Bad Request</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/error/403.html" class="sidebar__sub-link" role="menuitem">403
+                            <li class="sidebar__sub-item" role="none"><a href="./403.html" class="sidebar__sub-link" role="menuitem">403
                                     Forbidden</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/error/404.html" class="sidebar__sub-link" role="menuitem">404
+                            <li class="sidebar__sub-item" role="none"><a href="./404.html" class="sidebar__sub-link" role="menuitem">404
                                     Not Found</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/error/500.html" class="sidebar__sub-link" role="menuitem">500
+                            <li class="sidebar__sub-item" role="none"><a href="./500.html" class="sidebar__sub-link" role="menuitem">500
                                     Internal
                                     Error</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/error/503.html" class="sidebar__sub-link" role="menuitem">503
+                            <li class="sidebar__sub-item" role="none"><a href="./503.html" class="sidebar__sub-link" role="menuitem">503
                                     Service
                                     Unavailable</a></li>
                         </ul>
@@ -725,32 +748,32 @@
     
                     <div class="sidebar__submenu-wrapper" id="additional-submenu">
                         <ul class="sidebar__submenu" role="menu" aria-label="Additional Pages Submenu">
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/maintenance.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./maintenance.html"
                                     class="sidebar__sub-link" role="menuitem">Maintenance</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/account-onboarding.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./account-onboarding.html"
                                     class="sidebar__sub-link" role="menuitem">Account Onboarding</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/help-support.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./help-support.html"
                                     class="sidebar__sub-link" role="menuitem">Help &
                                     Support</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/profile.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./profile.html"
                                     class="sidebar__sub-link" role="menuitem">Profile</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/account-settings.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./account-settings.html"
                                     class="sidebar__sub-link" role="menuitem">Account
                                     Settings</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/login.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./login.html"
                                     class="sidebar__sub-link" role="menuitem">Login</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/register.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./register.html"
                                     class="sidebar__sub-link" role="menuitem">Register</a>
                             </li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/forgot-password.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./forgot-password.html"
                                     class="sidebar__sub-link" role="menuitem">Forgot
                                     Password</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/reset-password.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./reset-password.html"
                                     class="sidebar__sub-link" role="menuitem">Reset
                                     Password</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/two-factor-authentication.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./two-factor-authentication.html"
                                     class="sidebar__sub-link" role="menuitem">Two Factor Authentication</a></li>
-                            <li class="sidebar__sub-item" role="none"><a href="./pages/auth/lockscreen.html"
+                            <li class="sidebar__sub-item" role="none"><a href="./lockscreen.html"
                                     class="sidebar__sub-link" role="menuitem">Lock
                                     Screen</a></li>
                         </ul>
@@ -760,13 +783,13 @@
     
     
                 <li class="sidebar__item" role="none">
-                    <a href="./pages/admin-settings.html" class="sidebar__link" role="menuitem">
+                    <a href="./admin-settings.html" class="sidebar__link" role="menuitem">
                         <span class="sidebar__icon bi bi-gear" aria-hidden="true"></span>
                         <span class="sidebar__text">Settings</span>
                     </a>
                 </li>
                 <li class="sidebar__item" role="none">
-                    <a href="./pages/documentation.html" class="sidebar__link" role="menuitem">
+                    <a href="./documentation.html" class="sidebar__link" role="menuitem">
                         <span class="sidebar__icon bi bi-file-earmark-medical" aria-hidden="true"></span>
                         <span class="sidebar__text">Documentation</span>
                     </a>
@@ -778,13 +801,13 @@
                     </a>
                 </li>
                 <li class="sidebar__item" role="none">
-                    <a href="./pages/xivig.html" class="sidebar__link" role="menuitem">
+                    <a href="./xivig.html" class="sidebar__link" role="menuitem">
                         <span class="sidebar__icon bi bi-app" aria-hidden="true"></span>
                         <span class="sidebar__text">Landing Page</span>
                     </a>
                 </li>
                 <li class="sidebar__item mt-auto" role="none">
-                    <a href="./pages/auth/login.html" class="sidebar__link sidebar__link--logout text-danger" role="menuitem">
+                    <a href="./login.html" class="sidebar__link sidebar__link--logout text-danger" role="menuitem">
                         <span class="sidebar__icon bi bi-box-arrow-right" aria-hidden="true"></span>
                         <span class="sidebar__text">Logout</span>
                     </a>
@@ -1125,15 +1148,15 @@
             <i class="bi bi-house" aria-hidden="true"></i>
             <span>Home</span>
         </a>
-        <a href="./pages/dashboard-v2.html" class="mobile-bottom-nav__item">
+        <a href="./dashboard-v2.html" class="mobile-bottom-nav__item">
             <i class="bi bi-speedometer2" aria-hidden="true"></i>
             <span>Stats</span>
         </a>
-        <a href="./pages/apps/chat.html" class="mobile-bottom-nav__item">
+        <a href="./chat.html" class="mobile-bottom-nav__item">
             <i class="bi bi-chat-dots" aria-hidden="true"></i>
             <span>Chat</span>
         </a>
-        <a href="./pages/profile.html" class="mobile-bottom-nav__item">
+        <a href="./profile.html" class="mobile-bottom-nav__item">
             <i class="bi bi-person" aria-hidden="true"></i>
             <span>Profile</span>
         </a>

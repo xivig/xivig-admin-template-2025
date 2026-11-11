@@ -1,109 +1,145 @@
-import fs from "fs";
-import path from "path";
+import fs from 'fs';
+import path from 'path';
 
-/**
- * Recursively walk through a directory
- */
-function walk(dir, callback) {
-    if (!fs.existsSync(dir)) return;
-    fs.readdirSync(dir).forEach(file => {
-        const filepath = path.join(dir, file);
-        const stat = fs.statSync(filepath);
+const SKIP_URI_RE = /^(https?:|mailto:|tel:|javascript:|#|%23|data:|about:|blob:|\$\{|\/\/)/i;
 
+function getHtmlFiles(dir, fileList = []) {
+    if (!fs.existsSync(dir)) return fileList;
+    const files = fs.readdirSync(dir);
+    for (const file of files) {
+        const filePath = path.join(dir, file);
+        const stat = fs.statSync(filePath);
         if (stat.isDirectory()) {
-            walk(filepath, callback);
-        } else if (filepath.endsWith(".html") || filepath.endsWith(".css") || filepath.endsWith(".js") || filepath.endsWith(".json")) {
-            callback(filepath);
+            getHtmlFiles(filePath, fileList);
+        } else if (file.endsWith('.html')) {
+            fileList.push(filePath);
         }
-    });
+    }
+    return fileList;
+}
+
+function normalizeUrlValue(rawValue, rootPrefix) {
+    if (!rawValue) return rawValue;
+    const value = rawValue.trim();
+    if (!value || SKIP_URI_RE.test(value)) return rawValue;
+
+    // Separate query string and hash fragment safely
+    const match = value.match(/^([^?#]*)(\?[^#]*)?(#.*)?$/);
+    const pathname = match ? match[1] : value;
+    const suffix = `${match?.[2] || ''}${match?.[3] || ''}`;
+
+    if (!pathname) return rawValue;
+
+    // 1. Source image directories -> assets/<rest>
+    if (
+        pathname.startsWith('/app/src/images/') ||
+        pathname.startsWith('app/src/images/') ||
+        /^(\.\.\/)+(?:app\/)?src\/images\//.test(pathname) ||
+        pathname.startsWith('/src/images/')
+    ) {
+        const rest = pathname.replace(/^(?:(?:\.\.\/)+|\/)?(?:app\/)?src\/images\//, '');
+        return `${rootPrefix}assets/${rest}${suffix}`;
+    }
+
+    // 2. Public images / data / plugins / compiled assets
+    if (/^(?:(?:\.\.\/)+|\/)images\//.test(pathname)) {
+        const rest = pathname.replace(/^(?:(?:\.\.\/)+|\/)images\//, '');
+        return `${rootPrefix}images/${rest}${suffix}`;
+    }
+    if (/^(?:(?:\.\.\/)+|\/)data\//.test(pathname)) {
+        const rest = pathname.replace(/^(?:(?:\.\.\/)+|\/)data\//, '');
+        return `${rootPrefix}data/${rest}${suffix}`;
+    }
+    if (/^(?:(?:\.\.\/)+|\/)plugins\//.test(pathname)) {
+        const rest = pathname.replace(/^(?:(?:\.\.\/)+|\/)plugins\//, '');
+        return `${rootPrefix}plugins/${rest}${suffix}`;
+    }
+    if (/^(?:(?:\.\.\/)+|\.\/|\/)assets\//.test(pathname)) {
+        const rest = pathname.replace(/^(?:(?:\.\.\/)+|\.\/|\/)assets\//, '');
+        return `${rootPrefix}assets/${rest}${suffix}`;
+    }
+
+    // 3. HTML pages (root or nested under /app/pages/** or /pages/**) -> flat <name>.html
+    if (pathname === '/') {
+        return `${rootPrefix}index.html${suffix}`;
+    }
+    if (pathname.endsWith('.html')) {
+        // Explicit app/pages or pages paths or relative parent html links flatten to basename
+        if (
+            pathname.startsWith('/app/pages/') ||
+            pathname.startsWith('app/pages/') ||
+            pathname.startsWith('/pages/') ||
+            pathname.startsWith('pages/') ||
+            pathname.startsWith('/') ||
+            pathname.startsWith('../') ||
+            pathname.startsWith('./') ||
+            !pathname.includes('/')
+        ) {
+            const basename = path.posix.basename(pathname.replace(/\\/g, '/'));
+            return `${rootPrefix}${basename}${suffix}`;
+        }
+    }
+
+    return rawValue;
 }
 
 /**
- * Fixes absolute links and strips 'app/' prefix for docs/dist compatibility.
- * Replaces leading slashes with relative path prefixes.
- * @param {string} folder Root folder to process (e.g. './dist')
+ * Normalizes paths and injects idempotent window.XIVIG_ROOT across all built HTML files.
+ * @param {string} folder Target build directory (default "./dist")
  */
-export function fixLinks(folder) {
-    const rootDir = path.resolve(folder);
-    console.log(`🛠️ Refining links in: ${folder}`);
+export function fixLinks(folder = './dist') {
+    const absFolder = path.resolve(folder);
+    if (!fs.existsSync(absFolder)) {
+        console.log(`⚠️ Folder ${folder} does not exist, skipping link replacement.`);
+        return 0;
+    }
 
-    walk(folder, file => {
-        let content = fs.readFileSync(file, "utf8");
-        const relativePathToRoot = path.relative(path.dirname(file), rootDir);
-        const prefix = relativePathToRoot ? relativePathToRoot.replace(/\\/g, '/') + '/' : './';
+    const htmlFiles = getHtmlFiles(absFolder);
+    let updatedCount = 0;
 
-        // 1. Inject Root Path for JS
-        if (file.endsWith(".html")) {
-            const rootScript = `<script>window.XIVIG_ROOT = "${prefix}";</script>`;
-            if (content.includes("<head>")) {
-                content = content.replace("<head>", `<head>\n    ${rootScript}`);
-            } else {
-                content = rootScript + "\n" + content;
+    for (const file of htmlFiles) {
+        let content = fs.readFileSync(file, 'utf8');
+        const relDir = path.relative(absFolder, path.dirname(file));
+        const depth = relDir === '' ? 0 : relDir.split(path.sep).length;
+        const rootPrefix = depth === 0 ? './' : '../'.repeat(depth);
+
+        // Idempotent XIVIG_ROOT injection: strip any duplicate pre-existing inline XIVIG_ROOT tags first, then insert exactly once
+        const rootScriptRe = /[ \t]*<script>\s*window\.XIVIG_ROOT\s*=\s*["'][^"']*["'];?\s*<\/script>\s*/g;
+        const cleanedContent = content.replace(rootScriptRe, '');
+        const rootInjection = `<script>window.XIVIG_ROOT = "${rootPrefix}";</script>`;
+
+        content = cleanedContent.replace(/<head([^>]*)>/i, `<head$1>\n    ${rootInjection}`);
+
+        // Normalize HTML attributes (word-boundary before attribute so data-action="..." is untouched!)
+        content = content.replace(
+            /(^|[\s<])(href|src|action|data-src|poster)=("([^"]*)"|'([^']*)')/gi,
+            (full, prefix, attr, quoted, dblVal, sglVal) => {
+                const quoteChar = quoted[0];
+                const origVal = dblVal !== undefined ? dblVal : sglVal;
+                const normalized = normalizeUrlValue(origVal, rootPrefix);
+                return `${prefix}${attr}=${quoteChar}${normalized}${quoteChar}`;
             }
-        }
+        );
 
-        // 2. Handle HTML attributes (href, src, data-src, etc.)
-        // Case A: Starting with / (e.g. href="/app/...")
-        const attrSlashRegex = /(href|src|data-src|poster)=(['"])\/([^'"]*)(['"])/g;
-        content = content.replace(attrSlashRegex, (match, attr, q1, p1, q2) => {
-            if (p1.startsWith('http') || p1.startsWith('//') || p1.startsWith('data:') || p1.startsWith('tel:') || p1.startsWith('mailto:') || p1.startsWith('#')) {
-                return match;
-            }
-            let target = p1;
-            if (target.startsWith('app/')) target = target.substring(4);
-            target = target.replace(/^src\/images\//, 'assets/');
-            if (target === '' || target === '/') target = 'index.html';
-            return `${attr}=${q1}${prefix}${target}${q2}`;
+        // Normalize inline CSS url(...) references inside HTML style attributes or <style> blocks
+        content = content.replace(/url\((['"]?)([^)'"]+)\1\)/gi, (full, q, innerUrl) => {
+            const normalized = normalizeUrlValue(innerUrl, rootPrefix);
+            return `url(${q}${normalized}${q})`;
         });
 
-        // Case B: Starting with app/ (e.g. href="app/...")
-        const attrAppRegex = /(href|src|data-src|poster)=(['"])app\/([^'"]*)(['"])/g;
-        content = content.replace(attrAppRegex, (match, attr, q1, p1, q2) => {
-            let target = p1;
-            target = target.replace(/^src\/images\//, 'assets/');
-            return `${attr}=${q1}${prefix}${target}${q2}`;
-        });
+        fs.writeFileSync(file, content, 'utf8');
+        updatedCount++;
+    }
 
-
-        // 2. Handle JSON paths (e.g. "path": "/app/pages/...")
-        const jsonPathRegex = /(['"])(path|src|url|image|icon)\1\s*:\s*(['"])\/([^'"]*)\3/g;
-        content = content.replace(jsonPathRegex, (match, q1, key, q2, p1) => {
-             if (p1.startsWith('http') || p1.startsWith('//') || p1.startsWith('data:')) {
-                return match;
-            }
-            let target = p1;
-            if (target.startsWith('app/')) target = target.substring(4);
-            target = target.replace(/^src\/images\//, 'assets/');
-            if (target === '' || target === '/') target = 'index.html';
-            return `"${key}": ${q2}${prefix}${target}${q2}`;
-        });
-
-        // 3. Handle CSS url() patterns (common in style tags or CSS files)
-        const urlRegex = /url\((['"]?)\/([^)]*)\1\)/g;
-        content = content.replace(urlRegex, (match, q, p1) => {
-            if (p1.startsWith('http') || p1.startsWith('//') || p1.startsWith('data:')) {
-                return match;
-            }
-            
-            let target = p1.replace(/^['"]|['"]$/g, '');
-            if (target.startsWith('app/')) target = target.substring(4);
-            target = target.replace(/^src\/images\//, 'assets/');
-            
-            return `url(${q}${prefix}${target}${q})`;
-        });
-
-        // 4. Final cleanup: Ensure no double slashes like .././
-        content = content.replace(/\/\.\//g, '/');
-
-        fs.writeFileSync(file, content, "utf8");
-    });
-    
-    console.log(`✅ Links refined for ${folder}`);
+    console.log(`✅ Normalized relative paths in ${updatedCount} HTML files (${folder}).`);
+    return updatedCount;
 }
 
-// If running directly via 'node tasks/utils/replace-links.js'
-const isMain = process.argv[1] && (process.argv[1].endsWith('replace-links.js') || process.argv[1].includes('replace-links.js'));
+const isMain = process.argv[1] && process.argv[1].replace(/\\/g, '/').endsWith('tasks/utils/replace-links.js');
 if (isMain) {
-    fixLinks("./dist");
-    fixLinks("./docs");
+    const args = process.argv.slice(2);
+    const targets = args.length > 0 ? args : ['./dist'];
+    for (const target of targets) {
+        fixLinks(target);
+    }
 }

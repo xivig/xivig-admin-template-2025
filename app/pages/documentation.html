@@ -133,7 +133,7 @@
                                 <td class="px-4 border-top border-light">
                                     <div class="d-flex align-items-center gap-3">
                                         <i class="bi bi-lightning-fill text-warning fs-4"></i>
-                                        <span class="fw-bold">Vite 5.x</span>
+                                        <span class="fw-bold">Vite 8.x</span>
                                     </div>
                                 </td>
                                 <td class="border-top border-light">Development Server</td>
@@ -142,7 +142,7 @@
                             <tr>
                                 <td class="px-4 border-top border-light">
                                     <div class="d-flex align-items-center gap-3">
-                                        <img src="../src/images/gulp.png" height="20" alt="Gulp">
+                                        <img src="/app/src/images/gulp.png" height="20" alt="Gulp">
                                         <span class="fw-bold">Gulp 5.x</span>
                                     </div>
                                 </td>
@@ -195,8 +195,9 @@
                                 <span class="badge bg-success px-2">BUILD</span>
                                 <code class="text-white">npm run build</code>
                             </div>
-                            <p class="extra-small text-muted mb-0">Triggers the Gulp production pipeline. Optimizes
-                                images, compiles minified assets, and generates the final <code>dist/</code> folder.</p>
+                            <p class="extra-small text-muted mb-0">Runs the Vite 8 + Node ESM pipeline: compiles SCSS/ESM,
+                                optimizes PNG/JPG/WebP/SVG images via Sharp, flattens all pages into <code>dist/*.html</code>, and verifies
+                                links via <code>npm run verify</code>.</p>
                         </div>
                     </div>
                 </div>
@@ -325,15 +326,13 @@
             </div>
             <div class="card border-0 shadow-sm rounded-4 p-4">
                 <h5 class="fw-bold mb-3">Production Ready</h5>
-                <p class="text-secondary">When you are ready to deploy, run <code>npm run build</code>. This generates a
-                    clean <code>dist/</code> folder containing:</p>
+                <p class="text-secondary">When you are ready to deploy, run <code>npm run build</code>. This
+                    generates a flattened, verified <code>dist/</code> directory containing:</p>
                 <ul class="small text-muted lh-lg mb-4">
-                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Minified Assets:</strong> All CSS and JS
-                        files are bundled and uglified.</li>
-                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Image Optimization:</strong> All PNG/JPG
-                        assets are compressed via Gulp.</li>
-                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Clean Paths:</strong> Vite ensures all
-                        asset links are relative and ready for any host (GitHub Pages, Netlify, Vercel).</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Flattened Root Routing:</strong> All 109 HTML views sit cleanly at <code>dist/*.html</code> with zero deep subfolder nesting.</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Minified Vite 8 Bundles:</strong> Tree-shaken ES modules and Sass styles bundled with Rolldown.</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Sharp Image Optimization:</strong> PNG/JPG assets compressed alongside WebP and vector SVG/ICO/GIF files natively in Node ESM.</li>
+                    <li><i class="bi bi-check2 text-success me-2"></i> <strong>Verified Portable Paths:</strong> <code>replace-links.js</code> and <code>verify-dist.js</code> ensure all links work on root domains, subpaths, and GitHub Pages.</li>
                 </ul>
                 <div class="p-4 bg-body-tertiary rounded-4 text-center">
                     <p class="fw-bold mb-1">Hosting on GitHub Pages?</p>
