@@ -1,6 +1,8 @@
+import { loadStaticDataset } from '../core/data-loader.js';
+
 /**
  * AJAX-based Icon Filtering for Bootstrap Icons
- * Searches through all 2000+ icons efficiently
+ * Searches through all 2000+ icons efficiently (supports HTTP & file://)
  */
 export const initIconFilter = async (inputId, containerId) => {
     const filterInput = document.getElementById(inputId);
@@ -9,41 +11,28 @@ export const initIconFilter = async (inputId, containerId) => {
 
     let allIcons = [];
 
-    // 1. Fetch the data (AJAX)
+    // 1. Fetch the data (with file:// fallback)
     console.log("📥 Fetching Bootstrap Icons data...");
     try {
         const root = window.XIVIG_ROOT || '/';
-        const paths = [
-            `${root}data/bootstrap-icons.json`,
-            'data/bootstrap-icons.json',
-            '/data/bootstrap-icons.json',
-            '../data/bootstrap-icons.json',
-            '../../data/bootstrap-icons.json',
-            '../../../data/bootstrap-icons.json',
-            'public/data/bootstrap-icons.json'
-        ];
-
-        let response;
-        for (const path of paths) {
-            try {
-                const res = await fetch(path);
-                const contentType = res.headers.get('content-type');
-                if (res.ok && contentType && contentType.includes('application/json')) {
-                    response = res;
-                    console.log(`✅ Found data at: ${path}`);
-                    break;
-                }
-            } catch (e) {
-                // Continue to next path
-            }
-        }
-
-        if (!response) {
-            throw new Error(`Could not find bootstrap-icons.json in any of the attempted paths.`);
-        }
-        
-        const data = await response.json();
-        allIcons = Object.keys(data);
+        const data = await loadStaticDataset({
+            globalVar: 'XIVIG_BS_ICONS',
+            jsonPaths: [
+                `${root}data/bootstrap-icons.json`,
+                'data/bootstrap-icons.json',
+                '/data/bootstrap-icons.json',
+                '../data/bootstrap-icons.json',
+                '../../data/bootstrap-icons.json',
+                '../../../data/bootstrap-icons.json',
+                'public/data/bootstrap-icons.json'
+            ],
+            scriptPaths: [
+                `${root}data/bootstrap-icons.js`,
+                'data/bootstrap-icons.js',
+                '/data/bootstrap-icons.js'
+            ]
+        });
+        allIcons = Array.isArray(data) ? data : Object.keys(data);
         console.log(`✅ Loaded ${allIcons.length} icons.`);
         
         if (allIcons.length === 0) {

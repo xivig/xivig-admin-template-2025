@@ -1,6 +1,8 @@
+import { loadStaticDataset } from '../core/data-loader.js';
+
 /**
  * AJAX-based Icon Filtering for FontAwesome
- * Searches through all 2000+ icons efficiently
+ * Searches through all 2000+ icons efficiently (supports HTTP & file://)
  */
 export const initIconApp = async () => {
     const searchInput = document.getElementById('iconFilterInput');
@@ -10,51 +12,42 @@ export const initIconApp = async () => {
 
     let allIcons = [];
 
-    // 1. Fetch the data (AJAX)
+    // 1. Fetch the data (with file:// fallback)
     console.log("📥 Fetching FontAwesome Icons data...");
     try {
         const root = window.XIVIG_ROOT || '/';
-        const paths = [
-            `${root}data/fa-icons.json`,
-            'data/fa-icons.json',
-            '/data/fa-icons.json',
-            '../data/fa-icons.json',
-            '../../data/fa-icons.json',
-            '../../../data/fa-icons.json',
-            'public/data/fa-icons.json'
-        ];
-
-        let response;
-        for (const path of paths) {
-            try {
-                const res = await fetch(path);
-                const contentType = res.headers.get('content-type');
-                if (res.ok && contentType && contentType.includes('application/json')) {
-                    response = res;
-                    console.log(`✅ Found data at: ${path}`);
-                    break;
-                }
-            } catch (e) {
-                // Continue to next path
-            }
-        }
-
-        if (!response) {
-            throw new Error(`Could not find fa-icons.json in any of the attempted paths.`);
-        }
-        
-        const data = await response.json();
-        
-        // Flatten the data into a list of style+name pairs
-        Object.keys(data).forEach(name => {
-            const icon = data[name];
-            if (icon.svgs && icon.svgs.classic) {
-                Object.keys(icon.svgs.classic).forEach(style => {
-                    const prefix = style === 'brands' ? 'fa-brands' : (style === 'solid' ? 'fa-solid' : 'fa-regular');
-                    allIcons.push({ name, prefix });
-                });
-            }
+        const data = await loadStaticDataset({
+            globalVar: 'XIVIG_FA_ICONS',
+            jsonPaths: [
+                `${root}data/fa-icons.json`,
+                'data/fa-icons.json',
+                '/data/fa-icons.json',
+                '../data/fa-icons.json',
+                '../../data/fa-icons.json',
+                '../../../data/fa-icons.json',
+                'public/data/fa-icons.json'
+            ],
+            scriptPaths: [
+                `${root}data/fa-icons.js`,
+                'data/fa-icons.js',
+                '/data/fa-icons.js'
+            ]
         });
+
+        // Support both compact pre-flattened arrays ([[name, prefix], ...]) and raw FA JSON objects
+        if (Array.isArray(data)) {
+            allIcons = data.map(([name, prefix]) => ({ name, prefix }));
+        } else {
+            Object.keys(data).forEach(name => {
+                const icon = data[name];
+                if (icon.svgs && icon.svgs.classic) {
+                    Object.keys(icon.svgs.classic).forEach(style => {
+                        const prefix = style === 'brands' ? 'fa-brands' : (style === 'solid' ? 'fa-solid' : 'fa-regular');
+                        allIcons.push({ name, prefix });
+                    });
+                }
+            });
+        }
 
         console.log(`✅ Loaded ${allIcons.length} FontAwesome icons.`);
 

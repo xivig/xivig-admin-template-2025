@@ -25,9 +25,10 @@ Generates a flattened, production-ready version of the site in the `dist/` folde
 - **The Step-by-Step Process (`vite build && node tasks/utils/verify-dist.js ./dist`):**
   1.  **Vite 8 + Rolldown Compile:** Compiles all SCSS, bundles ES modules into vendor/app chunks, and empties old `dist/`.
   2.  **Native Sharp Image Optimization (`tasks/build/optimize-images.js`):** Compresses JPG/PNG images with `.webp` variants and copies `.svg`, `.gif`, and `.ico` static assets into `dist/assets/`.
-  3.  **Atomic HTML Flattening (`tasks/build/vite-plugins.js`):** Moves `dist/app/pages/**/*.html` directly into root `dist/*.html` and cleans temporary `dist/app/` files.
-  4.  **Idempotent Link Normalization (`tasks/utils/replace-links.js`):** Rewrites all `/app/...`, `/pages/...`, `/images/...`, `/data/...`, and CSS `url(...)` paths to portable `./...` relative paths and injects a single `window.XIVIG_ROOT = "./"`.
-  5.  **Verification (`tasks/utils/verify-dist.js`):** Audits all 109 flat HTML files, single `window.XIVIG_ROOT` injection, compiled CSS `url()` targets, and referenced assets on disk.
+  3.  **CORS-Free Classic Bundles (`tasks/build/vite-plugins.js`):** Compiles self-contained classic IIFE bundles (`assets/main.bundle.js`, `assets/home.bundle.js`, `assets/auth.bundle.js`), converts page scripts, and generates `dist/data/*.js` fallbacks so icon search and dashboards work over both `http(s)://` and local `file://`.
+  4.  **Atomic HTML Flattening (`tasks/build/vite-plugins.js`):** Moves `dist/app/pages/**/*.html` directly into root `dist/*.html` and cleans temporary `dist/app/` files.
+  5.  **Idempotent Link Normalization (`tasks/utils/replace-links.js`):** Rewrites all `/app/...`, `/pages/...`, `/images/...`, `/data/...`, and CSS `url(...)` paths to portable `./...` relative paths, strips `crossorigin` from CSS links for `file://` compatibility, wires classic `<script defer>` bundles, and injects a single `window.XIVIG_ROOT = "./"`.
+  6.  **Verification (`tasks/utils/verify-dist.js`):** Audits all 109 flat HTML files, classic script/CSS tags, single `window.XIVIG_ROOT` injection, compiled CSS `url()` targets, and referenced assets on disk.
 
 ---
 
@@ -47,8 +48,7 @@ Starts a local Vite preview server serving the compiled flattened `dist/` folder
 | `npm run build` | Vite 8 + Node ESM + Sharp | Full flattened production build, Sharp images & verification | `dist/` |
 | `npm run preview` | Vite 8 | Preview compiled flattened build (`localhost:4173`) | `dist/` |
 | `npm run verify` | Node (`verify-dist.js`) | Audit 109 HTML files, relative links & CSS/image assets | N/A |
-| `npm run fix-links` | Node (`replace-links.js`) | Re-run idempotent path normalization on `dist/` | `dist/` |
-| `npm run build:gulp` | Gulp 5 (Optional shim) | Minimal Gulp wrapper delegating to Vite 8 build + verify | `dist/` |
+| `npm run fix-links` | Node (`replace-links.js`) | Re-run idempotent path & classic script normalization on `dist/` | `dist/` |
 
 ---
 

@@ -9,13 +9,13 @@
 [![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue.svg)](https://xivig.github.io/xivig-gulp-vite-bs5-admin-panel/)
 
 > **The definitive enterprise administrative dashboard and systems operations console.**  
-> Engineered with a modern **Vite 8 Native Pipeline** (Rolldown bundler, native ESM Hot Module Replacement, Sharp image optimization, atomic HTML flattening, and automated link/asset verification), retaining only a thin optional Gulp 5 compatibility layer.
+> Engineered with a modern **Vite 8 Native Pipeline** (Rolldown bundler, native ESM Hot Module Replacement, Sharp image optimization, atomic HTML flattening, classic CORS-free bundles for `file://` & HTTP, and automated link/asset verification) — cleanly organized with zero Gulp runtime dependency.
 
 ---
 
 ## 📖 Essential Documentation Links
 
-* 📘 [**Complete Technical Documentation Manual (`DOCUMENTATION.md`)**](DOCUMENTATION.md) — Exhaustive 13-chapter guide detailing the dual-engine pipeline, 7-1 Sass tokens, Handlebars layout engine, modular JavaScript architecture, 108+ view catalog, multi-chart integration, and deployment recipes.
+* 📘 [**Complete Technical Documentation Manual (`docs/DOCUMENTATION.md`)**](docs/DOCUMENTATION.md) — Exhaustive 13-chapter guide detailing the Vite 8 build pipeline, 7-1 Sass tokens, Handlebars layout engine, modular JavaScript architecture, 108+ view catalog, multi-chart integration, and deployment recipes.
 * 🛠️ [**Developer Guides Directory (`docs/`)**](docs/) — Focused internal specifications for the build system, SCSS tokens, JavaScript controllers, HTML directory maps, and Laravel Blade conversion.
 
 ---
@@ -30,9 +30,9 @@ Experience the compiled dashboard live in your browser:
 ## ✨ Key Architectural Highlights
 
 * **🏛️ 108+ Enterprise Views**: Curated across 12 domain suites including Executive Telemetry, Cloud Deployments, E-Commerce Platform, Project Management, User Administration, and Productivity Apps.
-* **⚡ Dual-Engine Hybrid Pipeline**:
-  * **Vite 8**: Sub-second dev server startup, native ESM Hot Module Replacement (HMR), and automated manual chunking via Rollup.
-  * **Gulp 5**: Automated image conversion (JPEG/PNG to Next-Gen WebP via Sharp at 80% quality), CSS minification, vendor orchestration, and link normalization.
+* **⚡ Pure Vite 8 Build Engine**:
+  * **Vite 8**: Sub-second dev server startup (`localhost:3000`) with seamless `/app/pages/`, `/pages/`, and flat `/<page>.html` route resolution.
+  * **Zero-Gulp Production Pipeline**: Direct Sharp WebP/JPG/PNG optimization, vector SVG/ICO preservation, classic CORS-free IIFE bundles (`*.bundle.js`) + `file://` data fallbacks, flat `dist/*.html` output, and strict `verify-dist.js` checks.
 * **🎨 Elite Glassmorphism Aesthetics**: Modern mesh gradients, floating glass navigation, dynamic breadcrumbs, depth elevations, and micro-interactions powered by Animate.css and AOS.
 * **🌓 Adaptive Theme Architecture**: Native Dark / Light mode switching powered by Bootstrap 5.3 CSS variables and persistent localStorage state with **zero Flash of Unstyled Content (FOUC)**.
 * **📱 Mobile-First Architecture**: Dedicated native-app-style bottom navigation bar, offcanvas sliding drawers, responsive data grids, and touch-optimized form pickers.
@@ -48,11 +48,11 @@ Experience the compiled dashboard live in your browser:
 | Layer | Technology | Version | Purpose |
 | :--- | :--- | :--- | :--- |
 | **Core Bundler** | [Vite](https://vitejs.dev/) | `^8.0.x` | Dev server, HMR, Rolldown/Rollup asset bundling |
-| **Task Runner** | [Gulp](https://gulpjs.com/) | `^5.0.x` | Asset pipelines, Sharp image optimization, dist-to-docs export |
+| **Build Pipeline** | Node ESM Plugins (`tasks/build/`) | Native | Classic IIFE bundles, HTML flattening, CORS-free `file://` links, verification |
 | **CSS Framework** | [Bootstrap](https://getbootstrap.com/) | `^5.3.8` | Grid, utility classes, offcanvas, modals, and base styles |
 | **CSS Preprocessor**| [Dart Sass](https://sass-lang.com/) | `^1.99.x` | Modular 7-1 architecture with silenced legacy deprecations |
 | **Templating Engine**| [Handlebars](https://handlebarsjs.com/) | `^2.0.x` | Partials, layouts, blocks via `vite-plugin-handlebars` |
-| **Image Optimizer** | [Sharp](https://sharp.pixelplumbing.com/) | `^4.0.x` | Automated WebP conversion and quality compression |
+| **Image Optimizer** | [Sharp](https://sharp.pixelplumbing.com/) | `^0.33.5` | Direct WebP, JPEG, and PNG optimization + static SVG/ICO copy |
 | **Icons** | [Bootstrap Icons](https://icons.getbootstrap.com/) & [FontAwesome](https://fontawesome.com/) | `1.13.x` / `7.2.x` | Scalable vector glyphs and symbol sets |
 | **Data Tables** | [DataTables.net](https://datatables.net/) | `^2.2.x` | Searchable, paginated, responsive enterprise data grids |
 | **Data Viz** | ApexCharts, Chart.js, ECharts, Highcharts | Latest | High-velocity analytics and real-time telemetry graphs |
@@ -124,16 +124,14 @@ xivig-gulp-vite-bs5-admin-panel/
 │       ├── scripts/               # Modular ES6 controllers, app logic, chart runners
 │       └── scss/                  # 7-1 Sass architecture (base, components, layout, pages)
 ├── .github/workflows/             # GitHub Actions CI/CD (builds & deploys flat dist/ to GitHub Pages)
-├── docs/                          # Developer architectural guides and Markdown specifications
-├── dist/                          # Flattened production build directory (109 root HTML files + assets)
+├── docs/                          # Technical manual (`DOCUMENTATION.md`) and developer Markdown guides
+├── dist/                          # Flattened production output (gitignored; generated via `npm run build` & CI)
 ├── public/                        # Static assets, icons JSON, and sidebar-config.json
-├── tasks/                         # Modular build automation modules
+├── tasks/                         # Modular Vite 8 build plugins & verification utilities
 │   ├── build/                     # Vite 8 plugins & Sharp ESM image optimizer
 │   └── utils/                     # Idempotent link normalizer, dist verifier, Blade migration tools
-├── gulpfile.js                    # Minimal optional Gulp 5 shim delegating to Vite 8
 ├── vite.config.js                 # Modern Vite 8 + Rolldown configuration with manual chunks
 ├── package.json                   # Project manifest, dependencies, and scripts
-├── DOCUMENTATION.md               # Exhaustive 13-chapter Technical Documentation Manual
 └── README.md                      # Primary project overview and quick reference
 ```
 
@@ -202,7 +200,7 @@ python tasks/utils/convert-to-laravel.py
 python tasks/utils/organize-laravel-assets.py
 ```
 
-For full step-by-step instructions, see the [Laravel Implementation Guide in docs](docs/LARAVEL_IMPLEMENTATION.md) and [Chapter 11 of DOCUMENTATION.md](DOCUMENTATION.md#11-laravel-blade-migration-framework).
+For full step-by-step instructions, see the [Laravel Implementation Guide in docs](docs/LARAVEL_IMPLEMENTATION.md) and [Chapter 11 of docs/DOCUMENTATION.md](docs/DOCUMENTATION.md#11-laravel-blade-migration-framework).
 
 ---
 

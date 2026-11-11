@@ -45,6 +45,7 @@ This guide provides a detailed description of the utility scripts located in `ta
 **Purpose:** Idempotent static path & root-prefix normalizer for flattened `dist/` output.
 - **What it does:**
   - Converts root-relative links (`/app/pages/**`, `/pages/**`, `/app/src/images/**`, `/images/**`, `/data/**`, inline `url(...)`) into clean flattened `./...` relative paths for portable root and subpath (GitHub Pages) hosting.
+  - Strips `crossorigin` from stylesheet `<link>` tags and converts module script tags to classic `<script defer src="./assets/*.bundle.js">` bundles so every page renders and executes even over `file://`.
   - Injects `window.XIVIG_ROOT = "./"` idempotently once into `<head>` (never duplicating pre-existing script tags).
 - **Usage:** Executed automatically during `vite build` via [`tasks/build/vite-plugins.js`](../tasks/build/vite-plugins.js), or manually via `npm run fix-links`.
 

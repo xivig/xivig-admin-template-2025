@@ -14,8 +14,8 @@ function getHtmlFiles(dir, list = []) {
 }
 
 /**
- * Verifies a flattened static output directory (`dist` or `docs`) has zero broken links,
- * zero nested page folders, zero missing local assets, and single idempotent XIVIG_ROOT injection.
+ * Verifies flattened static output has zero broken links, zero nested pages,
+ * zero CORS-blocked module/crossorigin attributes, and single XIVIG_ROOT injection.
  */
 export function verifyBuildOutput(targetDir = './dist', options = {}) {
     const absDir = path.resolve(targetDir);
@@ -27,7 +27,6 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
 
     const errors = [];
 
-    // 1. Must be completely flattened (no nested dist/app or dist/pages)
     if (fs.existsSync(path.join(absDir, 'app'))) {
         errors.push(`${targetDir}/app still exists — HTML flattening failed.`);
     }
@@ -35,10 +34,12 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
         errors.push(`${targetDir}/pages still exists — output is not flattened.`);
     }
 
-    // 2. Essential static assets and metadata
     const requiredFiles = [
         '.nojekyll',
         'index.html',
+        'assets/main.bundle.js',
+        'assets/home.bundle.js',
+        'assets/auth.bundle.js',
         'assets/github.svg',
         'assets/gulp.png',
         'assets/login-page-img.png',
@@ -46,8 +47,11 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
         'assets/forgot-password.png',
         'images/logo.png',
         'data/bootstrap-icons.json',
+        'data/bootstrap-icons.js',
         'data/fa-icons.json',
+        'data/fa-icons.js',
         'data/sidebar-config.json',
+        'data/sidebar-config.js',
     ];
 
     for (const rel of requiredFiles) {
@@ -56,7 +60,6 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
         }
     }
 
-    // 3. Scan every HTML file
     const allHtml = getHtmlFiles(absDir);
     const rootHtml = fs.readdirSync(absDir).filter((f) => f.endsWith('.html'));
 
@@ -71,20 +74,24 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
         const relHtml = path.relative(absDir, htmlFile);
         const content = fs.readFileSync(htmlFile, 'utf8');
 
-        // Single XIVIG_ROOT check
         const rootMatches = content.match(/window\.XIVIG_ROOT\s*=/g) || [];
         if (rootMatches.length !== 1) {
             errors.push(`${relHtml}: expected exactly 1 window.XIVIG_ROOT declaration, found ${rootMatches.length}`);
         }
 
-        // Check attribute links
+        if (/<link\b[^>]*\brel=["']stylesheet["'][^>]*\bcrossorigin\b/i.test(content)) {
+            errors.push(`${relHtml}: stylesheet still has crossorigin attribute (blocks file:// rendering)`);
+        }
+
+        if (/<script\b[^>]*\btype=["']module["']/i.test(content)) {
+            errors.push(`${relHtml}: unresolved <script type="module"> tag found (blocks file:// execution)`);
+        }
+
         const attrRe = /(?:^|[\s<])(?:href|src|action|poster)=["']([^"']+)["']/gi;
         let match;
         while ((match = attrRe.exec(content))) {
             const rawUrl = match[1].trim();
             if (!rawUrl || EXTERNAL_RE.test(rawUrl)) continue;
-
-            // Exception: documentation demo action="/upload" inside image-dropzone.html form demo
             if (rawUrl === '/upload') continue;
 
             const cleanPath = rawUrl.split('?')[0].split('#')[0];
@@ -101,7 +108,6 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
             }
         }
 
-        // Check CSS url(...) in HTML
         const urlRe = /url\((['"]?)([^)'"]+)\1\)/gi;
         while ((match = urlRe.exec(content))) {
             const rawUrl = match[2].trim();
@@ -118,7 +124,6 @@ export function verifyBuildOutput(targetDir = './dist', options = {}) {
         }
     }
 
-    // 4. Verify CSS url() references inside compiled stylesheets
     const assetsDir = path.join(absDir, 'assets');
     if (fs.existsSync(assetsDir)) {
         const cssFiles = fs.readdirSync(assetsDir).filter((f) => f.endsWith('.css'));
@@ -154,4 +159,5 @@ if (isMain) {
     for (const target of targets) {
         verifyBuildOutput(target);
     }
+    process.exit(0);
 }

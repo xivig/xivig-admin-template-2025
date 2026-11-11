@@ -1,5 +1,6 @@
 import Sortable from 'sortablejs';
 import NotificationService from '../components/sweet-alert.js';
+import { loadStaticDataset } from '../core/data-loader.js';
 
 /**
  * Admin Settings Module - Enhanced Elite Version
@@ -145,8 +146,11 @@ export const initAdminSettings = async () => {
     if (!sidebarData) {
         try {
             const root = window.XIVIG_ROOT || '/';
-            const response = await fetch(`${root}data/sidebar-config.json`);
-            sidebarData = await response.json();
+            sidebarData = await loadStaticDataset({
+                globalVar: 'XIVIG_SIDEBAR_CONFIG',
+                jsonPaths: [`${root}data/sidebar-config.json`, 'data/sidebar-config.json', '/data/sidebar-config.json'],
+                scriptPaths: [`${root}data/sidebar-config.js`, 'data/sidebar-config.js', '/data/sidebar-config.js']
+            });
             localStorage.setItem('xivig_sidebar_config', JSON.stringify(sidebarData));
             renderItems();
         } catch (err) {

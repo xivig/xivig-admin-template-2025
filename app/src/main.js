@@ -1,7 +1,10 @@
 // 0. BOOTSTRAP GLOBALS (Must be absolute first)
 import $ from './scripts/core/jquery-setup.js';
+import './scripts/core/config.js';
 
 // 1. PROJECT STYLES (Direct imports for Vite bundling)
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'animate.css/animate.css';
 import '@fancyapps/ui/dist/fancybox/fancybox.css';
 import 'air-datepicker/air-datepicker.css';
@@ -27,6 +30,7 @@ window.AirDatepicker = AirDatepicker;
 import { initXivig } from './scripts/core/xivig-core.js';
 import UiController from './scripts/core/ui-controller.js';
 import NotificationService from './scripts/components/sweet-alert.js';
+import EditorModule from './scripts/components/editor-module.js';
 import { initPreloader } from './scripts/core/preloader.js';
 import { initSidebar } from './scripts/core/sidebar.js';
 import { initSettings } from './scripts/core/settings.js';
@@ -73,6 +77,7 @@ import ApexchartManager from './scripts/charts/apexchart-manager.js';
 
 // Global reference for legacy scripts
 window.NotificationService = NotificationService;
+window.EditorModule = EditorModule;
 
 const App = {
     init() {

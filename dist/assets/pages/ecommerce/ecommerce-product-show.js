@@ -1,1 +1,0 @@
-import"../../mobile-controller.js";import"../../main.js";document.addEventListener(`DOMContentLoaded`,()=>{let e=document.querySelectorAll(`input[name="colorSelect"]`),t=document.getElementById(`color-label`);e.forEach(e=>{e.addEventListener(`change`,e=>{e.target.id===`colorSpaceBlack`&&(t.textContent=`Space Black`),e.target.id===`colorSilver`&&(t.textContent=`Silver`)})})});

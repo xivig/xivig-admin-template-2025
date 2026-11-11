@@ -1,1 +1,0 @@
-var e={API_BASE_URL:window.location.hostname===`localhost`||window.location.hostname===`127.0.0.1`?`http://127.0.0.1:8000/api`:`https://api.xivig.com/api`,STRIPE_PUBLIC_KEY:`pk_test_placeholder`,VERSION:`1.0.1`,DEBUG:window.location.hostname===`localhost`||window.location.hostname===`127.0.0.1`};window.XIVIG_CONFIG=e;export{e as t};

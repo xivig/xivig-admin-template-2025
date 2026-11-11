@@ -5,7 +5,7 @@ This document provides project-specific context and instructions for AI assistan
 ## 🛠 Tech Stack Core
 - **Frontend**: Bootstrap 5.3, SCSS (7-1 Pattern), ES6 Modules.
 - **Templating**: Handlebars (for frontend source) -> Laravel Blade (for integration).
-- **Build System**: Vite 8 native pipeline (`tasks/build/vite-plugins.js` + Sharp image optimizer + Node ESM verification), with a minimal optional Gulp 5 compatibility shim.
+- **Build System**: Vite 8 native pipeline (`tasks/build/vite-plugins.js` + Sharp image optimizer + Node ESM verification) with zero Gulp runtime dependency.
 
 ## 📂 Key Architectures
 

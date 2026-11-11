@@ -84,5 +84,7 @@
 <!-- Global jQuery Exposure (Critical for Plugins) -->
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 <script>
-    window.jQuery = window.$ = jQuery;
+    if (typeof jQuery !== 'undefined') {
+        window.jQuery = window.$ = jQuery;
+    }
 </script>

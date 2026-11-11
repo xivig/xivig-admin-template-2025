@@ -1,11 +1,14 @@
 // 0. BOOTSTRAP GLOBALS
 import $ from 'jquery';
+import './scripts/core/config.js';
 if (!window.jQuery || !window.jQuery.fn || (!window.jQuery.fn.DataTable && !window.jQuery.fn.summernote)) {
     window.jQuery = window.$ = $;
 }
 globalThis.jQuery = globalThis.$ = window.jQuery;
 
 // 1. PROJECT STYLES
+import 'bootstrap-icons/font/bootstrap-icons.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import 'animate.css/animate.css';
 import './scss/auth-bundle.scss';
 

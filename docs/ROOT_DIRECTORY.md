@@ -20,7 +20,7 @@ The project root has been organized to ensure a clean, professional, and scalabl
 
 - `index.html`: The main entrance to the dashboard (located in the root).
 - `vite.config.js`: Primary Vite 8 build, plugin, and development server configuration.
-- `gulpfile.js`: Minimal optional Gulp 5 compatibility wrapper delegating to Vite 8.
+- `package.json`: Project scripts (`dev`, `build`, `preview`, `verify`, `fix-links`) and dependencies.
 - `package.json`: Project metadata and dependency management.
 - `LICENSE`: Project licensing terms.
 - `README.md`: Professional project overview and getting started guide.
