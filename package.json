@@ -1,14 +1,14 @@
 {
-  "name": "xivig-gulp-vite-bs5-admin-panel",
+  "name": "xivig-admin-template-2025",
   "version": "2.0.0",
-  "description": "Enterprise Elite Admin Dashboard built with Bootstrap 5.3+, Sass, Gulp 5, and Vite Hybrid Workflow",
-  "homepage": "https://xivig.github.io/xivig-gulp-vite-bs5-admin-panel/",
+  "description": "Enterprise Elite Admin Dashboard built with Bootstrap 5.3+, Dart Sass, and Vite 8 Native Pipeline",
+  "homepage": "https://xivig.github.io/xivig-admin-template-2025/",
   "repository": {
     "type": "git",
-    "url": "https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel.git"
+    "url": "https://github.com/xivig/xivig-admin-template-2025.git"
   },
   "bugs": {
-    "url": "https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel/issues"
+    "url": "https://github.com/xivig/xivig-admin-template-2025/issues"
   },
   "license": "MIT",
   "author": "xivig",

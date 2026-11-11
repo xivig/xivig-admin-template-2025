@@ -6,7 +6,7 @@
 [![Handlebars](https://img.shields.io/badge/Templating-Handlebars-f0772b?style=flat&logo=handlebars.js&logoColor=white)](https://handlebarsjs.com/)
 [![Sass](https://img.shields.io/badge/Styles-Sass%207--1-CC6699?style=flat&logo=sass&logoColor=white)](https://sass-lang.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue.svg)](https://xivig.github.io/xivig-gulp-vite-bs5-admin-panel/)
+[![GitHub Pages](https://img.shields.io/badge/Live%20Demo-GitHub%20Pages-blue.svg)](https://xivig.github.io/xivig-admin-template-2025/)
 
 > **The definitive enterprise administrative dashboard and systems operations console.**  
 > Engineered with a modern **Vite 8 Native Pipeline** (Rolldown bundler, native ESM Hot Module Replacement, Sharp image optimization, atomic HTML flattening, classic CORS-free bundles for `file://` & HTTP, and automated link/asset verification) — cleanly organized with zero Gulp runtime dependency.
@@ -23,7 +23,7 @@
 ## 🌐 Live Interactive Demonstration
 
 Experience the compiled dashboard live in your browser:
-* 🔗 **[Launch XIVIG Admin Panel Live Demo (GitHub Pages) ↗](https://xivig.github.io/xivig-gulp-vite-bs5-admin-panel/)**
+* 🔗 **[Launch XIVIG Admin Panel Live Demo (GitHub Pages) ↗](https://xivig.github.io/xivig-admin-template-2025/)**
 
 ---
 
@@ -67,8 +67,8 @@ Experience the compiled dashboard live in your browser:
 
 ### 1. Clone & Install Dependencies
 ```bash
-git clone https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel.git
-cd xivig-gulp-vite-bs5-admin-panel
+git clone https://github.com/xivig/xivig-admin-template-2025.git
+cd xivig-admin-template-2025
 
 # Install dependencies
 npm install
@@ -102,7 +102,7 @@ npm run verify
 ## 📂 Project Directory Structure
 
 ```text
-xivig-gulp-vite-bs5-admin-panel/
+xivig-admin-template-2025/
 ├── app/
 │   ├── pages/                     # 108+ Structured Handlebars/HTML page views
 │   │   ├── analytics/             # System metrics, telemetry, traffic overview
@@ -206,6 +206,6 @@ For full step-by-step instructions, see the [Laravel Implementation Guide in doc
 
 ## 🤝 Contributing & License
 
-Contributions, feedback, and feature requests are welcome! Feel free to open an issue or submit a pull request on the [GitHub Repository](https://github.com/xivig/xivig-gulp-vite-bs5-admin-panel).
+Contributions, feedback, and feature requests are welcome! Feel free to open an issue or submit a pull request on the [GitHub Repository](https://github.com/xivig/xivig-admin-template-2025).
 
 Distributed under the permissive **[MIT License](LICENSE)**. Free for personal, commercial, and open-source use.

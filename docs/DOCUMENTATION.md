@@ -301,7 +301,7 @@ To prevent any **Flash of Unstyled Content (FOUC)** during cold page loads, the 
 
 ### Programmatic Theme API
 
-Theme switching is exposed globally via [`app/src/scripts/core/settings.js`](file:///e:/0.2027-project/xivig-github-all/xivig-gulp-vite-bs5-admin-panel/app/src/scripts/core/settings.js):
+Theme switching is exposed globally via [`app/src/scripts/core/settings.js`](../app/src/scripts/core/settings.js):
 
 ```javascript
 // Toggle theme programmatically
@@ -636,7 +636,7 @@ npm run build:gulp
 
 ## 11. Laravel Blade Migration Framework
 
-XIVIG includes built-in migration automation in [`tasks/utils/`](file:///e:/0.2027-project/xivig-github-all/xivig-gulp-vite-bs5-admin-panel/tasks/utils/) to port the entire template into Laravel Blade in seconds.
+XIVIG includes built-in migration automation in [`tasks/utils/`](../tasks/utils/) to port the entire template into Laravel Blade in seconds.
 
 ### Automated Conversion Scripts
 
@@ -738,7 +738,7 @@ Place an `.htaccess` file inside `dist/`:
 * **Fix**: Run `npm run fix-links` (or `npm run build`). The idempotent script [`tasks/utils/replace-links.js`](../tasks/utils/replace-links.js) converts all root-relative `/app/...` and `/pages/...` paths into portable flattened `./...` relative paths matching the root `dist/*.html` layout.
 
 ### Q4: jQuery plugins throw `$ is not a function`
-* **Fix**: Global jQuery is exported in [`app/src/scripts/core/jquery-setup.js`](file:///e:/0.2027-project/xivig-github-all/xivig-gulp-vite-bs5-admin-panel/app/src/scripts/core/jquery-setup.js). Ensure `jquery-setup.js` is imported in your main JavaScript entry file prior to invoking legacy jQuery plugins.
+* **Fix**: Global jQuery is exported in [`app/src/scripts/core/jquery-setup.js`](../app/src/scripts/core/jquery-setup.js). Ensure `jquery-setup.js` is imported in your main JavaScript entry file prior to invoking legacy jQuery plugins.
 
 ---
 
